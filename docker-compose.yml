@@ -1,0 +1,97 @@
+version: "3.7"
+
+services:
+  # fuelstack-api:
+  #   image: riipandi/fuelstack-api:latest
+  #   restart: always
+  #   depends_on:
+  #     - pgsql
+  #     - redis
+  #   ports:
+  #     - 3030:3030
+  #   environment:
+  #     APP_SECRET: 'change_this_application_secret_key_value'
+  #     DATABASE_URL: 'postgresql://postgres:secretdb@pgsql:5432/pgsqldb?schema=public'
+  #   networks:
+  #     - fuelnet
+
+  # fuelstack-web:
+  #   image: riipandi/fuelstack-web:latest
+  #   restart: always
+  #   depends_on:
+  #     - fuelstack-api
+  #   ports:
+  #     - 3000:3000
+  #   environment:
+  #     NEXT_PUBLIC_API_ENDPOINT: 'http://fuelstack-api:3030'
+  #   networks:
+  #     - fuelnet
+
+  pgsql:
+    image: postgres:14-alpine
+    restart: always
+    ports:
+      - 5432:5432
+    volumes:
+      - pgsql_data:/var/lib/postgresql/data
+      - ./scripts/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+    environment:
+      POSTGRES_PASSWORD: secretdb
+    networks:
+      - fuelnet
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+    ports:
+      - 6379:6379
+    command: redis-server --save 60 1 --loglevel warning
+    networks:
+      - fuelnet
+
+  authorizer:
+    image: lakhansamani/authorizer:0.19.0
+    restart: always
+    depends_on:
+      - pgsql
+    ports:
+      - 8080:8080
+    command: './build/server'
+    environment:
+      PORT: 8080
+      ENV: '${AUTHORIZER_ENV:-production}'
+      ADMIN_SECRET: '${AUTHORIZER_ADMIN_SECRET:-secret}'
+      COOKIE_NAME: '${AUTHORIZER_COOKIE_NAME:-authorizer}'
+      DATABASE_TYPE: '${AUTHORIZER_DATABASE_TYPE:-postgres}'
+      DATABASE_URL: '${AUTHORIZER_DATABASE_URL:-postgresql://postgres:secretdb@pgsql:5432/authorizer}'
+      REDIS_URL: '${AUTHORIZER_REDIS_URL:-redis://redis:6379}'
+      SMTP_HOST: '${AUTHORIZER_SMTP_HOST:-localhost}'
+      SMTP_PORT: '${AUTHORIZER_SMTP_PORT:-1025}'
+      SMTP_USERNAME: '${AUTHORIZER_SMTP_USERNAME:-null}'
+      SMTP_PASSWORD: '${AUTHORIZER_SMTP_PASSWORD:-null}'
+      SENDER_EMAIL: '${AUTHORIZER_SENDER_EMAIL:-admin@example.com}'
+      DISABLE_EMAIL_VERIFICATION: '${AUTHORIZER_DISABLE_EMAIL_VERIFICATION:-false}'
+      DISABLE_MAGIC_LINK_LOGIN: '${AUTHORIZER_DISABLE_MAGIC_LINK_LOGIN:-true}'
+      ORGANIZATION_NAME: '${AUTHORIZER_ORGANIZATION_NAME:-Authorizer}'
+    networks:
+      - fuelnet
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - fuelnet
+
+networks:
+  fuelnet:
+    driver: bridge
+  # Uncomment to use external docker-compose network
+  # Change the network name with the real one
+  # external_network:
+  #   external: true
+
+volumes:
+  pgsql_data:
+    driver: local

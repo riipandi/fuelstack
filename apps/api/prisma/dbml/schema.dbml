@@ -1,0 +1,84 @@
+//// ------------------------------------------------------
+//// THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+//// ------------------------------------------------------
+
+Table accounts {
+  id Int [pk, increment]
+  userId Int [not null]
+  type String [not null]
+  provider String [not null]
+  providerAccountId String [not null]
+  refreshToken String
+  accessToken String
+  expiresAt Int
+  tokenType String
+  scope String
+  id_token String
+  sessionState String
+  oauthTokenSecret String
+  oauthToken String
+  user User [not null]
+
+  indexes {
+    (provider, providerAccountId) [unique]
+  }
+}
+
+Table sessions {
+  id Int [pk, increment]
+  sessionToken String [unique, not null]
+  userId Int [not null]
+  expires DateTime [not null]
+  userAgent String
+  ipAddress String
+  user User [not null]
+}
+
+Table users {
+  id Int [pk, increment]
+  uid String [unique, not null]
+  firstName String [not null]
+  lastName String [not null]
+  nickname String [unique, not null]
+  email String [unique, not null]
+  password String
+  emailVerified DateTime
+  image String
+  roles String
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  revokedTimestap DateTime
+  accounts Account [not null]
+  sessions Session [not null]
+  profiles Profile [not null]
+}
+
+Table profiles {
+  id Int [pk, increment]
+  userId Int [not null]
+  gender String
+  birthdate String
+  phoneNumber String
+  phoneVerified DateTime
+  createdAt DateTime [default: `now()`, not null]
+  updatedAt DateTime [not null]
+  user User [not null]
+}
+
+Table verification_requests {
+  id String [pk]
+  identifier String [not null]
+  token String [unique, not null]
+  expires DateTime [not null]
+  redirectUrl String
+
+  indexes {
+    (identifier, token) [unique]
+  }
+}
+
+Ref: Account.userId > User.id [delete: Cascade]
+
+Ref: Session.userId > User.id [delete: Cascade]
+
+Ref: Profile.userId > User.id [delete: Cascade]

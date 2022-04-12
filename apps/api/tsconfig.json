@@ -1,0 +1,18 @@
+{
+  "extends": "appconfig/tsconfig.nestjs.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@/config/*": ["src/config/*"],
+      "@/handlers/*": ["src/handlers/*"],
+      "@/libraries/*": ["src/libraries/*"],
+      "@/middlewares/*": ["src/middlewares/*"],
+      "@/modules/*": ["src/modules/*"],
+      "@/services/*": ["src/services/*"],
+      "@/templates/*": ["src/templates/*"],
+      "@/utils/*": ["src/utils/*"],
+      "@/types/*": ["types/*"]
+    }
+  }
+}

@@ -1,0 +1,12 @@
+.cache/
+.turbo/
+.vscode/
+.next/
+build/
+dist/
+out/
+package-lock.json
+package.json
+public/
+yarn.lock
+.vercel/

@@ -1,0 +1,29 @@
+{
+    "name": "fuelstack",
+    "version": "1.0.0",
+    "description": "Full stack monorepo application with Turborepo, Nest.js, Next.js, Prisma, and Typescript",
+    "private": true,
+    "license": "MIT",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ],
+    "scripts": {
+        "build": "turbo run build",
+        "dev": "turbo run dev --parallel",
+        "start": "turbo run start",
+        "lint": "turbo run lint",
+        "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+        "postinstall": "turbo run postinstall --scope=api",
+        "test": "turbo run test --scope=api"
+    },
+    "devDependencies": {
+        "prettier": "^2.6.2",
+        "turbo": "^1.2.1"
+    },
+    "engines": {
+        "npm": ">=7.0.0",
+        "node": ">=14.0.0"
+    },
+    "packageManager": "yarn@1.22.18"
+}

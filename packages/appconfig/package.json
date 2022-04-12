@@ -1,0 +1,20 @@
+{
+    "name": "appconfig",
+    "version": "0.1.0",
+    "private": true,
+    "main": "index.js",
+    "files": [
+        "eslint-preset-next.js",
+        "tsconfig.base.json",
+        "tsconfig.nestjs.json",
+        "tsconfig.nextjs.json",
+        "tsconfig.reactlib.json"
+    ],
+    "dependencies": {},
+    "peerDependencies": {
+        "eslint-config-next": "^12.1.4",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-react": "^7.29.4",
+        "eslint": "~8.13.0"
+    }
+}

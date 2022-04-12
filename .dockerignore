@@ -1,0 +1,12 @@
+**/node_modules
+**/.next
+**/dist
+**/.turbo
+**/.gitignore
+**/npm-debug.log
+Dockerfile
+README.md
+.DS_Store
+.DS_Store?
+.dockerignore
+.git/

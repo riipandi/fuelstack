@@ -1,0 +1,247 @@
+#!/bin/bash
+
+UNAMEOUT="$(uname -s)"
+
+# Verify operating system is supported...
+case "${UNAMEOUT}" in
+    Linux*)             MACHINE=linux;;
+    Darwin*)            MACHINE=mac;;
+    *)                  MACHINE="UNKNOWN"
+esac
+
+if [ "$MACHINE" == "UNKNOWN" ]; then
+    echo "Unsupported operating system [$(uname -s)]. Only supports macOS, Linux, and Windows (WSL2)." >&2
+    exit 1
+fi
+
+# Determine if stdout is a terminal...
+if test -t 1; then
+    # Determine if colors are supported...
+    ncolors=$(tput colors)
+
+    if test -n "$ncolors" && test "$ncolors" -ge 8; then
+        BOLD="$(tput bold)"
+        YELLOW="$(tput setaf 3)"
+        GREEN="$(tput setaf 2)"
+        NC="$(tput sgr0)"
+    fi
+fi
+
+function display_help {
+    echo
+    echo "FuelStack Commandline Interface"
+    echo
+    echo "${YELLOW}Usage:${NC}" >&2
+    echo "  stack COMMAND [options] [arguments]"
+    echo
+    echo "Unknown commands and arguments will be ignored."
+    echo
+    echo "${YELLOW}Commands:${NC}"
+    echo "  ${GREEN}stack build [option]${NC}  Build application container image"
+    echo "  ${GREEN}stack push [option]${NC}   Publish the container image to registry"
+    echo "  ${GREEN}stack build:single${NC}    Build applications into single container"
+    echo "  ${GREEN}stack push:single${NC}     Publish single container image to registry"
+    echo "  ${GREEN}stack ci${NC}              Continous integration command"
+    echo
+    echo "${YELLOW}Example usage:${NC}" >&2
+    echo "  ${GREEN}stack build --scope=web${NC}"
+    echo
+    echo "${YELLOW}Other command:${NC}"
+    echo "  ${GREEN}stack server:up${NC}       Start the development server"
+    echo "  ${GREEN}stack server:down${NC}     Stop the development server"
+    echo
+    echo "${YELLOW}Help command:${NC}"
+    echo "  ${GREEN}stack help${NC}            Print the commandline help"
+    echo "  ${GREEN}stack --help${NC}          Print the commandline help"
+    echo
+    exit 1
+}
+
+# Define Docker Compose command prefix...
+if [ -x "$(command -v docker-compose)" ]; then
+    DOCKER_COMPOSE=(docker-compose)
+else
+    DOCKER_COMPOSE=(docker compose)
+fi
+
+# Proxy the "help" command...
+if [ $# -gt 0 ]; then
+    if [ "$1" == "help" ] || [ "$1" == "-h" ] || [ "$1" == "-help" ] || [ "$1" == "--help" ]; then
+        display_help
+    fi
+else
+    display_help
+fi
+
+# Load the variables file for builder...
+[[ -f $(pwd)/.env ]] && source $(pwd)/.env > /dev/null 2>&1
+
+# Define environment variables...
+export PACKAGE_NAME=${PACKAGE_NAME:-'fuelstack'}
+export PACKAGE_VERSION=${PACKAGE_VERSION:-'1.0.0'}
+export DOCKER_SCAN_SUGGEST=false
+
+export REGISTRY_URL=${REGISTRY_URL}
+export REGISTRY_USER=${REGISTRY_USER}
+export REGISTRY_TOKEN=${REGISTRY_TOKEN}
+export REGISTRY_PREFIX=${REGISTRY_PREFIX}
+
+if [ -z "$REGISTRY_PREFIX" ]; then
+    CONTAINER_NAME="${PACKAGE_NAME}"
+else
+    CONTAINER_NAME="${REGISTRY_PREFIX}/${PACKAGE_NAME}"
+fi
+
+# Check is user already loggedin to the registry...
+is_registry_logged_in() {
+  cat ${HOME}/.docker/config.json | jq -r --arg url "${REGISTRY_URL}" '.auths | has($url)'
+}
+
+authenticate_registry() {
+    if [[ "$(is_registry_logged_in)" == "false" ]]; then
+        echo $REGISTRY_TOKEN | docker login $REGISTRY_URL -u$REGISTRY_USER --password-stdin
+    fi
+}
+
+# Warning if command fail...
+function something_wrong {
+    echo "${BOLD}Something went wrong.${NC}" >&2
+    exit 1
+}
+
+EXEC="yes"
+
+if [ -z "$SKIP_CHECK" ]; then
+    # Ensure that Docker is running...
+    if ! docker info > /dev/null 2>&1; then
+        echo "${BOLD}Docker is not running.${NC}" >&2
+        exit 1
+    fi
+fi
+
+ARGS=()
+
+# Get docker information...
+if [ "$1" == "info" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        docker version
+    else
+        something_wrong
+    fi
+
+# Build the container...
+elif [ "$1" == "build" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        while [ -n "$1" ]; do # while loop starts
+            case "$1" in
+            --scope)
+                param="$2"
+                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Scope $param not found${NC}" && exit 1
+                echo -e "\nBuilding container image for ${param}..."
+                IMAGE_NAME="${CONTAINER_NAME}-${param}"
+                docker build \
+                    -t ${IMAGE_NAME}:latest \
+                    -t ${IMAGE_NAME}:${PACKAGE_VERSION} \
+                    . -f apps/${param}/Dockerfile
+
+                IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
+                echo -e "\nContainer has been image created, image size: \n"
+                shift
+                ;;
+            *) echo "Option $1 not recognized" ;;
+            esac
+            shift
+        done
+    else
+        something_wrong
+    fi
+
+# Build single container...
+elif [ "$1" == "build:single" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        echo "Building single container image..."
+        docker build -t ${CONTAINER_NAME}:latest -t ${CONTAINER_NAME}:${PACKAGE_VERSION} . -f Dockerfile
+
+        echo -e "\nContainer image created. Use this command to run the container:\n"
+        echo "  ${GREEN}docker run -d --name $CONTAINER_NAME -p 3030:3030 -p 3000:3000 $CONTAINER_NAME:latest${NC}"
+        echo
+    else
+        something_wrong
+    fi
+
+# Push container image to registry...
+elif [ "$1" == "push" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        while [ -n "$1" ]; do # while loop starts
+            case "$1" in
+            --scope)
+                param="$2"
+                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Scope $param not found${NC}" && exit 1
+                authenticate_registry
+                IMAGE_NAME="${CONTAINER_NAME}-${param}"
+                IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
+                echo -e "\n${GREEN}Publishing ${IMAGE_NAME} (${IMAGE_SIZE}) to registry...${NC}"
+                echo && docker image push ${IMAGE_NAME}:latest
+                echo && docker image push ${IMAGE_NAME}:${PACKAGE_VERSION}
+                shift
+                ;;
+            *) echo "Option $1 not recognized" ;;
+            esac
+            shift
+        done
+    else
+        something_wrong
+    fi
+
+# Push single container image to registry...
+elif [ "$1" == "push:single" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        authenticate_registry
+        echo -e "\n${GREEN}Publishing ${CONTAINER_NAME} to registry...${NC}"
+        echo && docker image push ${CONTAINER_NAME}:latest
+        echo && docker image push ${CONTAINER_NAME}:${PACKAGE_VERSION}
+    else
+        something_wrong
+    fi
+
+# CI command...
+elif [ "$1" == "ci" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        npx turbo prune --scope=web && cd out && yarn install --frozen-lockfile
+        npx turbo prune --scope=api && cd out && yarn install --frozen-lockfile && yarn prisma generate
+    else
+        something_wrong
+    fi
+
+# Start development server...
+elif [ "$1" == "server:up" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        "${DOCKER_COMPOSE[@]}" -f docker-compose.yml up -d
+    else
+        something_wrong
+    fi
+
+# Stop development server...
+elif [ "$1" == "server:down" ]; then
+    shift 1
+    if [ "$EXEC" == "yes" ]; then
+        "${DOCKER_COMPOSE[@]}" -f docker-compose.yml down
+    else
+        something_wrong
+    fi
+
+# Pass unknown commands to the "docker" binary...
+else
+    ARGS+=("$@")
+    echo "Command \`${ARGS[@]}\` not found!"
+fi
+
+# Run Docker Compose with the defined arguments...
+# "${DOCKER_COMPOSE[@]}" "${ARGS[@]}"
