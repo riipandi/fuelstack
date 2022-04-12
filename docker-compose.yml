@@ -60,6 +60,7 @@ services:
     environment:
       PORT: 8080
       ENV: '${AUTHORIZER_ENV:-production}'
+      AUTHORIZER_URL: '${AUTHORIZER_URL:-http://localhost:8080}'
       ADMIN_SECRET: '${AUTHORIZER_ADMIN_SECRET:-secret}'
       COOKIE_NAME: '${AUTHORIZER_COOKIE_NAME:-authorizer}'
       DATABASE_TYPE: '${AUTHORIZER_DATABASE_TYPE:-postgres}'
