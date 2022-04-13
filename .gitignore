@@ -80,3 +80,10 @@ build
 # turbo
 .turbo
 fly.toml
+
+# vercel
+.vercel
+*.tsbuildinfo
+
+# storybook
+storybook-static
