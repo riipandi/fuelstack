@@ -4,7 +4,9 @@
     "private": true,
     "main": "index.js",
     "files": [
+        "eslint-preset-nest.js",
         "eslint-preset-next.js",
+        "eslint-preset-strapi.js",
         "tsconfig.base.json",
         "tsconfig.nestjs.json",
         "tsconfig.nextjs.json",
