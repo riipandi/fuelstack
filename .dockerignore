@@ -1,12 +1,15 @@
 **/node_modules
-**/.next
-**/dist
-**/.turbo
-**/.gitignore
 **/npm-debug.log
 Dockerfile
 README.md
+CHANGELOG.md
+
 .DS_Store
 .DS_Store?
 .dockerignore
 .git/
+
+**/.gitignore
+**/.turbo
+# **/.next
+# **/dist
