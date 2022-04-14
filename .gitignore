@@ -38,6 +38,12 @@ results
 .Trashes
 .DS_Store
 .DS_Store?
+*.log
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 *.sqlite
 *.sqlite3
 *.pid
@@ -59,15 +65,17 @@ lerna-debug.log*
 /.nyc_output
 
 # local env files
+*.local
 *.env
 .env.*
 !.env.example
 
 # next.js
-.next/
-out/
-dist/
-build/
+**/.next
+**/out
+**/dist
+**/build
+**/dist-ssr
 
 # Strapi
 exports
