@@ -89,7 +89,7 @@ deployments so that pushing to master will deploy to production! 🚀
 
 ### Vercel Deployment
 
-- Settings -> General -> Root Directory : `apps/web/`
+- Settings -> General -> Root Directory : `apps/website/`
 - Settings -> Git -> Ignored Build Step : `git diff --quiet HEAD^ HEAD ./`
 
 ### Cloudflare Deployment

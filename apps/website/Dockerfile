@@ -39,6 +39,6 @@ WORKDIR /app
 COPY --from=builder /app .
 RUN find /app/ -type f -iname ".env*"  -exec rm {} \;
 
-WORKDIR /app/apps/web/
+WORKDIR /app/apps/website/
 EXPOSE 3000
 CMD [ "yarn", "start" ]
