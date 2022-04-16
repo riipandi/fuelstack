@@ -147,7 +147,7 @@ elif [ "$1" == "build" ]; then
             case "$1" in
             --scope)
                 param="$2"
-                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
+                [[ ! -f "$(pwd)/apps/${param}Dockerfile" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
                 echo -e "\nBuilding container image for ${param}..."
                 IMAGE_NAME="${CONTAINER_NAME}-${param}"
                 docker build \
