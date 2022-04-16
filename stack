@@ -37,22 +37,19 @@ function display_help {
     echo "Unknown commands and arguments will be ignored."
     echo
     echo "${YELLOW}Commands:${NC}"
-    echo "  ${GREEN}stack build [option]${NC}  Build application container image"
-    echo "  ${GREEN}stack push [option]${NC}   Publish the container image to registry"
-    echo "  ${GREEN}stack build:single${NC}    Build applications into single container"
-    echo "  ${GREEN}stack push:single${NC}     Publish single container image to registry"
-    echo "  ${GREEN}stack ci${NC}              Continous integration command"
-    echo
-    echo "${YELLOW}Example usage:${NC}" >&2
-    echo "  ${GREEN}stack build --scope=web${NC}"
+    echo "  ${GREEN}stack build [option]${NC}   Build application container image"
+    echo "  ${GREEN}stack publish [option]${NC} Publish the container image to registry"
+    echo "  ${GREEN}stack test:run${NC}         Run the container for testing"
+    echo "  ${GREEN}stack test:stop${NC}        Stop the test container"
     echo
     echo "${YELLOW}Other command:${NC}"
-    echo "  ${GREEN}stack server:up${NC}       Start the development server"
-    echo "  ${GREEN}stack server:down${NC}     Stop the development server"
+    echo "  ${GREEN}stack dev:up${NC}           Start the development server"
+    echo "  ${GREEN}stack dev:down${NC}         Stop the development server"
+    echo "  ${GREEN}stack info${NC}             Print the Docker information"
     echo
     echo "${YELLOW}Help command:${NC}"
-    echo "  ${GREEN}stack help${NC}            Print the commandline help"
-    echo "  ${GREEN}stack --help${NC}          Print the commandline help"
+    echo "  ${GREEN}stack help${NC}             Print the commandline help"
+    echo "  ${GREEN}stack --help${NC}           Print the commandline help"
     echo
     exit 1
 }
@@ -79,18 +76,30 @@ fi
 # Define environment variables...
 export PACKAGE_NAME=${PACKAGE_NAME:-'fuelstack'}
 export PACKAGE_VERSION=${PACKAGE_VERSION:-'1.0.0'}
+export PACKAGE_LIST=${PACKAGE_LIST:-'api website backoffice'}
+
+export DOCKER_BUILDKIT=1
 export DOCKER_SCAN_SUGGEST=false
-
-export REGISTRY_URL=${REGISTRY_URL}
-export REGISTRY_USER=${REGISTRY_USER}
+export REGISTRY_URL=${REGISTRY_URL:-'docker.io'}
+export REGISTRY_USERNAME=${REGISTRY_USERNAME}
 export REGISTRY_TOKEN=${REGISTRY_TOKEN}
-export REGISTRY_PREFIX=${REGISTRY_PREFIX}
 
-if [ -z "$REGISTRY_PREFIX" ]; then
-    CONTAINER_NAME="${PACKAGE_NAME}"
+# Determines if the registry is Docker Hub...
+if [ "$REGISTRY_URL" == "docker.io" ] || [ "$REGISTRY_URL" == "registry.hub.docker.com" ]; then
+    CONTAINER_NAME="${REGISTRY_USERNAME}/${PACKAGE_NAME}"
 else
-    CONTAINER_NAME="${REGISTRY_PREFIX}/${PACKAGE_NAME}"
+    CONTAINER_NAME="${REGISTRY_URL}/${REGISTRY_USERNAME}/${PACKAGE_NAME}"
 fi
+
+# Update the package version information in package.json files...
+declare -a arr=(${PACKAGE_LIST})
+echo -e "Updating package version to ${PACKAGE_VERSION}"
+for i in "${arr[@]}"; do
+    [[ ! -d "$(pwd)/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && exit 1
+   (cd $(pwd)/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+done
+(jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+echo ${PACKAGE_VERSION} > $(pwd)/version.txt
 
 # Check is user already loggedin to the registry...
 is_registry_logged_in() {
@@ -99,7 +108,7 @@ is_registry_logged_in() {
 
 authenticate_registry() {
     if [[ "$(is_registry_logged_in)" == "false" ]]; then
-        echo $REGISTRY_TOKEN | docker login $REGISTRY_URL -u$REGISTRY_USER --password-stdin
+        echo $REGISTRY_TOKEN | docker login $REGISTRY_URL -u$REGISTRY_USERNAME --password-stdin
     fi
 }
 
@@ -138,19 +147,30 @@ elif [ "$1" == "build" ]; then
             case "$1" in
             --scope)
                 param="$2"
-                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Scope $param not found${NC}" && exit 1
+                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
                 echo -e "\nBuilding container image for ${param}..."
                 IMAGE_NAME="${CONTAINER_NAME}-${param}"
                 docker build \
                     -t ${IMAGE_NAME}:latest \
                     -t ${IMAGE_NAME}:${PACKAGE_VERSION} \
-                    . -f apps/${param}/Dockerfile
+                    . -f $(pwd)/apps/${param}/Dockerfile
 
                 IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
-                echo -e "\nContainer has been image created, image size: \n"
+                echo -e "\nContainer ${IMAGE_NAME} has been created, image size: ${IMAGE_SIZE}\n"
+                docker images ${IMAGE_NAME}
+                echo
                 shift
                 ;;
-            *) echo "Option $1 not recognized" ;;
+            --single)
+                echo -e "${GREEN}\nBuilding single container image...${NC}\n"
+                docker build -t ${PACKAGE_NAME}:latest -t ${PACKAGE_NAME}:${PACKAGE_VERSION} . -f $(pwd)/Dockerfile
+                IMAGE_SIZE=$(docker images ${PACKAGE_NAME}:latest --format "{{.Size}}")
+                echo -e "${GREEN}\nContainer ${PACKAGE_NAME} has been created, image size: ${IMAGE_SIZE}\n${NC}"
+                docker images ${PACKAGE_NAME}
+                echo
+                shift
+                ;;
+            *) echo -e "${GREEN}\nPackage ${param} not found!${NC}\n" ;;
             esac
             shift
         done
@@ -158,38 +178,33 @@ elif [ "$1" == "build" ]; then
         something_wrong
     fi
 
-# Build single container...
-elif [ "$1" == "build:single" ]; then
+# Publish container image to registry...
+elif [ "$1" == "publish" ]; then
     shift 1
     if [ "$EXEC" == "yes" ]; then
-        echo "Building single container image..."
-        docker build -t ${CONTAINER_NAME}:latest -t ${CONTAINER_NAME}:${PACKAGE_VERSION} . -f Dockerfile
-
-        echo -e "\nContainer image created. Use this command to run the container:\n"
-        echo "  ${GREEN}docker run -d --name $CONTAINER_NAME -p 3030:3030 -p 3000:3000 $CONTAINER_NAME:latest${NC}"
-        echo
-    else
-        something_wrong
-    fi
-
-# Push container image to registry...
-elif [ "$1" == "push" ]; then
-    shift 1
-    if [ "$EXEC" == "yes" ]; then
+        authenticate_registry
         while [ -n "$1" ]; do # while loop starts
             case "$1" in
             --scope)
                 param="$2"
-                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Scope $param not found${NC}" && exit 1
-                authenticate_registry
+                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
                 IMAGE_NAME="${CONTAINER_NAME}-${param}"
                 IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
                 echo -e "\n${GREEN}Publishing ${IMAGE_NAME} (${IMAGE_SIZE}) to registry...${NC}"
                 echo && docker image push ${IMAGE_NAME}:latest
                 echo && docker image push ${IMAGE_NAME}:${PACKAGE_VERSION}
+                echo
                 shift
                 ;;
-            *) echo "Option $1 not recognized" ;;
+            --single)
+                IMAGE_SIZE=$(docker images ${CONTAINER_NAME}:latest --format "{{.Size}}")
+                echo -e "\n${GREEN}Publishing ${CONTAINER_NAME} (${IMAGE_SIZE}) to registry...${NC}"
+                echo && docker image push ${CONTAINER_NAME}:latest
+                echo && docker image push ${CONTAINER_NAME}:${PACKAGE_VERSION}
+                echo
+                shift
+                ;;
+            *) echo -e "${GREEN}\nPackage ${param} not found!${NC}\n" ;;
             esac
             shift
         done
@@ -197,30 +212,8 @@ elif [ "$1" == "push" ]; then
         something_wrong
     fi
 
-# Push single container image to registry...
-elif [ "$1" == "push:single" ]; then
-    shift 1
-    if [ "$EXEC" == "yes" ]; then
-        authenticate_registry
-        echo -e "\n${GREEN}Publishing ${CONTAINER_NAME} to registry...${NC}"
-        echo && docker image push ${CONTAINER_NAME}:latest
-        echo && docker image push ${CONTAINER_NAME}:${PACKAGE_VERSION}
-    else
-        something_wrong
-    fi
-
-# CI command...
-elif [ "$1" == "ci" ]; then
-    shift 1
-    if [ "$EXEC" == "yes" ]; then
-        npx turbo prune --scope=web && cd out && yarn install --frozen-lockfile
-        npx turbo prune --scope=api && cd out && yarn install --frozen-lockfile && yarn prisma generate
-    else
-        something_wrong
-    fi
-
 # Start development server...
-elif [ "$1" == "server:up" ]; then
+elif [ "$1" == "dev:up" ]; then
     shift 1
     if [ "$EXEC" == "yes" ]; then
         "${DOCKER_COMPOSE[@]}" -f docker-compose.yml up -d
@@ -229,7 +222,7 @@ elif [ "$1" == "server:up" ]; then
     fi
 
 # Stop development server...
-elif [ "$1" == "server:down" ]; then
+elif [ "$1" == "dev:down" ]; then
     shift 1
     if [ "$EXEC" == "yes" ]; then
         "${DOCKER_COMPOSE[@]}" -f docker-compose.yml down

@@ -85,13 +85,12 @@ build
 **/public/uploads/*
 !**/public/uploads/.gitkeep
 
-# turbo
-.turbo
-fly.toml
-
 # vercel
+.turbo
 .vercel
 *.tsbuildinfo
 
-# storybook
+# project files
 storybook-static
+version.txt
+fly.toml

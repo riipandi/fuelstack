@@ -36,7 +36,7 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package ma
 
 ```sh
 # Prepare the environment
-./stack server:up
+./stack dev:up
 
 # Install dependencies
 yarn install 
