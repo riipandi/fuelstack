@@ -30,6 +30,18 @@ npx degit riipandi/fuelstack myapp-name
 
 > Don't forget to change `myapp-name` with your real application name.
 
+### Prerequisite
+
+1. Install Docker and Docker Compose : https://docs.docker.com/desktop
+2. Install Nest.js CLI : https://docs.nestjs.com/cli/overview
+3. Install Prisma CLI : https://www.prisma.io/docs/concepts/components/prisma-cli/installation
+
+#### Generate Secret Key
+
+```sh
+openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
+```
+
 ### Up and Running
 
 This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager.
