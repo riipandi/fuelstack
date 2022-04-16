@@ -15,7 +15,8 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "turbo run postinstall --scope=api",
-    "test": "turbo run test --scope=api"
+    "test": "turbo run test --scope=api",
+    "stack": "bash ./stack"
   },
   "devDependencies": {
     "prettier": "^2.6.2",

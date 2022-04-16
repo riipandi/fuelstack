@@ -91,16 +91,6 @@ else
     CONTAINER_NAME="${REGISTRY_URL}/${REGISTRY_USERNAME}/${PACKAGE_NAME}"
 fi
 
-# Update the package version information in package.json files...
-declare -a arr=(${PACKAGE_LIST})
-echo -e "Updating package version to ${PACKAGE_VERSION}"
-for i in "${arr[@]}"; do
-    [[ ! -d "$(pwd)/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && exit 1
-   (cd $(pwd)/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
-done
-(jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
-echo ${PACKAGE_VERSION} > $(pwd)/version.txt
-
 # Check is user already loggedin to the registry...
 is_registry_logged_in() {
   cat ${HOME}/.docker/config.json | jq -r --arg url "${REGISTRY_URL}" '.auths | has($url)'
@@ -127,6 +117,16 @@ if [ -z "$SKIP_CHECK" ]; then
         exit 1
     fi
 fi
+
+# Update the package version information in package.json files...
+declare -a arr=(${PACKAGE_LIST})
+echo -e "Updating package version to ${PACKAGE_VERSION}"
+for i in "${arr[@]}"; do
+    [[ ! -d "$(pwd)/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && EXEC="no" && exit 1
+   (cd $(pwd)/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+done
+(jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+echo ${PACKAGE_VERSION} > $(pwd)/version.txt
 
 ARGS=()
 
