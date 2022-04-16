@@ -16,7 +16,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "turbo run postinstall --scope=api",
     "test": "turbo run test --scope=api",
-    "stack": "bash ./stack"
+    "stack": "bash ./scripts/stack"
   },
   "devDependencies": {
     "prettier": "^2.6.2",

@@ -1,6 +1,6 @@
 #!/bin/bash
-
 UNAMEOUT="$(uname -s)"
+ROOTPATH=$(dirname $(dirname $(readlink -f "$0")))
 
 # Verify operating system is supported...
 case "${UNAMEOUT}" in
@@ -71,7 +71,7 @@ else
 fi
 
 # Load the variables file for builder...
-[[ -f $(pwd)/.env ]] && source $(pwd)/.env > /dev/null 2>&1
+[[ -f ${ROOTPATH}/.env ]] && source ${ROOTPATH}/.env > /dev/null 2>&1
 
 # Define environment variables...
 export PACKAGE_NAME=${PACKAGE_NAME:-'fuelstack'}
@@ -122,11 +122,11 @@ fi
 declare -a arr=(${PACKAGE_LIST})
 echo -e "Updating package version to ${PACKAGE_VERSION}"
 for i in "${arr[@]}"; do
-    [[ ! -d "$(pwd)/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && EXEC="no" && exit 1
-   (cd $(pwd)/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+    [[ ! -d "${ROOTPATH}/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && EXEC="no" && exit 1
+   (cd ${ROOTPATH}/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
 done
 (jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
-echo ${PACKAGE_VERSION} > $(pwd)/version.txt
+echo ${PACKAGE_VERSION} > ${ROOTPATH}/version.txt
 
 ARGS=()
 
@@ -147,13 +147,13 @@ elif [ "$1" == "build" ]; then
             case "$1" in
             --scope)
                 param="$2"
-                [[ ! -f "$(pwd)/apps/${param}/Dockerfile" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
+                [[ ! -f "${ROOTPATH}/apps/${param}/Dockerfile" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
                 echo -e "\nBuilding container image for ${param}..."
                 IMAGE_NAME="${CONTAINER_NAME}-${param}"
                 docker build \
                     -t ${IMAGE_NAME}:latest \
                     -t ${IMAGE_NAME}:${PACKAGE_VERSION} \
-                    . -f $(pwd)/apps/${param}/Dockerfile
+                    . -f ${ROOTPATH}/apps/${param}/Dockerfile
 
                 IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
                 echo -e "\nContainer ${IMAGE_NAME} has been created, image size: ${IMAGE_SIZE}\n"
@@ -163,7 +163,7 @@ elif [ "$1" == "build" ]; then
                 ;;
             --single)
                 echo -e "${GREEN}\nBuilding single container image...${NC}\n"
-                docker build -t ${PACKAGE_NAME}:latest -t ${PACKAGE_NAME}:${PACKAGE_VERSION} . -f $(pwd)/Dockerfile
+                docker build -t ${PACKAGE_NAME}:latest -t ${PACKAGE_NAME}:${PACKAGE_VERSION} . -f ${ROOTPATH}/Dockerfile
                 IMAGE_SIZE=$(docker images ${PACKAGE_NAME}:latest --format "{{.Size}}")
                 echo -e "${GREEN}\nContainer ${PACKAGE_NAME} has been created, image size: ${IMAGE_SIZE}\n${NC}"
                 docker images ${PACKAGE_NAME}
@@ -187,7 +187,7 @@ elif [ "$1" == "publish" ]; then
             case "$1" in
             --scope)
                 param="$2"
-                [[ ! -d "$(pwd)/apps/${param}" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
+                [[ ! -d "${ROOTPATH}/apps/${param}" ]] && echo "${GREEN}Package $param not found${NC}" && exit 1
                 IMAGE_NAME="${CONTAINER_NAME}-${param}"
                 IMAGE_SIZE=$(docker images ${IMAGE_NAME}:latest --format "{{.Size}}")
                 echo -e "\n${GREEN}Publishing ${IMAGE_NAME} (${IMAGE_SIZE}) to registry...${NC}"
