@@ -88,7 +88,7 @@ PostgreSQL, Redis, Mailhog, and Authorizer on Docker. To see all available comma
 enter this command in your terminal:
 
 ```sh
-./stack --help
+yarn stack --help
 ```
 
 ## Deploy your own
