@@ -95,6 +95,7 @@ yarn build --scope=api    # Building the NestJS api package
 | Authorizer       | Authentication Service       | http://localhost:8080
 
 The default Authorizer admin secret is: `secret`, but you can define your own. 
+
 To do that, edit the `.env` file in the root project directory.
 
 For detailed explanation of how things work, check out their official documentation.
