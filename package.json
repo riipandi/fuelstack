@@ -1,7 +1,7 @@
 {
   "name": "fuelstack",
   "version": "1.0.0",
-  "description": "Full stack monorepo application with Turborepo, Nest.js, Next.js, Prisma, and Typescript",
+  "description": "Full stack monorepo application with Turborepo, NestJS, Next.js, Prisma, and Typescript",
   "private": true,
   "license": "MIT",
   "workspaces": [

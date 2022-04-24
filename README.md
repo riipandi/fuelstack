@@ -13,16 +13,35 @@
 
 ## Introduction
 
-A full stack monorepo starter kit with [Turborepo](https://turborepo.org/), [Nest.js](https://nestjs.com/),
-[Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com) and [Typescript](https://www.typescriptlang.org/).
-This starter kit already pre-configured with [TailwindUI](https://tailwindui.com), [HeadlessUI](https://headlessui.dev/), 
-[Framer Motion](https://www.framer.com/motion/), 
-and some other goodies. Versioning and package publishing is handled by [Changesets][changeset] 
-and fully automated with GitHub Actions.
+A full stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo 
+[example with Changeset](https://github.com/vercel/turborepo/tree/main/examples/with-changesets). This starter 
+kit already pre-configured with essential components. Versioning and package publishing is handled by 
+[Changesets][changeset] and can automated with GitHub Actions.
+
+### Ingredients
+
+- [Typescript](https://www.typescriptlang.org) for static type checking
+- [NestJS](https://nestjs.com) for the REST or GraphQL API
+- [Next.js](https://nextjs.org) for the frontend
+- [Tailwind CSS](https://tailwindcss.com) for the styling frontend
+- [TailwindUI](https://tailwindui.com) for some usefull Tailwind Components
+- [HeadlessUI](https://headlessui.dev) fully accessible UI components
+- [Framer Motion](https://www.framer.com/motion) for interactive animation
+- [ESLint](https://eslint.org) for code linting
+- [Prettier](https://prettier.io) for code formatting
+
+### Authentication
 
 Instead of writing your own authentication mechanism, this project include [Authorizer](https://authorizer.dev) for 
-handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev/) 
+handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev) 
 for more information.
+
+### Prerequisite
+
+1. Install Docker and Docker Compose : https://docs.docker.com/desktop
+2. Install NestJS CLI : https://docs.nestjs.com/cli/overview
+3. Install Prisma CLI : https://www.prisma.io/docs/concepts/components/prisma-cli/installation
+
 
 ## Quick Start
 
@@ -40,13 +59,11 @@ at the moment, but you'll need to do the following:
 - Rename folders in `packages/*` to replace `acme` with your desired scope.
 - Search and replace `acme` string with your desired scope.
 
-### Prerequisite
-
-1. Install Docker and Docker Compose : https://docs.docker.com/desktop
-2. Install Nest.js CLI : https://docs.nestjs.com/cli/overview
-3. Install Prisma CLI : https://www.prisma.io/docs/concepts/components/prisma-cli/installation
-
 #### Generate Secret Key
+
+Before you continue, you need to create `.env` file (you can duplicate `.env.example`) and 
+fill the `application secret key` with some random string. To generate secret key, use 
+this following command:
 
 ```sh
 openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
@@ -54,24 +71,30 @@ openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 
 ### Up and Running
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package manager.
+This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en) as a package manager.
 
 ```sh
-# Prepare the environment
-yarn stack up
-
-# Install dependencies
-yarn install 
-
-# Start app in development
-yarn dev
+yarn stack up      # Prepare the environment
+yarn install       # Installing dependencies
+yarn dev           # Start app in development
 ```
 
-- Nest.js API will run at `http://localhost:3000`
-- Next.js web will run at `http://localhost:3030`
-- Authorizer will run at `http://localhost:8080`
+According to [Turborepo](https://turborepo.org/docs/features/scopes) documentation,
+you can run or build single package using these command:
 
-The default Authorizer admin secret is: `secret`
+```sh
+yarn dev --scope=web      # Running the web in development mode
+yarn build --scope=api    # Building the NestJS api package
+```
+
+| Package Name     | Description                  | Address
+|------------------|------------------------------|-----------------------
+| Next.js          | Website / frontend           | http://localhost:3000
+| NestJS           | Application backend          | http://localhost:3030
+| Authorizer       | Authentication Service       | http://localhost:8080
+
+The default Authorizer admin secret is: `secret`, but you can define your own. 
+To do that, edit the `.env` file in the root project directory.
 
 For detailed explanation of how things work, check out their official documentation.
 
@@ -91,14 +114,18 @@ npx turbo login
 npx turbo link
 ```
 
-### Stack Commandline
+### Usefull Commands
 
-This starter include a commandline script to help you managing the project such us running the 
-PostgreSQL, Redis, Mailhog, and Authorizer on Docker. To see all available commands type and hit 
-enter this command in your terminal:
+This starter contain a commandline script to help you managing the project such us running the 
+PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
 
 ```sh
-yarn stack --help
+yarn dev             # Develop all packages and the docs site
+yarn build           # Build all packages and the docs site
+yarn lint            # Lint all packages
+yarn changeset       # Generate a changeset
+yarn clean           # Clean up all node_modules and dist folders
+yarn stack help      # Display available Stack CLI commands
 ```
 
 ## Deploy your own
@@ -111,12 +138,32 @@ deployments so that pushing to master will deploy to production! 🚀
 
 ### Vercel Deployment
 
+You will need to configure a few things:
+
 - Settings -> General -> Root Directory : `apps/web/`
 - Settings -> Git -> Ignored Build Step : `git diff --quiet HEAD^ HEAD ./`
+
+Ignored Build Step configuration used to avoid rebuilding on Vercel when pushing the changes.
+So, Vercel will deploy only when any changes on the specific directory.
 
 ### Cloudflare Deployment
 
 You need to add `NODE_VERSION` with value `14.19.0` on the environment variables setting.
+
+## Versioning and Publishing packages
+
+Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familarize yourself with the workflow.
+If you want to publish package to the public npm registry and make them publicly available, 
+this is already setup. To publish packages to a private npm organization scope, **remove** 
+the following from each of the `package.json`'s
+
+```diff
+- "publishConfig": {
+-   "access": "public"
+- },
+```
+
+To use GitHub NPM Package Registry, please read the [Github npm registry documentation][github-npm-docs].
 
 ## Thanks to...
 
@@ -130,12 +177,12 @@ Learn more about the power of Turborepo:
 
 - [Turborepo documentation](https://turborepo.org/docs)
 - [Next.js documentation](https://nextjs.org/docs)
-- [Nest.js documentation](https://docs.nestjs.com)
+- [NestJS documentation](https://docs.nestjs.com)
 - [Working with the Github npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
 - [Authorizer documentation](https://docs.authorizer.dev)
 - [Dockerizing a NestJS app with Prisma and PostgreSQL](https://notiz.dev/blog/dockerizing-nestjs-with-prisma-and-postgresql#perform-migrations-with-docker)
 - [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
-
+- [Automating Changesets](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
 ## License
 
 This project is open-sourced software licensed under the [MIT license](https://aris.mit-license.org).
@@ -145,3 +192,4 @@ See the [license file](./license.txt) for more information.
 
 [changeset]: https://github.com/changesets/changesets
 [vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_MAINTENANCE_MODE
+[github-npm-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file
