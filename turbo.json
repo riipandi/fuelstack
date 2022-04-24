@@ -10,6 +10,9 @@
     "dev": {
       "cache": false
     },
+    "clean": {
+      "cache": false
+    },
     "start": {
       "cache": false
     },
@@ -20,7 +23,9 @@
     "test": {
       "cache": false,
       "dependsOn": [],
-      "outputs": []
+      "outputs": [
+        "coverage/**"
+      ]
     }
   }
 }

@@ -37,19 +37,18 @@ function display_help {
     echo "Unknown commands and arguments will be ignored."
     echo
     echo "${YELLOW}Commands:${NC}"
-    echo "  ${GREEN}stack build [option]${NC}   Build application container image"
-    echo "  ${GREEN}stack publish [option]${NC} Publish the container image to registry"
-    echo "  ${GREEN}stack test:run${NC}         Run the container for testing"
-    echo "  ${GREEN}stack test:stop${NC}        Stop the test container"
+    echo "  ${GREEN}stack build [option]${NC}      Build application container image"
+    echo "  ${GREEN}stack publish [option]${NC}    Publish the container image to registry"
+    echo "  ${GREEN}stack test${NC}                Run the container for testing"
+    echo "  ${GREEN}stack kill${NC}                Stop the test container"
     echo
     echo "${YELLOW}Other command:${NC}"
-    echo "  ${GREEN}stack dev:up${NC}           Start the development server"
-    echo "  ${GREEN}stack dev:down${NC}         Stop the development server"
-    echo "  ${GREEN}stack info${NC}             Print the Docker information"
+    echo "  ${GREEN}stack up${NC}                  Start the development server"
+    echo "  ${GREEN}stack down${NC}                Stop the development server"
+    echo "  ${GREEN}stack info${NC}                Print the Docker information"
     echo
     echo "${YELLOW}Help command:${NC}"
-    echo "  ${GREEN}stack help${NC}             Print the commandline help"
-    echo "  ${GREEN}stack --help${NC}           Print the commandline help"
+    echo "  ${GREEN}stack [help, --help, -h]${NC}  Print the commandline help"
     echo
     exit 1
 }
@@ -76,7 +75,6 @@ fi
 # Define environment variables...
 export PACKAGE_NAME=${PACKAGE_NAME:-'fuelstack'}
 export PACKAGE_VERSION=${PACKAGE_VERSION:-'1.0.0'}
-export PACKAGE_LIST=${PACKAGE_LIST:-'api cms web'}
 
 export DOCKER_BUILDKIT=1
 export DOCKER_SCAN_SUGGEST=false
@@ -119,14 +117,14 @@ if [ -z "$SKIP_CHECK" ]; then
 fi
 
 # Update the package version information in package.json files...
-declare -a arr=(${PACKAGE_LIST})
-echo -e "Updating package version to ${PACKAGE_VERSION}"
-for i in "${arr[@]}"; do
-    [[ ! -d "${ROOTPATH}/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && EXEC="no" && exit 1
-   (cd ${ROOTPATH}/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
-done
-(jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
-echo ${PACKAGE_VERSION} > ${ROOTPATH}/version.txt
+# declare -a arr=( $( ls -1p ${ROOTPATH}/apps | grep / | sed 's/^\(.*\)/\1/') )
+# echo -e "Updating package version to ${PACKAGE_VERSION}"
+# for i in "${arr[@]}"; do
+#     [[ ! -d "${ROOTPATH}/apps/${i}" ]] && echo -e "${GREEN}Package $i not found${NC}\n" && EXEC="no" && exit 1
+#    (cd ${ROOTPATH}/apps/${i} && jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+# done
+# (jq '.version = "'${PACKAGE_VERSION}'"' package.json > tmp.$$.json && mv tmp.$$.json package.json)
+# echo ${PACKAGE_VERSION} > ${ROOTPATH}/version.txt
 
 ARGS=()
 
@@ -213,7 +211,7 @@ elif [ "$1" == "publish" ]; then
     fi
 
 # Start development server...
-elif [ "$1" == "dev:up" ]; then
+elif [ "$1" == "up" ]; then
     shift 1
     if [ "$EXEC" == "yes" ]; then
         "${DOCKER_COMPOSE[@]}" -f docker-compose.yml up -d
@@ -222,7 +220,7 @@ elif [ "$1" == "dev:up" ]; then
     fi
 
 # Stop development server...
-elif [ "$1" == "dev:down" ]; then
+elif [ "$1" == "down" ]; then
     shift 1
     if [ "$EXEC" == "yes" ]; then
         "${DOCKER_COMPOSE[@]}" -f docker-compose.yml down

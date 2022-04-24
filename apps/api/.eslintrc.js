@@ -1,4 +1,4 @@
-const preset = require('appconfig/eslint-preset-nest');
+const preset = require('@acme/config/eslint-preset-nest');
 
 module.exports = {
   parserOptions: {

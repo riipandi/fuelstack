@@ -10,16 +10,23 @@
   ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev --parallel",
+    "dev": "turbo run dev --no-cache --parallel --continue",
     "start": "turbo run start",
     "lint": "turbo run lint",
+    "clean": "turbo run clean && rimraf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "turbo run build --filter=cms^... && changeset publish",
     "postinstall": "turbo run postinstall --scope=api",
     "test": "turbo run test --scope=api",
     "stack": "bash ./scripts/stack"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.22.0",
+    "eslint": "7.32.0",
     "prettier": "^2.6.2",
+    "rimraf": "^3.0.2",
     "turbo": "^1.2.1"
   },
   "engines": {

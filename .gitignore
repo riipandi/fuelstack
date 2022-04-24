@@ -74,6 +74,7 @@ lerna-debug.log*
 **/.next
 **/out
 **/dist
+**/dist-ssr
 **/build
 **/dist-ssr
 

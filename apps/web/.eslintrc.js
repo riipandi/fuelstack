@@ -1,1 +1,1 @@
-module.exports = require('appconfig/eslint-preset-next');
+module.exports = require('@acme/config/eslint-preset-next');

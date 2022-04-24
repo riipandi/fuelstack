@@ -15,12 +15,14 @@
 
 A full stack monorepo starter kit with [Turborepo](https://turborepo.org/), [Nest.js](https://nestjs.com/),
 [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com) and [Typescript](https://www.typescriptlang.org/).
-This starter kit already pre-configured with [absolute import](https://jsdev.org/env/nodejs/absolute-path-imports/),
-[TailwindUI](https://tailwindui.com), [Framer Motion](https://www.framer.com/motion/), 
-and some [other goodies](./package.json).
+This starter kit already pre-configured with [TailwindUI](https://tailwindui.com), [HeadlessUI](https://headlessui.dev/), 
+[Framer Motion](https://www.framer.com/motion/), 
+and some other goodies. Versioning and package publishing is handled by [Changesets][changeset] 
+and fully automated with GitHub Actions.
 
-Instead of writing your own authentication mechanism, this project use [Authorizer](https://authorizer.dev) for 
-handling the authentication and authorization. Please refer to the official project site for more information.
+Instead of writing your own authentication mechanism, this project include [Authorizer](https://authorizer.dev) for 
+handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev/) 
+for more information.
 
 ## Quick Start
 
@@ -29,6 +31,14 @@ npx degit riipandi/fuelstack myapp-name
 ```
 
 > Don't forget to change `myapp-name` with your real application name.
+
+### Changing The Organization Scope
+
+The organization scope for this starter is `@acme`. To change this, it's a bit manual 
+at the moment, but you'll need to do the following:
+
+- Rename folders in `packages/*` to replace `acme` with your desired scope.
+- Search and replace `acme` string with your desired scope.
 
 ### Prerequisite
 
@@ -48,7 +58,7 @@ This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en/) as a package ma
 
 ```sh
 # Prepare the environment
-yarn stack dev:up
+yarn stack up
 
 # Install dependencies
 yarn install 
@@ -121,6 +131,7 @@ Learn more about the power of Turborepo:
 - [Turborepo documentation](https://turborepo.org/docs)
 - [Next.js documentation](https://nextjs.org/docs)
 - [Nest.js documentation](https://docs.nestjs.com)
+- [Working with the Github npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
 - [Authorizer documentation](https://docs.authorizer.dev)
 - [Dockerizing a NestJS app with Prisma and PostgreSQL](https://notiz.dev/blog/dockerizing-nestjs-with-prisma-and-postgresql#perform-migrations-with-docker)
 - [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
@@ -131,3 +142,5 @@ This project is open-sourced software licensed under the [MIT license](https://a
 
 Copyrights in this project are retained by their contributors.
 See the [license file](./license.txt) for more information.
+
+[changeset]: https://github.com/changesets/changesets
