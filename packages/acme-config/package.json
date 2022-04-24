@@ -15,10 +15,10 @@
     ],
     "dependencies": {},
     "peerDependencies": {
-        "eslint-config-next": "^12.1.4",
+        "eslint-config-next": "^12.1.5",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-react": "^7.29.4",
-        "eslint": "~8.13.0"
+        "eslint": "~8.14.0"
     },
     "publishConfig": {
         "access": "public"

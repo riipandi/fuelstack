@@ -3,10 +3,6 @@ generator client {
   previewFeatures = ["referentialIntegrity"]
 }
 
-generator dbml {
-  provider = "prisma-dbml-generator"
-}
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
