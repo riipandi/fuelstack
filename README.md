@@ -107,7 +107,7 @@ You'll want to fork this repository and deploy your own Next.js website. Once yo
 image generator that sparks joy, you can setup [automatic GitHub](https://vercel.com/github)
 deployments so that pushing to master will deploy to production! 🚀
 
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Friipandi%2Fnext-platform)
+[![Deploy to Vercel](https://vercel.com/button)][vercel-deploy]
 
 ### Vercel Deployment
 
@@ -144,3 +144,4 @@ Copyrights in this project are retained by their contributors.
 See the [license file](./license.txt) for more information.
 
 [changeset]: https://github.com/changesets/changesets
+[vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_MAINTENANCE_MODE
