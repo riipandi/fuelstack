@@ -13,10 +13,10 @@
 
 ## Introduction
 
-A full stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo 
+A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo 
 [example with Changeset](https://github.com/vercel/turborepo/tree/main/examples/with-changesets). This starter 
-kit already pre-configured with essential components. Versioning and package publishing is handled by 
-[Changesets][changeset] and can automated with GitHub Actions.
+kit is already pre-configured with essential components. Versioning and package publishing are handled by 
+[Changesets][changeset] and can be automated with GitHub Actions.
 
 ### Ingredients
 
@@ -53,17 +53,16 @@ npx degit riipandi/fuelstack myapp-name
 
 ### Changing The Organization Scope
 
-The organization scope for this starter is `@acme`. To change this, it's a bit manual 
-at the moment, but you'll need to do the following:
+The organization scope for this starter is `@acme`. To change this, you'll need to do the following:
 
 - Rename folders in `packages/*` to replace `acme` with your desired scope.
 - Search and replace `acme` string with your desired scope.
 
-#### Generate Secret Key
+### Generate Secret Key
 
 Before you continue, you need to create `.env` file (you can duplicate `.env.example`) and 
-fill the `application secret key` with some random string. To generate secret key, use 
-this following command:
+fill the `application secret key` with some random string. To generate a secret key, use 
+the following command:
 
 ```sh
 openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
@@ -86,6 +85,8 @@ you can run or build single package using these command:
 yarn dev --scope=web      # Running the web in development mode
 yarn build --scope=api    # Building the NestJS api package
 ```
+
+### Default Application Ports
 
 | Package Name     | Description                  | Address
 |------------------|------------------------------|-----------------------
@@ -116,8 +117,8 @@ npx turbo link
 
 ### Usefull Commands
 
-This starter contain a commandline script to help you managing the project such us running the 
-PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
+This starter contains a command line script to help you manage the project such as running 
+the PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
 
 ```sh
 yarn dev             # Develop all packages and the docs site
