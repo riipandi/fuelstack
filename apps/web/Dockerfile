@@ -5,7 +5,7 @@ FROM node:16-alpine AS spitter
 RUN apk update && yarn global add turbo
 WORKDIR /app
 COPY . .
-RUN turbo prune --scope=website --docker
+RUN turbo prune --scope=web --docker
 
 # -----------------------------------------------------------------------------
 # Install dependencies
@@ -25,7 +25,7 @@ FROM node:16-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/ .
 COPY --from=spitter /app/out/full/ .
-RUN yarn turbo run build --scope=website --include-dependencies --no-deps
+RUN yarn turbo run build --scope=web --include-dependencies --no-deps
 
 # -----------------------------------------------------------------------------
 # Application runner
@@ -39,6 +39,6 @@ WORKDIR /app
 COPY --from=builder /app .
 RUN find /app/ -type f -iname ".env*"  -exec rm {} \;
 
-WORKDIR /app/apps/website/
+WORKDIR /app/apps/web/
 EXPOSE 3000
 CMD [ "yarn", "start" ]

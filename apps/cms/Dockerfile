@@ -11,5 +11,5 @@ COPY . .
 FROM nginx:mainline-alpine AS runner
 WORKDIR /usr/share/nginx/html
 
-COPY --from=builder /apps/backoffice/dist .
+COPY --from=builder /apps/cms/dist .
 EXPOSE 80

@@ -76,7 +76,7 @@ fi
 # Define environment variables...
 export PACKAGE_NAME=${PACKAGE_NAME:-'fuelstack'}
 export PACKAGE_VERSION=${PACKAGE_VERSION:-'1.0.0'}
-export PACKAGE_LIST=${PACKAGE_LIST:-'api website backoffice'}
+export PACKAGE_LIST=${PACKAGE_LIST:-'api cms web'}
 
 export DOCKER_BUILDKIT=1
 export DOCKER_SCAN_SUGGEST=false
