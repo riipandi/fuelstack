@@ -27,6 +27,7 @@
     "@fontsource/jetbrains-mono": "^4.5.5",
     "@headlessui/react": "^1.5.0",
     "@heroicons/react": "^1.0.6",
+    "@tabler/icons": "^1.66.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
     "@tailwindcss/forms": "^0.5.0",
     "@tailwindcss/line-clamp": "^0.3.1",
