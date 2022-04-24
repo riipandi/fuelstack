@@ -31,18 +31,9 @@ function display_help {
     echo
     echo "FuelStack Commandline Interface"
     echo
-    echo "${YELLOW}Usage:${NC}" >&2
-    echo "  stack COMMAND [options] [arguments]"
-    echo
-    echo "Unknown commands and arguments will be ignored."
-    echo
     echo "${YELLOW}Commands:${NC}"
-    echo "  ${GREEN}stack build [option]${NC}      Build application container image"
-    echo "  ${GREEN}stack publish [option]${NC}    Publish the container image to registry"
-    echo "  ${GREEN}stack test${NC}                Run the container for testing"
-    echo "  ${GREEN}stack kill${NC}                Stop the test container"
-    echo
-    echo "${YELLOW}Other command:${NC}"
+    echo "  ${GREEN}stack build [package]${NC}      Build application container image"
+    echo "  ${GREEN}stack publish [package]${NC}    Publish the container image to registry"
     echo "  ${GREEN}stack up${NC}                  Start the development server"
     echo "  ${GREEN}stack down${NC}                Stop the development server"
     echo "  ${GREEN}stack info${NC}                Print the Docker information"
@@ -50,7 +41,9 @@ function display_help {
     echo "${YELLOW}Help command:${NC}"
     echo "  ${GREEN}stack [help, --help, -h]${NC}  Print the commandline help"
     echo
-    exit 1
+    echo "Unknown commands and arguments will be ignored."
+    echo
+    exit 0
 }
 
 # Define Docker Compose command prefix...
