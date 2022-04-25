@@ -13,9 +13,9 @@
 
 ## Introduction
 
-A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo 
-[example with Changeset](https://github.com/vercel/turborepo/tree/main/examples/with-changesets). This starter 
-kit is already pre-configured with essential components. Versioning and package publishing are handled by 
+A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo
+[example with Changeset](https://github.com/vercel/turborepo/tree/main/examples/with-changesets). This starter
+kit is already pre-configured with essential components. Versioning and package publishing are handled by
 [Changesets][changeset] and can be automated with GitHub Actions.
 
 ### Ingredients
@@ -32,8 +32,8 @@ kit is already pre-configured with essential components. Versioning and package 
 
 ### Authentication
 
-Instead of writing your own authentication mechanism, this project include [Authorizer](https://authorizer.dev) for 
-handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev) 
+Instead of writing your own authentication mechanism, this project include [Authorizer](https://authorizer.dev) for
+handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev)
 for more information.
 
 ### Prerequisite
@@ -41,7 +41,6 @@ for more information.
 1. Install Docker and Docker Compose : https://docs.docker.com/desktop
 2. Install NestJS CLI : https://docs.nestjs.com/cli/overview
 3. Install Prisma CLI : https://www.prisma.io/docs/concepts/components/prisma-cli/installation
-
 
 ## Quick Start
 
@@ -60,8 +59,8 @@ The organization scope for this starter is `@acme`. To change this, you'll need 
 
 ### Generate Secret Key
 
-Before you continue, you need to create `.env` file (you can duplicate `.env.example`) and 
-fill the `application secret key` with some random string. To generate a secret key, use 
+Before you continue, you need to create `.env` file (you can duplicate `.env.example`) and
+fill the `application secret key` with some random string. To generate a secret key, use
 the following command:
 
 ```sh
@@ -88,13 +87,13 @@ yarn build --scope=api    # Building the NestJS api package
 
 ### Default Application Ports
 
-| Package Name     | Description                  | Address
-|------------------|------------------------------|-----------------------
-| Next.js          | Website / frontend           | http://localhost:3000
-| NestJS           | Application backend          | http://localhost:3030
-| Authorizer       | Authentication Service       | http://localhost:8080
+| Package Name | Description            | Address               |
+| ------------ | ---------------------- | --------------------- |
+| Next.js      | Website / frontend     | http://localhost:3000 |
+| NestJS       | Application backend    | http://localhost:3030 |
+| Authorizer   | Authentication Service | http://localhost:8080 |
 
-The default Authorizer admin secret is: `secret`, but you can define your own. 
+The default Authorizer admin secret is: `secret`, but you can define your own.
 
 To do that, edit the `.env` file in the root project directory.
 
@@ -102,7 +101,7 @@ For detailed explanation of how things work, check out their official documentat
 
 ### Turborepo Remote Caching
 
-Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/features/remote-caching) 
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/features/remote-caching)
 to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
 By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel.
@@ -118,7 +117,7 @@ npx turbo link
 
 ### Usefull Commands
 
-This starter contains a command line script to help you manage the project such as running 
+This starter contains a command line script to help you manage the project such as running
 the PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
 
 ```sh
@@ -155,8 +154,8 @@ You need to add `NODE_VERSION` with value `14.19.0` on the environment variables
 ## Versioning and Publishing packages
 
 Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familarize yourself with the workflow.
-If you want to publish package to the public npm registry and make them publicly available, 
-this is already setup. To publish packages to a private npm organization scope, **remove** 
+If you want to publish package to the public npm registry and make them publicly available,
+this is already setup. To publish packages to a private npm organization scope, **remove**
 the following from each of the `package.json`'s
 
 ```diff
@@ -185,6 +184,7 @@ Learn more about the power of Turborepo:
 - [Dockerizing a NestJS app with Prisma and PostgreSQL](https://notiz.dev/blog/dockerizing-nestjs-with-prisma-and-postgresql#perform-migrations-with-docker)
 - [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
 - [Automating Changesets](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
+
 ## License
 
 This project is open-sourced software licensed under the [MIT license](https://aris.mit-license.org).
