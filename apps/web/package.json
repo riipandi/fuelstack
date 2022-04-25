@@ -36,7 +36,6 @@
     "@types/tailwindcss": "^3.0.10",
     "@typescript-eslint/eslint-plugin": "^5.20.0",
     "@typescript-eslint/parser": "^5.20.0",
-    "akar-icons": "^1.9.15",
     "autoprefixer": "^10.4.5",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
