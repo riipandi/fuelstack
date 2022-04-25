@@ -34,12 +34,12 @@ function display_help {
     echo "${YELLOW}Commands:${NC}"
     echo "  ${GREEN}stack build [package]${NC}      Build application container image"
     echo "  ${GREEN}stack publish [package]${NC}    Publish the container image to registry"
-    echo "  ${GREEN}stack up${NC}                  Start the development server"
-    echo "  ${GREEN}stack down${NC}                Stop the development server"
-    echo "  ${GREEN}stack info${NC}                Print the Docker information"
+    echo "  ${GREEN}stack up${NC}                   Start the development server"
+    echo "  ${GREEN}stack down${NC}                 Stop the development server"
+    echo "  ${GREEN}stack info${NC}                 Print the Docker information"
     echo
     echo "${YELLOW}Help command:${NC}"
-    echo "  ${GREEN}stack [help, --help, -h]${NC}  Print the commandline help"
+    echo "  ${GREEN}stack [help, --help, -h]${NC}   Print the commandline help"
     echo
     echo "Unknown commands and arguments will be ignored."
     echo
