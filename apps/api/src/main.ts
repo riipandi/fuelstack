@@ -4,11 +4,10 @@ import { NestFactory } from '@nestjs/core';
 import { NestFastifyApplication } from '@nestjs/platform-fastify';
 import { SwaggerModule } from '@nestjs/swagger';
 
-import fastifyAdapter from '@/config/adapter';
-import swaggerConfig from '@/config/swagger';
-import versioningConfig from '@/config/version';
-
-import { AppModule } from '@/modules/app.module';
+import { AppModule } from './app.module';
+import fastifyAdapter from './config/adapter';
+import swaggerConfig from './config/swagger';
+import versioningConfig from './config/version';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(AppModule, fastifyAdapter);

@@ -2,9 +2,8 @@ import { Controller, Get, HttpStatus, Req, Res, UseGuards } from '@nestjs/common
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { User as UserModel } from '@prisma/client';
 
-import { JwtAuthGuard } from '@/libraries/guards';
-
-import { UserService } from '@/services/user.service';
+import { UserService } from './user.service';
+import { JwtAuthGuard } from '../libraries/guards';
 
 @Controller('users')
 @ApiTags('users')

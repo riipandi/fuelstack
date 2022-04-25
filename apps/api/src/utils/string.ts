@@ -1,6 +1,6 @@
 import { customAlphabet } from 'nanoid';
 
-import type { nanoidOptions } from '@/types/string-utils';
+import type { nanoidOptions } from '../../types/string-utils';
 
 /**
  * Replace value of JSON by key

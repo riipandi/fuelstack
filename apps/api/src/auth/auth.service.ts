@@ -3,12 +3,11 @@ import { JwtService } from '@nestjs/jwt';
 import { User as UserModel } from '@prisma/client';
 import { Prisma, VerificationRequest } from '@prisma/client';
 
-import { expiredDateTimeInUTC } from '@/utils/datetime';
-import { verify } from '@/utils/hash';
-import { nanoid } from '@/utils/string';
-
-import { PrismaService } from '@/services/prisma.service';
-import { UserService } from '@/services/user.service';
+import { PrismaService } from '../libraries/prisma.service';
+import { UserService } from '../user/user.service';
+import { expiredDateTimeInUTC } from '../utils/datetime';
+import { verify } from '../utils/hash';
+import { nanoid } from '../utils/string';
 
 @Injectable()
 export class AuthService {

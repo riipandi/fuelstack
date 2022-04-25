@@ -1,12 +1,11 @@
 import { Controller, Get, HttpStatus, Param, Post, Req, Res } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
-import { currentDateTimeInUTC, isDateExpired } from '@/utils/datetime';
-import { httpBadRequest } from '@/utils/exception';
-
-import { AuthService } from '@/services/auth.service';
-import { MailService } from '@/services/mail.service';
-import { UserService } from '@/services/user.service';
+import { AuthService } from '../auth/auth.service';
+import { MailService } from '../mail/mail.service';
+import { UserService } from '../user/user.service';
+import { currentDateTimeInUTC, isDateExpired } from '../utils/datetime';
+import { httpBadRequest } from '../utils/exception';
 
 @Controller('auth')
 @ApiTags('authentication')

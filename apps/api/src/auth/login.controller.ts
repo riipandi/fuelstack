@@ -1,9 +1,8 @@
 import { Controller, Post, Req, UseGuards } from '@nestjs/common';
 import { ApiQuery, ApiTags } from '@nestjs/swagger';
 
-import { LocalAuthGuard } from '@/libraries/guards';
-
-import { AuthService } from '@/services/auth.service';
+import { AuthService } from '../auth/auth.service';
+import { LocalAuthGuard } from '../libraries/guards';
 
 @Controller('auth')
 @ApiTags('authentication')

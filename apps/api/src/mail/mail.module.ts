@@ -4,7 +4,7 @@ import { MailerModule } from '@nestjs-modules/mailer';
 import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handlebars.adapter';
 import * as path from 'path';
 
-import { MailService } from '@/services/mail.service';
+import { MailService } from './mail.service';
 
 @Global() // 👈 optional to make module global
 @Module({
@@ -24,13 +24,13 @@ import { MailService } from '@/services/mail.service';
           from: config.get<string>('mailer.from', { infer: true }),
         },
         template: {
-          dir: path.join(process.env.PWD, 'src/templates/mail/'),
+          dir: path.join(process.env.PWD, 'src/mail/templates/'),
           adapter: new HandlebarsAdapter(),
           options: { strict: true },
         },
         options: {
           partials: {
-            dir: path.join(process.env.PWD, 'src/templates/partials'),
+            dir: path.join(process.env.PWD, 'src/mail/partials/'),
             options: { strict: true },
           },
         },

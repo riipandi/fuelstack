@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { Prisma, User } from '@prisma/client';
 
-import { hashSync } from '@/utils/hash';
-import { jsonValReplace } from '@/utils/string';
-
-import { PrismaService } from '@/services/prisma.service';
+import { PrismaService } from '../libraries/prisma.service';
+import { hashSync } from '../utils/hash';
+import { jsonValReplace } from '../utils/string';
 
 @Injectable()
 export class UserService {

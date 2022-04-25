@@ -12,4 +12,9 @@ export class AppController {
     const swaggerPath = this.configService.get<string>('swaggerPath');
     res.status(302).redirect(swaggerPath);
   }
+
+  @Get('ping')
+  ping(@Res() res) {
+    res.status(200).send('pong');
+  }
 }
