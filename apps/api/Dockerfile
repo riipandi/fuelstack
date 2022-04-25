@@ -40,9 +40,14 @@ ENV APP_PORT=3030
 ENV DATABASE_URL=$DATABASE_URL
 
 WORKDIR /app
-COPY --from=builder /app/ .
+# Create group app and user app and set permissions for the WORKDIR
+RUN addgroup --gid 1001 -S webmaster && adduser --uid 1001 -S webmaster -G webmaster
+RUN chown -R webmaster:webmaster /app
+
+COPY --chown=webmaster:webmaster --from=builder /app .
 RUN find /app/ -type f -iname ".env*"  -exec rm {} \;
 
+USER webmaster
 WORKDIR /app/apps/api/
 EXPOSE $APP_PORT
 CMD [ "yarn", "start" ]

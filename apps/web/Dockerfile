@@ -36,9 +36,14 @@ ARG NEXT_PUBLIC_API_ENDPOINT
 ENV NEXT_PUBLIC_API_ENDPOINT=$NEXT_PUBLIC_API_ENDPOINT
 
 WORKDIR /app
-COPY --from=builder /app .
+# Create group app and user app and set permissions for the WORKDIR
+RUN addgroup --gid 1001 -S webmaster && adduser --uid 1001 -S webmaster -G webmaster
+RUN chown -R webmaster:webmaster /app
+
+COPY --chown=webmaster:webmaster --from=builder /app .
 RUN find /app/ -type f -iname ".env*"  -exec rm {} \;
 
+USER webmaster
 WORKDIR /app/apps/web/
 EXPOSE 3000
 CMD [ "yarn", "start" ]

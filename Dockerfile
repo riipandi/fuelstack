@@ -26,7 +26,7 @@ LABEL org.opencontainers.image.source="https://github.com/riipandi/fuelstack"
 WORKDIR /app
 
 # Create group app and user app and set permissions for the WORKDIR
-RUN addgroup --gid 1000 -S webmaster && adduser --uid 1000 -S webmaster -G webmaster
+RUN addgroup --gid 1001 -S webmaster && adduser --uid 1001 -S webmaster -G webmaster
 RUN chown -R webmaster:webmaster /app
 
 ARG DATABASE_URL
