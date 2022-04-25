@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.22.0",
+    "@nestjs/mapped-types": "*",
     "eslint": "8.14.0",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
