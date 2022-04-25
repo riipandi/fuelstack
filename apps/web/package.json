@@ -11,16 +11,14 @@
     "lint": "TIMING=1 next lint"
   },
   "dependencies": {
-    "@authorizerdev/authorizer-js": "^0.10.0",
-    "@authorizerdev/authorizer-react": "^0.19.0",
+    "@acme/config-react": "*",
+    "@acme/react-ui": "*",
     "axios": "^0.26.1",
     "cookies-next": "^2.0.4",
-    "next": "12.1.5",
-    "@acme/config": "*",
     "next-plausible": "^3.1.9",
-    "react": "17.0.2",
+    "next": "12.1.5",
     "react-dom": "17.0.2",
-    "ui": "*"
+    "react": "17.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.17.9",
@@ -40,13 +38,11 @@
     "@typescript-eslint/parser": "^5.20.0",
     "akar-icons": "^1.9.15",
     "autoprefixer": "^10.4.5",
-    "daisyui": "^2.14.2",
     "eslint-config-next": "12.1.5",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint": "~8.14.0",
     "framer-motion": "^6.3.1",
-    "next-transpile-modules": "^9.0.0",
     "postcss": "^8.4.12",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",

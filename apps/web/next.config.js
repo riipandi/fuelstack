@@ -1,11 +1,9 @@
 /** @type {import('next').NextConfig} */
 
-const withTM = require('next-transpile-modules')(['ui']);
+const { withPlausibleProxy } = require('next-plausible');
 
-module.exports = withTM({
-  images: {
-    domains: ['doodleipsum.com', 'error404.fun', 'play.tailwindcss.com'],
-  },
+module.exports = withPlausibleProxy({ customDomain: 'https://stats.web.id' })({
+  images: { domains: ['doodleipsum.com', 'error404.fun', 'play.tailwindcss.com'] },
   reactStrictMode: true,
   poweredByHeader: false,
 });

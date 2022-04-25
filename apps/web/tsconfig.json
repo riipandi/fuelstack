@@ -1,20 +1,21 @@
 {
-  "extends": "@acme/config/tsconfig.nextjs.json",
+  "extends": "@acme/config-react/tsconfig.nextjs.json",
   "compilerOptions": {
-    "baseUrl": ".",
+    "incremental": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "baseUrl": "src",
     "paths": {
-      "@/config/*": ["config/*"],
       "@/components/*": ["components/*"],
-      "@/data/*": ["data/*"],
+      "@/config/*": ["config/*"],
+      "@/hooks/*": ["hooks/*"],
       "@/layouts/*": ["layouts/*"],
       "@/libraries/*": ["libraries/*"],
-      "@/hooks/*": ["hooks/*"],
       "@/styles/*": ["styles/*"],
-      "@/types": ["types/index"],
-      "@/types/*": ["types/*"],
-      "~/*": ["public/*"]
+      "@/data/*": ["../data/*"],
+      "~/*": ["../public/*"]
     }
   },
-  "include": ["next-env.d.ts", "types/*.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["src", "next-env.d.ts"],
   "exclude": ["node_modules"]
 }

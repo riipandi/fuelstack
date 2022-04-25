@@ -1,0 +1,19 @@
+{
+    "name": "@acme/config-nest",
+    "description": "Shared configuration used throughout the monorepo",
+    "version": "0.0.0",
+    "private": true,
+    "main": "index.js",
+    "files": [
+        "eslint-preset-nest.js",
+        "tsconfig.base.json",
+        "tsconfig.nestjs.json"
+    ],
+    "dependencies": {
+        "eslint-config-prettier": "^8.5.0",
+        "eslint": "~8.14.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
