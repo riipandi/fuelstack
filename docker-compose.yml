@@ -45,6 +45,19 @@ services:
       DISABLE_MAGIC_LINK_LOGIN: '${AUTHORIZER_DISABLE_MAGIC_LINK_LOGIN:-true}'
       ORGANIZATION_NAME: '${AUTHORIZER_ORGANIZATION_NAME:-Authorizer}'
 
+  minio:
+    image: minio/minio:latest
+    restart: always
+    ports:
+      - 9000:9000
+      - 9001:9001
+    volumes:
+      - 'minio_data:/data/minio'
+    command: minio server /data/minio --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: 'adminio'
+      MINIO_ROOT_PASSWORD: 'secretpwd'
+
   mailhog:
     image: mailhog/mailhog:latest
     ports:
@@ -53,4 +66,6 @@ services:
 
 volumes:
   pgsql_data:
+    driver: local
+  minio_data:
     driver: local

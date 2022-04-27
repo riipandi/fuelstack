@@ -29,6 +29,7 @@ kit is already pre-configured with essential components. Versioning and package 
 - [Framer Motion](https://www.framer.com/motion) for interactive animation
 - [ESLint](https://eslint.org) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Minio](https://min.io/) for S3 storage backend
 
 ### Authentication
 
