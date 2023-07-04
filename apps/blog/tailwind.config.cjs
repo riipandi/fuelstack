@@ -4,9 +4,9 @@ const tailwindConfig = require('@acme/tailwind-config/tailwind.config.cjs')
 
 module.exports = {
   content: [
-    'app/**/*.{js,ts,jsx,tsx}',
+    'app/**/*.{js,jsx,ts,tsx}',
     // include packages if not transpiling
-    // "../../packages/**/*.{js,ts,jsx,tsx}",
+    '../../packages/**/*.{js,ts,jsx,tsx}',
   ],
   presets: [tailwindConfig],
 }

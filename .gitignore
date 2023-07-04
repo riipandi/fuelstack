@@ -63,9 +63,13 @@ next-env.d.ts
 build/
 out/
 
-# Remix
+# Remix.js
 server/dist
 public/dist
+public/build
+api/index.js*
+api/_assets*
+
 
 # projects
 .env.*

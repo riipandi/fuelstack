@@ -5,6 +5,11 @@ module.exports = {
       version: 'detect',
     },
   },
+  rules: {
+    'no-console': 'warn',
+    '@next/next/no-html-link-for-pages': 'off',
+    '@next/next/no-img-element': 'off',
+  },
   parserOptions: {
     babelOptions: {
       presets: [require.resolve('next/babel')],

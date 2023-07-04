@@ -1,7 +1,7 @@
 {
-  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"],
+  "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "ES2019"],
+    "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "esModuleInterop": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
@@ -12,9 +12,10 @@
     "allowJs": true,
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./app/*"]
+      "@/*": ["./app/*"]
     },
     "noEmit": true,
     "isolatedModules": true
-  }
+  },
+  "include": ["remix.env.d.ts", "**/*.ts", "**/*.tsx"]
 }

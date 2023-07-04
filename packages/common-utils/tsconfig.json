@@ -1,11 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@acme/tsconfig/base.json",
   "compilerOptions": {
-    "lib": ["ES2017", "DOM"],
+    "lib": ["ES2019", "DOM"],
     "module": "CommonJS",
     "outDir": "./dist",
     "rootDir": "./src"
   },
   "exclude": ["node_modules"],
-  "extends": "@acme/tsconfig/base.json",
   "include": ["src"]
 }

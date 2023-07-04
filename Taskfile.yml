@@ -4,6 +4,7 @@ version: "3"
 
 vars:
   APP_VERSION: '{{.APP_VERSION | default "1.0.0"}}'
+  CONCURRENCY: '{{.CONCURRENCY | default "20"}}'
   GIT_SHA: {sh: git rev-parse --short HEAD}
   ROOT_DIR: {sh: pwd}
 
@@ -16,16 +17,16 @@ tasks:
 
   dev:api:
     desc: Start development Fastify API
-    cmds: ['pnpm turbo dev --no-cache --continue --filter=api...']
+    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter=api...']
 
   dev:admin:
     desc: Start development Admin (including API)
-    cmds: ['pnpm turbo dev --no-cache --continue --filter={api,admin}...']
+    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,admin}...']
 
   dev:website:
     desc: Start development Website (including API)
-    cmds: ['pnpm turbo dev --no-cache --continue --filter={api,website}...']
+    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,website}...']
 
   dev:blog:
     desc: Start development Blog (including API)
-    cmds: ['pnpm turbo dev --no-cache --continue --filter={api,blog}...']
+    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,blog}...']

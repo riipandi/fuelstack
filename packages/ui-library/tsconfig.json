@@ -1,8 +1,9 @@
 {
-  "compilerOptions": {
-    "lib": ["dom", "ES2017"]
-  },
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@acme/tsconfig/react-library.json",
+  "compilerOptions": {
+    "lib": ["DOM", "ES2019"]
+  },
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"]
 }

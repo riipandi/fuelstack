@@ -1,9 +1,10 @@
 {
-  "exclude": ["node_modules"],
+  "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@acme/tsconfig/vite.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }
