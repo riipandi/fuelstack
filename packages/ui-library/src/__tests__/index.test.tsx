@@ -2,6 +2,9 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { CounterButton } from '../components/CounterButton'
 
+/**
+ * @jest-environment jsdom
+ */
 describe('CounterButton', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div')

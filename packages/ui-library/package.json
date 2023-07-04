@@ -43,6 +43,6 @@
     "typescript": "^5.0.4"
   },
   "jest": {
-    "preset": "@acme/jest-presets/jest/node"
+    "preset": "@acme/jest-presets/jsdom"
   }
 }

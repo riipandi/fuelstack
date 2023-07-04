@@ -12,8 +12,7 @@
     "build": "tsc",
     "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
     "dev": "tsc -w",
-    "lint": "eslint \"src/**/*.ts*\"",
-    "test": "jest"
+    "lint": "eslint \"src/**/*.ts*\""
   },
   "devDependencies": {
     "@acme/eslint-config-custom": "workspace:*",
@@ -26,6 +25,6 @@
     "typescript": "^5.0.4"
   },
   "jest": {
-    "preset": "@acme/jest-presets/jest/node"
+    "preset": "@acme/jest-presets/node"
   }
 }

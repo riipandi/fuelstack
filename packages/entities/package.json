@@ -1,0 +1,40 @@
+{
+  "name": "@acme/entities",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "source": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
+    "dev": "tsc -w",
+    "db:introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
+    "db:migrate": "ts-node src/migrate",
+    "db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
+    "db:check": "drizzle-kit check:pg --config=drizzle.config.ts",
+    "db:up": "drizzle-kit up:pg --config=drizzle.config.ts",
+    "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
+    "db:studio": "drizzle-kit studio --config=drizzle.config.ts --port 8090",
+    "lint": "eslint \"src/**/*.ts*\""
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "drizzle-orm": "^0.27.0",
+    "drizzle-zod": "^0.4.4",
+    "postgres": "^3.3.5",
+    "zod": "^3.21.4"
+  },
+  "devDependencies": {
+    "@acme/eslint-config-custom": "workspace:*",
+    "@acme/tsconfig": "workspace:*",
+    "@types/node": "^20.3.3",
+    "drizzle-kit": "^0.19.3",
+    "eslint": "^8.44.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  }
+}

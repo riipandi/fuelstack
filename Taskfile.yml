@@ -30,3 +30,21 @@ tasks:
   dev:blog:
     desc: Start development Blog (including API)
     cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,blog}...']
+
+  db:introspect:
+    cmds: ['pnpm turbo db:introspect --no-cache --filter=@acme/entities']
+
+  db:migrate:
+    cmds: ['pnpm turbo db:migrate --no-cache --filter=@acme/entities']
+
+  db:generate:
+    cmds: ['pnpm turbo db:generate --no-cache --filter=@acme/entities']
+
+  db:check:
+    cmds: ['pnpm turbo db:check --no-cache --filter=@acme/entities']
+
+  db:up:
+    cmds: ['pnpm turbo db:up --no-cache --filter=@acme/entities']
+
+  db:drop:
+    cmds: ['pnpm turbo db:drop --no-cache --filter=@acme/entities']

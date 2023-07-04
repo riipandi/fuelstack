@@ -13,6 +13,7 @@
     "test": "NODE_ENV=development jest --detectOpenHandles"
   },
   "dependencies": {
+    "@acme/entities": "workspace:*",
     "@acme/logger": "workspace:*",
     "@fastify/autoload": "^5.7.1",
     "@fastify/sensible": "^5.2.0",
@@ -43,7 +44,7 @@
     "typescript": "^5.0.4"
   },
   "jest": {
-    "preset": "@acme/jest-presets/jest/node"
+    "preset": "@acme/jest-presets/node"
   },
   "nodemonConfig": {
     "verbose": true,
