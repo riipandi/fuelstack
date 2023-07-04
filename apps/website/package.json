@@ -18,11 +18,15 @@
   },
   "devDependencies": {
     "@acme/eslint-config-custom": "workspace:*",
+    "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.3",
     "@types/react-dom": "^18.2.6",
     "@types/react": "^18.2.14",
+    "autoprefixer": "^10.4.13",
+    "postcss": "^8.4.20",
+    "tailwindcss": "^3.2.4",
     "typescript": "^5.0.4"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "@acme/eslint-config-custom-server",
+  "name": "@acme/eslint-config-server",
   "version": "0.0.0",
   "private": true,
   "license": "MIT",

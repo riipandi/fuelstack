@@ -3,7 +3,6 @@
   "display": "Next.js",
   "extends": "./base.json",
   "compilerOptions": {
-    "plugins": [{ "name": "next" }],
     "allowJs": true,
     "declaration": false,
     "declarationMap": false,
@@ -12,6 +11,7 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "noEmit": true,
+    "plugins": [{ "name": "next" }],
     "resolveJsonModule": true,
     "target": "es5"
   }

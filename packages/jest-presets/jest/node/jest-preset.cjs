@@ -10,4 +10,4 @@ module.exports = {
     '<rootDir>/dist',
   ],
   preset: 'ts-jest',
-};
+}
