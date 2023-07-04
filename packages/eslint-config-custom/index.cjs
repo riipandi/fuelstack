@@ -4,6 +4,9 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    jest: {
+      version: 29,
+    },
   },
   rules: {
     'no-console': 'warn',
