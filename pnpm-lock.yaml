@@ -27,7 +27,7 @@ importers:
         version: link:../../packages/ui-library
       '@acme/utils':
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../../packages/utilities
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -164,7 +164,7 @@ importers:
         version: link:../../packages/ui-library
       '@acme/utils':
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../../packages/utilities
       '@remix-run/css-bundle':
         specifier: ^1.18.1
         version: 1.18.1
@@ -231,7 +231,7 @@ importers:
         version: link:../../packages/ui-library
       '@acme/utils':
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../../packages/utilities
       next:
         specifier: ^13.4.8
         version: 13.4.8(react-dom@18.2.0)(react@18.2.0)
@@ -439,7 +439,7 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
-  packages/utils:
+  packages/utilities:
     devDependencies:
       '@acme/eslint-config-custom':
         specifier: workspace:*
