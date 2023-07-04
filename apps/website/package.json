@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "clean": "rm -rf .next",
+    "clean": "rimraf .next",
     "dev": "next dev -p 4200",
     "lint": "next lint",
     "start": "next start"
@@ -12,6 +12,7 @@
   "dependencies": {
     "@acme/logger": "workspace:*",
     "@acme/ui": "workspace:*",
+    "@acme/utils": "workspace:*",
     "next": "^13.4.8",
     "react-dom": "^18.2.0",
     "react": "^18.2.0"

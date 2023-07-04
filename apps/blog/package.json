@@ -8,15 +8,16 @@
     "dev": "PORT=4300 remix dev"
   },
   "dependencies": {
+    "@acme/ui": "workspace:*",
+    "@acme/utils": "workspace:*",
     "@remix-run/node": "^1.18.1",
     "@remix-run/react": "^1.18.1",
     "@remix-run/serve": "^1.18.1",
     "@remix-run/server-runtime": "^1.18.1",
     "@vercel/analytics": "^1.0.1",
     "@vercel/remix-entry-server": "^0.1.1",
-    "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@acme/ui": "workspace:*"
+    "react": "^18.2.0"
   },
   "devDependencies": {
     "@acme/tailwind-config": "workspace:*",

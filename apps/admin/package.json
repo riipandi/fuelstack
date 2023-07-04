@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "build": "vite build",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
     "deploy": "vercel deploy dist --team=turborepo --confirm",
     "dev": "vite --host 0.0.0.0 --port 4100 --clearScreen false",
     "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
   },
   "dependencies": {
     "@acme/ui": "workspace:*",
+    "@acme/utils": "workspace:*",
     "react-dom": "^18.2.0",
     "react": "^18.2.0"
   },

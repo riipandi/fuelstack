@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "clean": "turbo clean",
     "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
     "dev": "turbo dev --no-cache --continue --concurrency=20",
     "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",

@@ -25,6 +25,9 @@ importers:
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui-library
+      '@acme/utils':
+        specifier: workspace:*
+        version: link:../../packages/common-utils
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -156,6 +159,9 @@ importers:
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui-library
+      '@acme/utils':
+        specifier: workspace:*
+        version: link:../../packages/common-utils
       '@remix-run/node':
         specifier: ^1.18.1
         version: 1.18.1
@@ -220,6 +226,9 @@ importers:
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui-library
+      '@acme/utils':
+        specifier: workspace:*
+        version: link:../../packages/common-utils
       next:
         specifier: ^13.4.8
         version: 13.4.8(react-dom@18.2.0)(react@18.2.0)
@@ -260,6 +269,33 @@ importers:
       tailwindcss:
         specifier: ^3.3.2
         version: 3.3.2
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+
+  packages/common-utils:
+    devDependencies:
+      '@acme/eslint-config-custom':
+        specifier: workspace:*
+        version: link:../eslint-config-custom
+      '@acme/jest-presets':
+        specifier: workspace:*
+        version: link:../jest-presets
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/jest':
+        specifier: ^29.5.2
+        version: 29.5.2
+      '@types/node':
+        specifier: ^20.3.3
+        version: 20.3.3
+      eslint:
+        specifier: ^8.44.0
+        version: 8.44.0
+      jest:
+        specifier: ^29.6.0
+        version: 29.6.0(@types/node@20.3.3)
       typescript:
         specifier: ^5.0.4
         version: 5.0.4
@@ -909,6 +945,7 @@ packages:
     dependencies:
       '@babel/core': 7.22.6
       '@babel/helper-plugin-utils': 7.22.5
+    dev: true
 
   /@babel/plugin-syntax-typescript@7.22.5(@babel/core@7.22.6):
     resolution: {integrity: sha512-1mS2o03i7t1c6VzH6fdQ3OA8tcEIxwG18zIPRp+UY1Ihv6W+XZzBCVxExF9upussPXJ0xE9XRHwMoNs1ep/nRQ==}
@@ -918,7 +955,6 @@ packages:
     dependencies:
       '@babel/core': 7.22.6
       '@babel/helper-plugin-utils': 7.22.5
-    dev: true
 
   /@babel/plugin-syntax-unicode-sets-regex@7.18.6(@babel/core@7.22.6):
     resolution: {integrity: sha512-727YkEAPwSIQTv5im8QHz3upqp92JTWhidIC81Tdx4VJYIte/VndKf1qKrfnnhPLiPghStWfvC/iFaMCQu7Nqg==}
@@ -7310,7 +7346,7 @@ packages:
       '@babel/core': 7.22.6
       '@babel/generator': 7.22.5
       '@babel/plugin-syntax-jsx': 7.22.5(@babel/core@7.22.6)
-      '@babel/plugin-syntax-typescript': 7.21.4(@babel/core@7.22.6)
+      '@babel/plugin-syntax-typescript': 7.22.5(@babel/core@7.22.6)
       '@babel/types': 7.22.5
       '@jest/expect-utils': 29.6.0
       '@jest/transform': 29.6.0

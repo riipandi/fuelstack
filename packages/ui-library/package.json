@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
     "lint": "eslint \"src/**/*.ts*\"",
     "test": "jest"
