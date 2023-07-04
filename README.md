@@ -158,7 +158,7 @@ This project is open-sourced software licensed under the [MIT license](https://a
 Copyrights in this project are retained by their contributors.
 See the [license file](./license.txt) for more information.
 
-[vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_MAINTENANCE_MODE
+[vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,DATABASE_URL,JWT_SECRET_KEY
 [github-npm-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file
 
 ---
