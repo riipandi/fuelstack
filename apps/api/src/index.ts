@@ -1,7 +1,7 @@
 import { createServer } from './server';
 import { log } from '@acme/logger';
 
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 9090;
 const server = createServer();
 
 server.listen(port, () => {
