@@ -1,4 +1,4 @@
-<p align="center"><img src="./banner.svg" width="500" height="150" alt="Project Logo"></p>
+<p align="center"><img src="./.github/banner.svg" width="500" height="150" alt="Project Logo"></p>
 <p align="center">
     <a href="https://github.com/riipandi/fuelstack/pulse">
         <img src="https://img.shields.io/badge/Contributions-welcome-blue.svg?style=flat-square" alt="Contribution welcome">
@@ -41,13 +41,13 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ```sh
 # Using npx
-npx create-turbo@latest -e riipandi/fuelstack
+npx create-turbo@latest -e https://github.com/riipandi/fuelstack
 
 # Using yarn
-yarn dlx create-turbo@latest -e riipandi/fuelstack
+yarn dlx create-turbo@latest -e https://github.com/riipandi/fuelstack
 
 # Using pnpm
-pnpm dlx create-turbo@latest -e riipandi/fuelstack
+pnpm dlx create-turbo@latest -e https://github.com/riipandi/fuelstack
 ```
 
 ### Changing The Organization Scope
