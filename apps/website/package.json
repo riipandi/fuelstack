@@ -18,7 +18,7 @@
     "react": "^18.2.0"
   },
   "devDependencies": {
-    "@acme/eslint-config-custom": "workspace:*",
+    "@acme/eslint-config-nextjs": "workspace:*",
     "@acme/tailwind-config": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/jest": "^29.5.2",

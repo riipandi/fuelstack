@@ -1,0 +1,15 @@
+{
+  "name": "@acme/eslint-config-common",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.cjs",
+  "dependencies": {
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-config-turbo": "^1.10.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

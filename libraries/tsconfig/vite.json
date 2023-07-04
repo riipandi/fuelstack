@@ -9,9 +9,12 @@
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "ESNext",
     "noEmit": true,
+    "noImplicitReturns": true,
     "resolveJsonModule": true,
     "skipLibCheck": false,
+    "sourceMap": true,
     "target": "ESNext",
-    "types": ["vite/client"]
+    "types": ["vite/client"],
+    "useDefineForClassFields": true
   }
 }

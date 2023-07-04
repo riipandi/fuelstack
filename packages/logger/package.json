@@ -16,7 +16,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@acme/eslint-config-custom": "workspace:*",
+    "@acme/eslint-config-common": "workspace:*",
     "@acme/jest-presets": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/jest": "^29.5.2",

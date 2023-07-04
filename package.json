@@ -8,18 +8,14 @@
     "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
     "dev": "turbo dev --no-cache --continue --concurrency=20",
     "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",
-    "release": "turbo run build --filter=api^... && changeset publish",
-    "version-packages": "changeset version",
-    "changeset": "changeset",
     "lint": "turbo lint",
     "test": "turbo test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.26.2",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
-    "turbo": "latest"
+    "turbo": "^1.10.7"
   },
   "packageManager": "pnpm@8.6.5"
 }

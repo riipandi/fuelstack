@@ -2,7 +2,6 @@
 module.exports = {
   root: true,
   extends: [
-    // '@acme/eslint-config-custom'
     '@remix-run/eslint-config',
     '@remix-run/eslint-config/node',
     '@remix-run/eslint-config/jest-testing-library',

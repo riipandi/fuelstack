@@ -15,8 +15,7 @@
 
 A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo
 [example kitchen-sink](https://github.com/vercel/turborepo/tree/main/examples/kitchen-sink). This starter
-kit is already pre-configured with essential components. Versioning and package publishing are handled by
-[Changesets][changeset] and can be automated with GitHub Actions.
+kit is already pre-configured with essential components.
 
 ### Ingredients
 
@@ -126,7 +125,6 @@ the PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
 pnpm dev             # Develop all packages and the docs site
 pnpm build           # Build all packages and the docs site
 pnpm lint            # Lint all packages
-pnpm changeset       # Generate a changeset
 pnpm clean           # Clean up all node_modules and dist folders
 ```
 
@@ -152,22 +150,6 @@ So, Vercel will deploy only when any changes on the specific directory.
 
 You need to add `NODE_VERSION` with value `14.19.0` on the environment variables setting.
 
-## Versioning and Publishing packages
-
-Package publishing has been configured using [Changesets](https://github.com/changesets/changesets).
-Please review their [documentation](https://github.com/changesets/changesets#documentation) to familarize
-yourself with the workflow. If you want to publish package to the public npm registry and make them publicly
-available, this is already setup. To publish packages to a private npm organization scope, **remove**
-the following from each of the `package.json`'s
-
-```diff
-- "publishConfig": {
--   "access": "public"
-- },
-```
-
-To use GitHub NPM Package Registry, please read the [Github npm registry documentation][github-npm-docs].
-
 ## Thanks to...
 
 In general, I'd like to thank every single one who open-sources their
@@ -185,7 +167,6 @@ Learn more about the power of Turborepo:
 - [Authorizer documentation](https://docs.authorizer.dev)
 - [Dockerizing a NestJS app with Prisma and PostgreSQL](https://notiz.dev/blog/dockerizing-nestjs-with-prisma-and-postgresql#perform-migrations-with-docker)
 - [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
-- [Automating Changesets](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
 
 ## What's inside?
 
@@ -220,7 +201,6 @@ This project is open-sourced software licensed under the [MIT license](https://a
 Copyrights in this project are retained by their contributors.
 See the [license file](./license.txt) for more information.
 
-[changeset]: https://github.com/changesets/changesets
 [vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_MAINTENANCE_MODE
 [github-npm-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file
 
