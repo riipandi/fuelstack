@@ -15,17 +15,17 @@
     "lint": "eslint \"src/**/*.ts*\"",
     "test": "jest"
   },
-  "jest": {
-    "preset": "jest-presets/jest/node"
-  },
   "devDependencies": {
     "@acme/eslint-config-custom": "workspace:*",
+    "@acme/jest-presets": "workspace:*",
     "@acme/tsconfig": "workspace:*",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.3",
     "eslint": "^8.44.0",
-    "jest-presets": "workspace:*",
     "jest": "^29.6.0",
     "typescript": "^5.0.4"
+  },
+  "jest": {
+    "preset": "@acme/jest-presets/jest/node"
   }
 }

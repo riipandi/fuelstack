@@ -5,6 +5,6 @@
   "main": "index.js",
   "devDependencies": {
     "tailwindcss-debug-screens": "^2.2.1",
-    "tailwindcss": "^3.2.4"
+    "tailwindcss": "^3.3.2"
   }
 }

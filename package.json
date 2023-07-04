@@ -6,9 +6,10 @@
     "build": "turbo build",
     "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
     "dev": "turbo dev --no-cache --continue --concurrency=20",
-    "dev:web": "turbo dev --no-cache --continue --filter={api,website}...",
+    "dev:api": "turbo dev --no-cache --continue --filter=api...",
     "dev:admin": "turbo dev --no-cache --continue --filter={api,admin}...",
     "dev:blog": "turbo dev --no-cache --continue --filter={api,blog}...",
+    "dev:website": "turbo dev --no-cache --continue --filter={api,website}...",
     "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",
     "cleanup": "docker-compose down --remove-orphans && turbo clean",
     "pre-dev": "docker-compose up -d",
@@ -18,6 +19,7 @@
   "devDependencies": {
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "rimraf": "^5.0.1",
     "turbo": "latest"
   },
   "packageManager": "pnpm@8.6.5"

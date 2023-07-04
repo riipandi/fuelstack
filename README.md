@@ -193,7 +193,7 @@ This Turborepo includes the following packages and apps:
 
 ### Apps and Packages
 
-- `api`: an [Express](https://expressjs.com/) server
+- `api`: an [Fastify](https://fastify.dev/) server
 - `website`: a [Next.js](https://nextjs.org/) app
 - `admin`: a [Vite](https://vitejs.dev/) single page app
 - `blog`: a [Remix](https://remix.run/) blog
