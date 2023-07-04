@@ -15,13 +15,7 @@
 
 A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo
 [example kitchen-sink](https://github.com/vercel/turborepo/tree/main/examples/kitchen-sink). This starter
-kit is already pre-configured with essential components.
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Included Packages
-
-This Turborepo has some additional tools already setup for you:
+kit is already pre-configured with some additional packages and tools, such as:
 
 - [Typescript](https://www.typescriptlang.org) for static type checking
 - [Fastify](https://fastify.dev) for the REST or GraphQL API
@@ -31,6 +25,8 @@ This Turborepo has some additional tools already setup for you:
 - [Prettier](https://prettier.io) for code formatting
 - [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Minio](https://min.io/) for S3 storage backend
+
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 ## Quick Start
 
