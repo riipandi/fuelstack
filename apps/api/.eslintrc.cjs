@@ -1,4 +1,4 @@
 module.exports = {
-    root: true,
-    extends: ['custom-server'],
-}
+  root: true,
+  extends: ['@acme/eslint-config-custom-server'],
+};

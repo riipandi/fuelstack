@@ -1,5 +1,5 @@
-import { log } from 'logger';
-import { CounterButton, NewTabLink } from 'ui';
+import { log } from '@acme/logger';
+import { CounterButton, NewTabLink } from '@acme/ui';
 
 export const metadata = {
   title: 'Store | Kitchen Sink',

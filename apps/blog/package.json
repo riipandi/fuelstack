@@ -8,21 +8,21 @@
     "dev": "remix dev"
   },
   "dependencies": {
-    "@remix-run/node": "^1.13.0",
-    "@remix-run/react": "^1.13.0",
-    "@remix-run/serve": "^1.13.0",
-    "@remix-run/server-runtime": "^1.13.0",
-    "@vercel/analytics": "^0.1.10",
-    "@vercel/remix-entry-server": "^0.1.0",
+    "@remix-run/node": "^1.18.1",
+    "@remix-run/react": "^1.18.1",
+    "@remix-run/serve": "^1.18.1",
+    "@remix-run/server-runtime": "^1.18.1",
+    "@vercel/analytics": "^1.0.1",
+    "@vercel/remix-entry-server": "^0.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*"
+    "@acme/ui": "workspace:*"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.13.0",
-    "@types/react": "^18.0.25",
-    "@types/react-dom": "^18.0.11",
-    "eslint": "^8.28.0",
+    "@remix-run/dev": "^1.18.1",
+    "@types/react": "^18.2.14",
+    "@types/react-dom": "^18.2.6",
+    "eslint": "^8.44.0",
     "typescript": "^4.9.3",
     "@acme/tsconfig": "workspace:*"
   },

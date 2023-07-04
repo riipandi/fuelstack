@@ -1,16 +1,16 @@
 {
-    "name": "eslint-config-custom",
-    "version": "0.0.0",
-    "private": true,
-    "license": "MIT",
-    "main": "index.cjs",
-    "dependencies": {
-        "eslint-config-next": "^13.4.1",
-        "eslint-config-prettier": "^8.3.0",
-        "eslint-plugin-react": "7.28.0",
-        "eslint-config-turbo": "^1.9.3"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "@acme/eslint-config-custom",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "main": "index.cjs",
+  "dependencies": {
+    "eslint-config-next": "^13.4.8",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-config-turbo": "^1.10.7"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

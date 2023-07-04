@@ -14,7 +14,7 @@
 ## Introduction
 
 A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org). Originally based on Turborepo
-[example with Changeset](https://github.com/vercel/turborepo/tree/main/examples/with-changesets). This starter
+[example kitchen-sink](https://github.com/vercel/turborepo/tree/main/examples/kitchen-sink). This starter
 kit is already pre-configured with essential components. Versioning and package publishing are handled by
 [Changesets][changeset] and can be automated with GitHub Actions.
 
@@ -24,9 +24,6 @@ kit is already pre-configured with essential components. Versioning and package 
 - [NestJS](https://nestjs.com) for the REST or GraphQL API
 - [Next.js](https://nextjs.org) for the frontend
 - [Tailwind CSS](https://tailwindcss.com) for the styling frontend
-- [TailwindUI](https://tailwindui.com) for some usefull Tailwind Components
-- [HeadlessUI](https://headlessui.dev) fully accessible UI components
-- [Framer Motion](https://www.framer.com/motion) for interactive animation
 - [ESLint](https://eslint.org) for code linting
 - [Prettier](https://prettier.io) for code formatting
 - [Minio](https://min.io/) for S3 storage backend
@@ -78,17 +75,16 @@ openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en) as a package manager.
 
 ```sh
-yarn stack up      # Prepare the environment
-yarn install       # Installing dependencies
-yarn dev           # Start app in development
+pnpm install       # Installing dependencies
+pnpm dev           # Start app in development
 ```
 
 According to [Turborepo](https://turborepo.org/docs/features/scopes) documentation,
 you can run or build single package using these command:
 
 ```sh
-yarn dev --scope=web      # Running the web in development mode
-yarn build --scope=api    # Building the NestJS api package
+pnpm dev --scope=web      # Running the web in development mode
+pnpm build --scope=api    # Building the NestJS api package
 ```
 
 ### Default Application Ports
@@ -127,12 +123,11 @@ This starter contains a command line script to help you manage the project such 
 the PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
 
 ```sh
-yarn dev             # Develop all packages and the docs site
-yarn build           # Build all packages and the docs site
-yarn lint            # Lint all packages
-yarn changeset       # Generate a changeset
-yarn clean           # Clean up all node_modules and dist folders
-yarn stack help      # Display available Stack CLI commands
+pnpm dev             # Develop all packages and the docs site
+pnpm build           # Build all packages and the docs site
+pnpm lint            # Lint all packages
+pnpm changeset       # Generate a changeset
+pnpm clean           # Clean up all node_modules and dist folders
 ```
 
 ## Deploy your own
@@ -159,9 +154,10 @@ You need to add `NODE_VERSION` with value `14.19.0` on the environment variables
 
 ## Versioning and Publishing packages
 
-Package publishing has been configured using [Changesets](https://github.com/changesets/changesets). Please review their [documentation](https://github.com/changesets/changesets#documentation) to familarize yourself with the workflow.
-If you want to publish package to the public npm registry and make them publicly available,
-this is already setup. To publish packages to a private npm organization scope, **remove**
+Package publishing has been configured using [Changesets](https://github.com/changesets/changesets).
+Please review their [documentation](https://github.com/changesets/changesets#documentation) to familarize
+yourself with the workflow. If you want to publish package to the public npm registry and make them publicly
+available, this is already setup. To publish packages to a private npm organization scope, **remove**
 the following from each of the `package.json`'s
 
 ```diff

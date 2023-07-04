@@ -1,10 +1,10 @@
 {
-    "recommendations": [
-        "bradlc.vscode-tailwindcss",
-        "dbaeumer.vscode-eslint",
-        "EditorConfig.EditorConfig",
-        "esbenp.prettier-vscode",
-        "firsttris.vscode-jest-runner",
-        "foxundermoon.shell-format",
-    ]
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "EditorConfig.EditorConfig",
+    "esbenp.prettier-vscode",
+    "firsttris.vscode-jest-runner",
+    "foxundermoon.shell-format"
+  ]
 }

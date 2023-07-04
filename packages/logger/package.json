@@ -1,5 +1,5 @@
 {
-  "name": "logger",
+  "name": "@acme/logger",
   "version": "0.0.0",
   "private": true,
   "main": "./dist/index.js",
@@ -19,13 +19,13 @@
     "preset": "jest-presets/jest/node"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.22",
-    "@types/node": "^18.11.9",
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "workspace:*",
-    "jest": "^26.6.3",
-    "jest-presets": "workspace:*",
+    "@acme/eslint-config-custom": "workspace:*",
     "@acme/tsconfig": "workspace:*",
-    "typescript": "^4.8.3"
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.3.3",
+    "eslint": "^8.44.0",
+    "jest-presets": "workspace:*",
+    "jest": "^29.6.0",
+    "typescript": "^5.0.4"
   }
 }
