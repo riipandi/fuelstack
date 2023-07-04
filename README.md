@@ -17,29 +17,30 @@ A full-stack monorepo starter kit powered by [Turborepo](https://turborepo.org).
 [example kitchen-sink](https://github.com/vercel/turborepo/tree/main/examples/kitchen-sink). This starter
 kit is already pre-configured with essential components.
 
-### Ingredients
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Included Packages
+
+This Turborepo has some additional tools already setup for you:
 
 - [Typescript](https://www.typescriptlang.org) for static type checking
-- [NestJS](https://nestjs.com) for the REST or GraphQL API
+- [Fastify](https://fastify.dev) for the REST or GraphQL API
 - [Next.js](https://nextjs.org) for the frontend
-- [Tailwind CSS](https://tailwindcss.com) for the styling frontend
+- [Tailwind CSS](https://tailwindcss.com) for the styling the frontend
 - [ESLint](https://eslint.org) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Minio](https://min.io/) for S3 storage backend
 
-### Authentication
-
-Instead of writing your own authentication mechanism, this project include [Authorizer](https://authorizer.dev) for
-handling the authentication and authorization. Please refer to the [official project documentation](https://docs.authorizer.dev)
-for more information.
-
-### Prerequisite
-
-1. Install Docker and Docker Compose : https://docs.docker.com/desktop
-2. Install NestJS CLI : https://docs.nestjs.com/cli/overview
-3. Install Prisma CLI : https://www.prisma.io/docs/concepts/components/prisma-cli/installation
-
 ## Quick Start
+
+### Prerequisites
+
+1. Install Node.js `v18.16.1` or greater: https://nodejs.org/en/download
+2. Install Docker and Docker Compose: https://docs.docker.com/desktop
+3. Install Taskfile: https://taskfile.dev/installation
+
+### Setup New Project
 
 ```sh
 # Using npx
@@ -82,21 +83,9 @@ According to [Turborepo](https://turborepo.org/docs/features/scopes) documentati
 you can run or build single package using these command:
 
 ```sh
-pnpm dev --scope=web      # Running the web in development mode
-pnpm build --scope=api    # Building the NestJS api package
+pnpm dev --filter=web      # Running the web in development mode
+pnpm build --filter=api    # Building the NestJS api package
 ```
-
-### Default Application Ports
-
-| Package Name | Description            | Address               |
-| ------------ | ---------------------- | --------------------- |
-| Next.js      | Website / frontend     | http://localhost:3000 |
-| NestJS       | Application backend    | http://localhost:3030 |
-| Authorizer   | Authentication Service | http://localhost:8080 |
-
-The default Authorizer admin secret is: `secret`, but you can define your own.
-
-To do that, edit the `.env` file in the root project directory.
 
 For detailed explanation of how things work, check out their official documentation.
 
@@ -119,7 +108,7 @@ npx turbo link
 ### Usefull Commands
 
 This starter contains a command line script to help you manage the project such as running
-the PostgreSQL, Redis, Mailhog, and Authorizer on Docker.
+the PostgreSQL, Redis, and Mailpit on Docker.
 
 ```sh
 pnpm dev             # Develop all packages and the docs site
@@ -148,7 +137,7 @@ So, Vercel will deploy only when any changes on the specific directory.
 
 ### Cloudflare Deployment
 
-You need to add `NODE_VERSION` with value `14.19.0` on the environment variables setting.
+You need to add `NODE_VERSION` with value `18.16.1` on the environment variables setting.
 
 ## Thanks to...
 
@@ -162,37 +151,8 @@ Learn more about the power of Turborepo:
 
 - [Turborepo documentation](https://turborepo.org/docs)
 - [Next.js documentation](https://nextjs.org/docs)
-- [NestJS documentation](https://docs.nestjs.com)
+- [Fastify documentation](https://fastify.dev/docs/v4.13.x)
 - [Working with the Github npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file)
-- [Authorizer documentation](https://docs.authorizer.dev)
-- [Dockerizing a NestJS app with Prisma and PostgreSQL](https://notiz.dev/blog/dockerizing-nestjs-with-prisma-and-postgresql#perform-migrations-with-docker)
-- [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
-
-## What's inside?
-
-This Turborepo includes the following packages and apps:
-
-### Apps and Packages
-
-- `api`: an [Fastify](https://fastify.dev/) server
-- `website`: a [Next.js](https://nextjs.org/) app
-- `admin`: a [Vite](https://vitejs.dev/) single page app
-- `blog`: a [Remix](https://remix.run/) blog
-- `logger`: isomorphic logger (a small wrapper around console.log)
-- `ui`: a dummy React UI library (which contains a single `<CounterButton>` component)
-- `scripts`: Jest and ESLint configurations
-- `tsconfig`: tsconfig.json;s used throughout the monorepo
-
-Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Jest](https://jestjs.io) test runner for all things JavaScript
-- [Prettier](https://prettier.io) for code formatting
 
 ## License
 
