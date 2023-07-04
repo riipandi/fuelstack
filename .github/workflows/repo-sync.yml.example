@@ -1,0 +1,26 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Sync to GitLab
+
+on:
+  push:
+    branches: ["main"]
+
+permissions: read-all
+
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    name: Sync Repo to GitLab
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+    - uses: shiqianwei0508/git-repo-sync-gitlab@v0.3.1
+      with:
+        # You can store token in your project's 'Setting > Secrets'
+        # and reference the name here. Such as ${{ secrets.GITLAB_ACCESS_TOKEN }}
+        # Example GITLAB_TARGET_URL: https://gitlab.com/riipandi/fuelstack.git
+        target-url: ${{ secrets.GITLAB_TARGET_URL }}
+        target-username: ${{ secrets.GITLAB_TARGET_USERNAME }}
+        target-token: ${{ secrets.GITLAB_ACCESS_TOKEN }}

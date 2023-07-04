@@ -1,0 +1,8 @@
+* text=auto eol=lf
+*.css linguist-vendored
+*.scss linguist-vendored
+*.js linguist-vendored
+DEVELOPMENT.md export-ignore
+CHANGELOG.md export-ignore
+README.md export-ignore
+LICENSE export-ignore

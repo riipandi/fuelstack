@@ -1,12 +1,75 @@
+# Essentials
 .DS_Store
-node_modules
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+node_modules/
+coverage.out
+coverage/
+typings/
+lib-cov
+.project
+.classpath
+.nyc_output
+.c9/
+.pnp/
+.pnp.js
+*.sqlite3
+*.db
+*.pem
+logs/
 .turbo
-*.log
-.next
-dist
+
+# IDE settings
+.idea/
+.fleet/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# compiled output
+dist/
 dist-ssr
+/out-tsc
+.dist
+.output
+.build*
+**/builds
+**/build/*
+**/tmp/
+**/temp/
+**/vendor/
+**/.cache
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+lerna-debug.log*
+testem.log
 *.local
-.env
-.cache
+*.tsbuildinfo
+
+# next.js
+.vercel
+.next/
+.swc/
+next-env.d.ts
+build/
+out/
+
+# Remix
 server/dist
 public/dist
+
+# projects
+.env.*
+!.env.example
+build-errors.log
+**/.dockerignore
+!/.dockerignore

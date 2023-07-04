@@ -1,0 +1,15 @@
+{
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "files.exclude": {
+        "**/.turbo/**": true,
+    },
+    "files.watcherExclude": {
+        "**/.github/FUNDING.yml": true,
+        "**/.github/ISSUE_TEMPLATE/**": true,
+        "**/.github/PULL_REQUEST_TEMPLATE.md": true,
+        "**/.turbo/**": true
+    },
+    "search.exclude": {
+        "**/.turbo/**": true
+    }
+}

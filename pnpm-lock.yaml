@@ -26,6 +26,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui-library
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@types/react':
         specifier: ^18.2.0
         version: 18.2.5
@@ -41,9 +44,6 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       typescript:
         specifier: ^4.8.3
         version: 4.9.5
@@ -69,6 +69,9 @@ importers:
         specifier: ^1.10.0
         version: 1.10.0
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@types/body-parser':
         specifier: ^1.19.0
         version: 1.19.2
@@ -105,9 +108,6 @@ importers:
       supertest:
         specifier: ^6.2.4
         version: 6.3.3
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       tsup:
         specifier: ^6.2.3
         version: 6.7.0(typescript@4.9.5)
@@ -145,6 +145,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui-library
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@remix-run/dev':
         specifier: ^1.13.0
         version: 1.15.0(@remix-run/serve@1.15.0)
@@ -157,14 +160,11 @@ importers:
       eslint:
         specifier: ^8.28.0
         version: 8.37.0
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       typescript:
         specifier: ^4.9.3
         version: 4.9.5
 
-  apps/storefront:
+  apps/website:
     dependencies:
       logger:
         specifier: workspace:*
@@ -182,6 +182,9 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui-library
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../../packages/tsconfig
       '@types/jest':
         specifier: ^26.0.22
         version: 26.0.24
@@ -197,9 +200,6 @@ importers:
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
-      tsconfig:
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
       typescript:
         specifier: ^4.8.3
         version: 4.9.5
@@ -233,6 +233,9 @@ importers:
 
   packages/logger:
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/jest':
         specifier: ^26.0.22
         version: 26.0.24
@@ -251,9 +254,6 @@ importers:
       jest-presets:
         specifier: workspace:*
         version: link:../jest-presets
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       typescript:
         specifier: ^4.8.3
         version: 4.9.5
@@ -266,6 +266,9 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
     devDependencies:
+      '@acme/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
       '@types/jest':
         specifier: ^26.0.22
         version: 26.0.24
@@ -290,9 +293,6 @@ importers:
       react:
         specifier: ^18.2.0
         version: 18.2.0
-      tsconfig:
-        specifier: workspace:*
-        version: link:../tsconfig
       tsup:
         specifier: ^6.2.3
         version: 6.7.0(typescript@4.9.5)
@@ -2442,7 +2442,7 @@ packages:
     dependencies:
       '@types/istanbul-lib-coverage': 2.0.4
       '@types/istanbul-reports': 3.0.1
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
       '@types/yargs': 15.0.15
       chalk: 4.1.2
 
@@ -2924,7 +2924,7 @@ packages:
   /@types/connect@3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
     dependencies:
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
     dev: true
 
   /@types/cookie@0.4.1:
@@ -2965,7 +2965,7 @@ packages:
   /@types/express-serve-static-core@4.17.33:
     resolution: {integrity: sha512-TPBqmR/HRYI3eC2E5hmiivIzv+bidAfXofM+sbonAGvyDhySGw9/PQZFt2BLOrjUUR++4eJVpx6KnLQK1Fk9tA==}
     dependencies:
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
       '@types/qs': 6.9.7
       '@types/range-parser': 1.2.4
     dev: true
@@ -3061,6 +3061,7 @@ packages:
 
   /@types/node@15.14.9:
     resolution: {integrity: sha512-qjd88DrCxupx/kJD5yQgZdcYKZKSIGBVDIBE1/LTGcNm3d2Np/jxojkdePDdfnBHJc5W7vSMpbJ1aB7p/Py69A==}
+    dev: true
 
   /@types/node@17.0.45:
     resolution: {integrity: sha512-w+tIMs3rq2afQdsPJlODhoUEKzFP1ayaoyl1CcnwtIlsVe7K7bA1NGm4s3PraqTLlXnbIN84zuBlxBWo1u9BLw==}
@@ -3126,7 +3127,7 @@ packages:
     resolution: {integrity: sha512-NUo5XNiAdULrJENtJXZZ3fHtfMolzZwczzBbnAeBbqBwG+LaG6YaJtuwzwGSQZ2wsCrxjEhNNjAkKigy3n8teQ==}
     dependencies:
       '@types/mime': 3.0.1
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
     dev: true
 
   /@types/stack-utils@2.0.1:
@@ -3136,7 +3137,7 @@ packages:
     resolution: {integrity: sha512-tLfnlJf6A5mB6ddqF159GqcDizfzbMUB1/DeT59/wBNqzRTNNKsaw79A/1TZ84X+f/EwWH8FeuSkjlCLyqS/zQ==}
     dependencies:
       '@types/cookiejar': 2.1.2
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
     dev: true
 
   /@types/supertest@2.0.12:
@@ -6886,7 +6887,7 @@ packages:
       '@jest/environment': 26.6.2
       '@jest/fake-timers': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
       jest-mock: 26.6.2
       jest-util: 26.6.2
 
@@ -7147,7 +7148,7 @@ packages:
     dependencies:
       '@jest/test-result': 26.6.2
       '@jest/types': 26.6.2
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
       ansi-escapes: 4.3.2
       chalk: 4.1.2
       jest-util: 26.6.2
@@ -7157,7 +7158,7 @@ packages:
     resolution: {integrity: sha512-KWYVV1c4i+jbMpaBC+U++4Va0cp8OisU185o73T1vo99hqi7w8tSJfUXYswwqqrjzwxa6KpRK54WhPvwf5w6PQ==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 15.14.9
+      '@types/node': 18.15.11
       merge-stream: 2.0.0
       supports-color: 7.2.0
 
@@ -7443,6 +7444,7 @@ packages:
 
   /loose-envify@1.4.0:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
+    hasBin: true
     dependencies:
       js-tokens: 4.0.0
 

@@ -3,8 +3,9 @@
   "scripts": {
     "build": "turbo build",
     "clean": "turbo clean",
+    "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
     "dev": "turbo dev --no-cache --continue --concurrency=11",
-    "dev:web": "turbo dev --no-cache --continue --filter={api,storefront}...",
+    "dev:web": "turbo dev --no-cache --continue --filter={api,website}...",
     "dev:admin": "turbo dev --no-cache --continue --filter={api,admin}...",
     "dev:blog": "turbo dev --no-cache --continue --filter={api,blog}...",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
@@ -16,5 +17,5 @@
     "prettier-plugin-tailwindcss": "^0.3.0",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@7.15.0"
+  "packageManager": "pnpm@8.6.5"
 }

@@ -1,0 +1,7 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-issue-config.json
+
+blank_issues_enabled: true
+contact_links:
+  - name: 🙋🏾 Question
+    url: https://github.com/riipandi/fuelstack/discussions/new/choose
+    about: Use this link to submit your question to GitHub Discussions.
