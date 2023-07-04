@@ -2,9 +2,14 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@acme/tsconfig/vite.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "~/*": ["public/*"]
+    }
   },
+  "references": [{ "path": "./tsconfig.node.json" }],
   "include": ["src"],
   "exclude": ["node_modules"]
 }

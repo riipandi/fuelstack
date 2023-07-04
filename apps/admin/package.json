@@ -4,9 +4,8 @@
   "private": true,
   "scripts": {
     "build": "vite build",
+    "dev": "vite --clearScreen false",
     "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-    "deploy": "vercel deploy dist --team=turborepo --confirm",
-    "dev": "vite --host 0.0.0.0 --port 4100 --clearScreen false",
     "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
   },
   "dependencies": {
