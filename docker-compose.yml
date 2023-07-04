@@ -1,71 +1,97 @@
-version: "3.7"
+version: '3.8'
 
 services:
   pgsql:
-    image: postgres:14-alpine
-    restart: always
+    image: postgres:15-alpine
+    container_name: pgsql
+    hostname: postgres
     ports:
       - 5432:5432
     volumes:
-      - pgsql_data:/var/lib/postgresql/data
-      - ./scripts/create_schema.sql:/docker-entrypoint-initdb.d/create_schema.sql
+      - pg_data:/var/lib/postgresql/data
+      - ./scripts/initialize.sql:/docker-entrypoint-initdb.d/initialize.sql
     environment:
-      POSTGRES_PASSWORD: secretdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fuelstack
+    healthcheck:
+      test: ['CMD', 'pg_isready -U postgres']
+      interval: 30s
+      timeout: 20s
+      retries: 3
 
-  redis:
-    image: redis:6-alpine
+  pgweb:
+    image: ghcr.io/sosedoff/pgweb:latest
+    container_name: pgweb
     restart: always
     ports:
-      - 6379:6379
-    command: redis-server --save 60 1 --loglevel warning
-
-  authorizer:
-    image: lakhansamani/authorizer:0.19.0
-    restart: always
+      - '54321:8081'
+    environment:
+      DATABASE_URL: 'postgres://postgres:postgres@pgsql:5432/fuelstack?sslmode=disable'
+      PGWEB_LOCK_SESSION: true
     depends_on:
       - pgsql
-    ports:
-      - 8080:8080
-    command: './build/server'
-    environment:
-      PORT: 8080
-      ENV: '${AUTHORIZER_ENV:-production}'
-      AUTHORIZER_URL: '${AUTHORIZER_URL:-http://localhost:8080}'
-      ADMIN_SECRET: '${AUTHORIZER_ADMIN_SECRET:-secret}'
-      COOKIE_NAME: '${AUTHORIZER_COOKIE_NAME:-authorizer}'
-      DATABASE_TYPE: '${AUTHORIZER_DATABASE_TYPE:-postgres}'
-      DATABASE_URL: '${AUTHORIZER_DATABASE_URL:-postgresql://postgres:secretdb@pgsql:5432/authorizer}'
-      REDIS_URL: '${AUTHORIZER_REDIS_URL:-redis://redis:6379}'
-      SMTP_HOST: '${AUTHORIZER_SMTP_HOST:-localhost}'
-      SMTP_PORT: '${AUTHORIZER_SMTP_PORT:-1025}'
-      SMTP_USERNAME: '${AUTHORIZER_SMTP_USERNAME:-null}'
-      SMTP_PASSWORD: '${AUTHORIZER_SMTP_PASSWORD:-null}'
-      SENDER_EMAIL: '${AUTHORIZER_SENDER_EMAIL:-admin@example.com}'
-      DISABLE_EMAIL_VERIFICATION: '${AUTHORIZER_DISABLE_EMAIL_VERIFICATION:-false}'
-      DISABLE_MAGIC_LINK_LOGIN: '${AUTHORIZER_DISABLE_MAGIC_LINK_LOGIN:-true}'
-      ORGANIZATION_NAME: '${AUTHORIZER_ORGANIZATION_NAME:-Authorizer}'
 
-  minio:
-    image: minio/minio:latest
+  keydb:
+    image: eqalpha/keydb:latest
+    container_name: keydb
     restart: always
     ports:
-      - 9000:9000
-      - 9001:9001
+      - '6379:6379'
+    volumes:
+      - 'keydb_data:/data'
+    command: 'keydb-server /etc/keydb/redis.conf --server-threads 2'
+
+  mailpit:
+    image: axllent/mailpit:v1.6
+    container_name: mailpit
+    restart: unless-stopped
+    volumes:
+      - mailpit_data:/data
+    ports:
+      - '1025:1025' # port the SMTP server should be accessible on
+      - '8025:8025' # port the web interface should be accessible on
+    environment:
+      # https://github.com/axllent/mailpit/wiki/Runtime-options
+      TZ: 'Asia/Jakarta'
+
+  minio:
+    image: minio/minio:RELEASE.2023-06-23T20-26-00Z
+    container_name: minio
+    restart: always
+    ports:
+      - '9000:9000'
+      - '9001:9001'
     volumes:
       - 'minio_data:/data/minio'
-    command: minio server /data/minio --console-address ":9001"
+    command: minio server --address ":9000" /data/minio --console-address ":9001"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+      retries: 3
+      timeout: 5s
     environment:
-      MINIO_ROOT_USER: 'adminio'
-      MINIO_ROOT_PASSWORD: 'secretpwd'
+      MINIO_ROOT_USER: 's3admin'
+      MINIO_ROOT_PASSWORD: 's3passw0rd'
 
-  mailhog:
-    image: mailhog/mailhog:latest
-    ports:
-      - 1025:1025
-      - 8025:8025
+  minio-mc:
+    image: minio/mc
+    container_name: minio_mc
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set mys3 http://minio:9000 s3admin s3passw0rd;
+      /usr/bin/mc mb mys3/fuelstack;
+      /usr/bin/mc policy set public mys3/fuelstack;
+      exit 0;
+      "
 
 volumes:
-  pgsql_data:
+  pg_data:
+    driver: local
+  keydb_data:
+    driver: local
+  mailpit_data:
     driver: local
   minio_data:
     driver: local

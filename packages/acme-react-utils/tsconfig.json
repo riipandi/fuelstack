@@ -1,5 +1,0 @@
-{
-  "extends": "@acme/config-react/tsconfig.reactlib.json",
-  "include": ["."],
-  "exclude": ["dist", "build", "node_modules"]
-}

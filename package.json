@@ -1,38 +1,20 @@
 {
-  "name": "fuelstack",
-  "version": "1.0.0",
-  "description": "Full stack monorepo application with Turborepo, NestJS, Next.js, Prisma, and Typescript",
   "private": true,
-  "license": "MIT",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev --no-cache --parallel --continue",
-    "start": "turbo run start",
-    "lint": "turbo run lint",
-    "clean": "turbo run clean && rimraf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo run build --filter=cms^... && changeset publish",
-    "postinstall": "turbo run postinstall --scope=api",
-    "test": "turbo run test --scope=api",
-    "stack": "bash ./scripts/stack"
+    "build": "turbo build",
+    "clean": "turbo clean",
+    "dev": "turbo dev --no-cache --continue --concurrency=11",
+    "dev:web": "turbo dev --no-cache --continue --filter={api,storefront}...",
+    "dev:admin": "turbo dev --no-cache --continue --filter={api,admin}...",
+    "dev:blog": "turbo dev --no-cache --continue --filter={api,blog}...",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx}\"",
+    "lint": "turbo lint",
+    "test": "turbo test"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.22.0",
-    "@nestjs/mapped-types": "*",
-    "eslint": "8.14.0",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "turbo": "^1.2.5"
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.3.0",
+    "turbo": "latest"
   },
-  "engines": {
-    "npm": ">=7.0.0",
-    "node": ">=14.0.0"
-  },
-  "packageManager": "yarn@1.22.18"
+  "packageManager": "pnpm@7.15.0"
 }

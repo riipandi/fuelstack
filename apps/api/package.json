@@ -1,101 +1,40 @@
 {
-  "name": "@acme/api",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "prebuild": "rimraf dist",
-    "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
-    "start": "nest start",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:cov": "jest --coverage",
-    "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db:reset": "prisma migrate reset --skip-seed",
-    "db:deploy": "prisma migrate deploy",
-    "postinstall": "prisma generate",
-    "prisma": "prisma"
-  },
-  "dependencies": {
-    "@acme/config-nest": "*",
-    "@nestjs-modules/mailer": "^1.6.1",
-    "@nestjs/bull": "^0.5.4",
-    "@nestjs/common": "^8.4.4",
-    "@nestjs/config": "^2.0.0",
-    "@nestjs/core": "^8.4.4",
-    "@nestjs/jwt": "^8.0.0",
-    "@nestjs/passport": "^8.2.1",
-    "@nestjs/platform-fastify": "^8.4.4",
-    "@nestjs/swagger": "^5.2.1",
-    "@node-rs/bcrypt": "^1.6.0",
-    "@prisma/client": "^3.12.0",
-    "bull": "^4.8.2",
-    "dayjs": "^1.11.1",
-    "fastify-swagger": "^5.1.1",
-    "handlebars": "^4.7.7",
-    "nanoid": "^3.3.3",
-    "nodemailer": "^6.7.3",
-    "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0",
-    "passport": "^0.5.2",
-    "prisma": "^3.12.0",
-    "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
-    "rxjs": "^7.5.5",
-    "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "@nestjs/cli": "^8.2.5",
-    "@nestjs/schematics": "^8.0.10",
-    "@nestjs/testing": "^8.4.4",
-    "@types/bull": "^3.15.8",
-    "@types/jest": "27.4.1",
-    "@types/node": "^17.0.26",
-    "@types/nodemailer": "^6.4.4",
-    "@types/passport-jwt": "^3.0.6",
-    "@types/passport-local": "^1.0.34",
-    "@types/supertest": "^2.0.12",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "eslint-plugin-simple-import-sort": "^7.0.0",
-    "eslint": "~8.14.0",
-    "jest": "^27.5.1",
-    "rimraf": "^3.0.2",
-    "source-map-support": "^0.5.21",
-    "supertest": "^6.2.2",
-    "ts-jest": "^27.1.4",
-    "ts-loader": "^9.2.8",
-    "ts-node": "^10.7.0",
-    "tsconfig-paths": "^3.14.1",
-    "typescript": "^4.6.3",
-    "webpack": "^5.72.0"
-  },
-  "prisma": {
-    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "src",
-    "testRegex": ".*\\.spec\\.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
+    "name": "api",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build": "tsup src/index.ts --format cjs",
+        "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+        "dev": "tsup src/index.ts --format cjs --watch --onSuccess \"node dist/index.js\"",
+        "lint": "tsc --noEmit && eslint \"src/**/*.ts*\"",
+        "start": "node dist/index.js",
+        "test": "jest --detectOpenHandles"
     },
-    "collectCoverageFrom": [
-      "**/*.(t|j)s"
-    ],
-    "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
-  }
+    "jest": {
+        "preset": "jest-presets/jest/node"
+    },
+    "dependencies": {
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "logger": "workspace:*",
+        "morgan": "^1.10.0"
+    },
+    "devDependencies": {
+        "@types/body-parser": "^1.19.0",
+        "@types/cors": "^2.8.10",
+        "@types/express": "^4.17.12",
+        "@types/jest": "^26.0.22",
+        "@types/morgan": "^1.9.2",
+        "@types/node": "^15.12.2",
+        "@types/supertest": "^2.0.12",
+        "eslint": "^7.32.0",
+        "eslint-config-custom-server": "workspace:*",
+        "jest": "^26.6.3",
+        "jest-presets": "workspace:*",
+        "supertest": "^6.2.4",
+        "tsconfig": "workspace:*",
+        "tsup": "^6.2.3",
+        "typescript": "^4.8.3"
+    }
 }

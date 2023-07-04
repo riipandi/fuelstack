@@ -1,97 +1,12 @@
-# dependencies
-node_modules
-.pnp
-.pnp.js
-
-# IDEs and editors
-/.idea
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# IDE - VSCode
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# misc
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-Icon
-logs
-lib-cov
-lcov.info
-pids
-logs
-results
-.node_history
-.AppleDouble
-.LSOverride
-.Spotlight-V100
-.Trashes
 .DS_Store
-.DS_Store?
-*.log
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-*.sqlite
-*.sqlite3
-*.pid
-*.crt
-*.pem
-._*
-*~
-
-# debug
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-lerna-debug.log*
-
-# Tests
-/coverage
-/testApp
-/.nyc_output
-
-# local env files
-*.local
-*.env
-.env.*
-!.env.example
-
-# next.js
-**/.next
-**/out
-**/dist
-**/dist-ssr
-**/build
-**/dist-ssr
-
-# Strapi
-exports
-*.cache
-build
-**/.strapi-updater.json
-**/public/uploads/*
-!**/public/uploads/.gitkeep
-
-# vercel
+node_modules
 .turbo
-.vercel
-*.tsbuildinfo
-
-# project files
-storybook-static
-version.txt
-fly.toml
+*.log
+.next
+dist
+dist-ssr
+*.local
+.env
+.cache
+server/dist
+public/dist

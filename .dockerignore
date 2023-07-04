@@ -1,15 +1,18 @@
-**/node_modules
-**/npm-debug.log
-Dockerfile
-README.md
-CHANGELOG.md
-
+/.cache
+/build
+/tmp
+.fleet
+.github
+.vscode
 .DS_Store
 .DS_Store?
 .dockerignore
-.git/
-
-**/.gitignore
-**/.turbo
-# **/.next
-# **/dist
+public/assets
+Dockerfile
+node_modules
+npm-debug.log
+DEVELOPMENT.md
+CHANGELOG.md
+README.md
+*.log
+.env*

@@ -46,10 +46,15 @@ for more information.
 ## Quick Start
 
 ```bash
-npx degit riipandi/fuelstack myapp-name
-```
+# Using npx
+npx create-turbo@latest -e riipandi/fuelstack
 
-> Don't forget to change `myapp-name` with your real application name.
+# Using yarn
+yarn dlx create-turbo@latest -e riipandi/fuelstack
+
+# Using pnpm
+pnpm dlx create-turbo@latest -e riipandi/fuelstack
+```
 
 ### Changing The Organization Scope
 
@@ -186,6 +191,32 @@ Learn more about the power of Turborepo:
 - [Prisma Migrate: Deploy Migration with Docker](https://notiz.dev/blog/prisma-migrate-deploy-with-docker#perform-migrations-with-docker)
 - [Automating Changesets](https://github.com/changesets/changesets/blob/main/docs/automating-changesets.md)
 
+## What's inside?
+
+This Turborepo includes the following packages and apps:
+
+### Apps and Packages
+
+- `api`: an [Express](https://expressjs.com/) server
+- `storefront`: a [Next.js](https://nextjs.org/) app
+- `admin`: a [Vite](https://vitejs.dev/) single page app
+- `blog`: a [Remix](https://remix.run/) blog
+- `logger`: isomorphic logger (a small wrapper around console.log)
+- `ui`: a dummy React UI library (which contains a single `<CounterButton>` component)
+- `scripts`: Jest and ESLint configurations
+- `tsconfig`: tsconfig.json;s used throughout the monorepo
+
+Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
+
+### Utilities
+
+This Turborepo has some additional tools already setup for you:
+
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Jest](https://jestjs.io) test runner for all things JavaScript
+- [Prettier](https://prettier.io) for code formatting
+
 ## License
 
 This project is open-sourced software licensed under the [MIT license](https://aris.mit-license.org).
@@ -196,3 +227,7 @@ See the [license file](./license.txt) for more information.
 [changeset]: https://github.com/changesets/changesets
 [vercel-deploy]: https://vercel.com/new/clone?repository-url=https://github.com/riipandi/fuelstack&project-name=fuelstack&repo-name=fuelstack&env=NEXT_PUBLIC_SITE_URL,NEXT_PUBLIC_MAINTENANCE_MODE
 [github-npm-docs]: https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#publishing-a-package-using-publishconfig-in-the-packagejson-file
+
+---
+
+<sub>🤫 Psst! If you like my work you can support me via [GitHub sponsors](https://github.com/sponsors/riipandi).</sub>
