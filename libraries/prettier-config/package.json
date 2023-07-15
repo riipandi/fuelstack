@@ -1,8 +1,11 @@
 {
-    "name": "@acme/tsconfig",
+    "name": "@acme/prettier-config",
     "version": "0.0.0",
-    "private": true,
     "license": "MIT",
+    "main": "index.json",
+    "files": [
+        "index.json"
+    ],
     "publishConfig": {
         "access": "public"
     }

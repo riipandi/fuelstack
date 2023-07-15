@@ -1,18 +1,26 @@
 {
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "files.exclude": {
-    "**/.tsbuildinfo": true,
-    "**/.turbo/**": true
-  },
-  "files.watcherExclude": {
-    "**/.github/FUNDING.yml": true,
-    "**/.github/ISSUE_TEMPLATE/**": true,
-    "**/.github/PULL_REQUEST_TEMPLATE.md": true,
-    "**/.tsbuildinfo": true,
-    "**/.turbo/**": true
-  },
-  "search.exclude": {
-    "**/.tsbuildinfo": true,
-    "**/.turbo/**": true
-  }
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "typescript.enablePromptUseWorkspaceTsdk": true,
+    "files.exclude": {
+        "**/.tsbuildinfo": true,
+        "**/.turbo/**": true
+    },
+    "files.watcherExclude": {
+        "**/.github/FUNDING.yml": true,
+        "**/.github/ISSUE_TEMPLATE/**": true,
+        "**/.github/PULL_REQUEST_TEMPLATE.md": true,
+        "**/.tsbuildinfo": true,
+        "**/.turbo/**": true
+    },
+    "search.exclude": {
+        "**/.tsbuildinfo": true,
+        "**/.turbo/**": true
+    },
+    "tailwindCSS.files.exclude": [
+        "**/.git/**",
+        "**/.github/**",
+        "**/.vscode/**",
+        "**/node_modules/**",
+        "**/*.{md,js,ts}"
+    ]
 }

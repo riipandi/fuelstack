@@ -1,12 +1,12 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@acme/tsconfig/base.json",
-  "compilerOptions": {
-    "lib": ["ES2019"],
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./src"
-  },
-  "exclude": ["node_modules"],
-  "include": ["src"]
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@acme/tsconfig/base.json",
+    "compilerOptions": {
+        "lib": ["ES2019"],
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "rootDir": "./src"
+    },
+    "exclude": ["node_modules"],
+    "include": ["src"]
 }

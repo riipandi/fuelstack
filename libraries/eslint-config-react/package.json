@@ -1,17 +1,17 @@
 {
-  "name": "@acme/eslint-config-react",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "main": "index.cjs",
-  "dependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-config-turbo": "^1.10.7",
-    "eslint-plugin-react": "7.32.2"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+    "name": "@acme/eslint-config-react",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "main": "index.cjs",
+    "dependencies": {
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-config-turbo": "^1.10.7",
+        "eslint-plugin-react": "7.32.2"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
 }

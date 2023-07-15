@@ -1,9 +1,9 @@
 {
-  "name": "@acme/jest-presets",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "dependencies": {
-    "ts-jest": "^29.1.1"
-  }
+    "name": "@acme/jest-presets",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "dependencies": {
+        "ts-jest": "^29.1.1"
+    }
 }

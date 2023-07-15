@@ -1,38 +1,38 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
-  "globalEnv": ["PORT"],
-  "pipeline": {
-    "build": {
-      "outputs": [
-        "dist/**",
-        ".next/**",
-        "!.next/cache/**",
-        "build/**",
-        "api/**",
-        "public/build/**"
-      ],
-      "dependsOn": ["^build"]
-    },
-    "test": {
-      "outputs": ["coverage/**"],
-      "dependsOn": ["^build"],
-      "outputMode": "full"
-    },
-    "lint": {
-      "dependsOn": ["^build"]
-    },
-    "dev": {
-      "dependsOn": ["^build"],
-      "cache": false,
-      "persistent": true
-    },
-    "clean": { "cache": false },
-    "db:introspect": { "cache": false },
-    "db:migrate": { "cache": false },
-    "db:generate": { "cache": false },
-    "db:check": { "cache": false },
-    "db:up": { "cache": false },
-    "db:drop": { "cache": false }
-  }
+    "$schema": "https://turbo.build/schema.json",
+    "globalDependencies": ["**/.env.*local"],
+    "globalEnv": ["PORT"],
+    "pipeline": {
+        "build": {
+            "outputs": [
+                "dist/**",
+                ".next/**",
+                "!.next/cache/**",
+                "build/**",
+                "api/**",
+                "public/build/**"
+            ],
+            "dependsOn": ["^build"]
+        },
+        "test": {
+            "outputs": ["coverage/**"],
+            "dependsOn": ["^build"],
+            "outputMode": "full"
+        },
+        "lint": {
+            "dependsOn": ["^build"]
+        },
+        "dev": {
+            "dependsOn": ["^build"],
+            "cache": false,
+            "persistent": true
+        },
+        "clean": { "cache": false },
+        "db:introspect": { "cache": false },
+        "db:migrate": { "cache": false },
+        "db:generate": { "cache": false },
+        "db:check": { "cache": false },
+        "db:up": { "cache": false },
+        "db:drop": { "cache": false }
+    }
 }

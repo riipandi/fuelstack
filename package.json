@@ -1,21 +1,23 @@
 {
-  "name": "fuelstack",
-  "version": "1.0.0",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "clean": "turbo clean",
-    "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
-    "dev": "turbo dev --no-cache --continue --concurrency=20",
-    "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",
-    "lint": "turbo lint",
-    "test": "turbo test"
-  },
-  "devDependencies": {
-    "prettier-plugin-tailwindcss": "^0.3.0",
-    "prettier": "^2.8.8",
-    "rimraf": "^5.0.1",
-    "turbo": "^1.10.7"
-  },
-  "packageManager": "pnpm@8.6.5"
+    "name": "fuelstack",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "build": "turbo build",
+        "dev": "turbo dev --no-cache --continue --concurrency=20",
+        "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
+        "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",
+        "clean": "turbo clean",
+        "lint": "turbo lint",
+        "test": "turbo test"
+    },
+    "devDependencies": {
+        "@acme/prettier-config": "workspace:^",
+        "prettier-plugin-tailwindcss": "^0.4.1",
+        "prettier": "^3.0.0",
+        "rimraf": "^5.0.1",
+        "turbo": "^1.10.7"
+    },
+    "prettier": "@acme/prettier-config",
+    "packageManager": "pnpm@8.6.7"
 }

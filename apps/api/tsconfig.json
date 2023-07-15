@@ -1,23 +1,23 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@acme/tsconfig/base.json",
-  "compilerOptions": {
-    "allowJs": true,
-    "baseUrl": ".",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "lib": ["es2020"],
-    "module": "es2020",
-    "outDir": "dist",
-    "removeComments": true,
-    "resolveJsonModule": true,
-    "sourceMap": true,
-    "target": "es2020",
-    "typeRoots": ["./node_modules/@types", "./node_modules/@acme"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@acme/tsconfig/base.json",
+    "compilerOptions": {
+        "allowJs": true,
+        "baseUrl": ".",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": ["es2020"],
+        "module": "es2020",
+        "outDir": "dist",
+        "removeComments": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "target": "es2020",
+        "typeRoots": ["./node_modules/@types", "./node_modules/@acme"],
+        "paths": {
+            "@/*": ["./src/*"]
+        }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }

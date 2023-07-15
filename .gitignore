@@ -38,6 +38,7 @@ dist-ssr
 .dist
 .output
 .build*
+storybook-static/
 **/builds
 **/build/*
 **/tmp/
@@ -69,7 +70,6 @@ public/dist
 public/build
 api/index.js*
 api/_assets*
-
 
 # projects
 .env.*

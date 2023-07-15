@@ -1,31 +1,31 @@
 {
-  "name": "admin",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "build": "vite build",
-    "dev": "vite --clearScreen false",
-    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-    "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
-  },
-  "dependencies": {
-    "@acme/ui": "workspace:*",
-    "@acme/utils": "workspace:*",
-    "react-dom": "^18.2.0",
-    "react": "^18.2.0"
-  },
-  "devDependencies": {
-    "@acme/eslint-config-react": "workspace:*",
-    "@acme/tailwind-config": "workspace:*",
-    "@acme/tsconfig": "workspace:*",
-    "@types/react-dom": "^18.2.6",
-    "@types/react": "^18.2.14",
-    "@vitejs/plugin-react": "^4.0.1",
-    "autoprefixer": "^10.4.14",
-    "eslint": "^8.44.0",
-    "postcss": "^8.4.24",
-    "tailwindcss": "^3.3.2",
-    "typescript": "^5.0.4",
-    "vite": "^4.3.9"
-  }
+    "name": "admin",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite --clearScreen false",
+        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
+        "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
+    },
+    "dependencies": {
+        "@acme/ui": "workspace:*",
+        "@acme/utils": "workspace:*",
+        "react-dom": "^18.2.0",
+        "react": "^18.2.0"
+    },
+    "devDependencies": {
+        "@acme/eslint-config-react": "workspace:*",
+        "@acme/tailwind-config": "workspace:*",
+        "@acme/tsconfig": "workspace:*",
+        "@types/react-dom": "^18.2.7",
+        "@types/react": "^18.2.15",
+        "@vitejs/plugin-react": "^4.0.3",
+        "autoprefixer": "^10.4.14",
+        "eslint": "^8.45.0",
+        "postcss": "^8.4.26",
+        "tailwindcss": "^3.3.3",
+        "typescript": "^5.0.4",
+        "vite": "^4.4.4"
+    }
 }

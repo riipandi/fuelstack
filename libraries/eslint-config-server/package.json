@@ -1,13 +1,13 @@
 {
-  "name": "@acme/eslint-config-server",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "main": "index.cjs",
-  "dependencies": {
-    "eslint-config-turbo": "^1.10.7"
-  },
-  "publishConfig": {
-    "access": "public"
-  }
+    "name": "@acme/eslint-config-server",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "main": "index.cjs",
+    "dependencies": {
+        "eslint-config-turbo": "^1.10.7"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
 }

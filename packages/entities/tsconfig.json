@@ -1,22 +1,22 @@
 {
-  "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@acme/tsconfig/base.json",
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "incremental": true,
-    "lib": ["ES2019"],
-    "module": "CommonJS",
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "sourceMap": true,
-    "target": "ES6"
-  },
-  "ts-node": {
-    "swc": false,
+    "$schema": "https://json.schemastore.org/tsconfig",
+    "extends": "@acme/tsconfig/base.json",
     "compilerOptions": {
-      "module": "CommonJS"
-    }
-  },
-  "exclude": ["node_modules"],
-  "include": ["src"]
+        "allowSyntheticDefaultImports": true,
+        "incremental": true,
+        "lib": ["ES2019"],
+        "module": "CommonJS",
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "target": "ES6"
+    },
+    "ts-node": {
+        "swc": false,
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
+    "exclude": ["node_modules"],
+    "include": ["src"]
 }

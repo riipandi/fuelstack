@@ -9,7 +9,7 @@ export default function Template({ children }: { children: React.ReactNode }) {
       className={cn(
         fontSans.className,
         fontMono.variable,
-        'flex min-h-screen flex-col bg-white pb-12 pt-16 dark:bg-black',
+        'flex min-h-screen flex-col bg-white pb-12 pt-16 dark:bg-black'
       )}
     >
       {children}
