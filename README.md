@@ -68,7 +68,7 @@ openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 
 ### Up and Running
 
-This turborepo uses [Yarn](https://classic.yarnpkg.com/lang/en) as a package manager.
+This turborepo uses [pnpm](https://pnpm.io) as a package manager.
 
 ```sh
 pnpm install       # Installing dependencies
@@ -79,8 +79,9 @@ According to [Turborepo](https://turborepo.org/docs/features/scopes) documentati
 you can run or build single package using these command:
 
 ```sh
-pnpm dev --filter=web      # Running the web in development mode
-pnpm build --filter=api    # Building the NestJS api package
+pnpm turbo run dev --filter=api...        # Running the Fastify API in development mode
+pnpm turbo run dev --filter=admin...      # Running the admin React SPA in development mode
+pnpm turbo run dev --filter=website...    # Running the web Next.js in development mode
 ```
 
 For detailed explanation of how things work, check out their official documentation.
@@ -95,10 +96,10 @@ If you don't have an account you can [create one](https://vercel.com/signup), th
 
 ```sh
 # Authenticate the Turborepo CLI with your Vercel account
-npx turbo login
+pnpm dlx turbo login
 
 # Link your project to your Remote Cache
-npx turbo link
+pnpm dlx turbo link
 ```
 
 ### Usefull Commands
@@ -107,10 +108,10 @@ This starter contains a command line script to help you manage the project such 
 the PostgreSQL, Redis, and Mailpit on Docker.
 
 ```sh
-pnpm dev             # Develop all packages and the docs site
-pnpm build           # Build all packages and the docs site
-pnpm lint            # Lint all packages
-pnpm clean           # Clean up all node_modules and dist folders
+pnpm dev          # Develop all packages and the docs site
+pnpm build        # Build all packages and the docs site
+pnpm lint         # Lint all packages
+pnpm cleanup      # Clean up all node_modules and dist folders
 ```
 
 ## Deploy your own
@@ -125,7 +126,7 @@ deployments so that pushing to master will deploy to production! 🚀
 
 You will need to configure a few things:
 
-- Settings -> General -> Root Directory : `apps/web/`
+- Settings -> General -> Root Directory : `apps/website/`
 - Settings -> Git -> Ignored Build Step : `git diff --quiet HEAD^ HEAD ./`
 
 Ignored Build Step configuration used to avoid rebuilding on Vercel when pushing the changes.
