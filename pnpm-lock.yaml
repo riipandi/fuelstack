@@ -349,15 +349,12 @@ importers:
 
   packages/ui-library:
     dependencies:
-      clsx:
-        specifier: ^2.0.0
-        version: 2.0.0
+      '@acme/helpers':
+        specifier: workspace:*
+        version: link:../ui-helpers
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-      tailwind-merge:
-        specifier: ^1.14.0
-        version: 1.14.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*

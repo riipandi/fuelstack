@@ -1,6 +1,6 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { CounterButton } from '../components/CounterButton'
+import { CounterButton } from '../components/counter-button'
 
 /**
  * @jest-environment jsdom

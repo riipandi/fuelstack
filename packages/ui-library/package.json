@@ -14,16 +14,15 @@
         "build": "tsup src/index.tsx --format esm,cjs --dts --external react",
         "dev": "tsup src/index.tsx --format esm,cjs --watch --dts --external react",
         "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-        "lint": "eslint \"src/**/*.ts*\"",
+        "lint": "eslint \"**/*.{ts,tsx}\"",
         "test": "jest"
     },
     "peerDependencies": {
         "react": "^18.2.0"
     },
     "dependencies": {
-        "clsx": "^2.0.0",
-        "react-dom": "^18.2.0",
-        "tailwind-merge": "^1.14.0"
+        "@acme/helpers": "workspace:*",
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",

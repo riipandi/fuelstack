@@ -1,4 +1,4 @@
-// Styles
+// Tailwind styles
 import './styles.css'
 
 // Components

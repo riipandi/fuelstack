@@ -19,7 +19,7 @@
         "db:up": "drizzle-kit up:pg --config=drizzle.config.ts",
         "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
         "db:studio": "drizzle-kit studio --config=drizzle.config.ts --port 8090",
-        "lint": "eslint \"src/**/*.ts*\""
+        "lint": "eslint \"**/*.{ts,tsx}\""
     },
     "dependencies": {
         "dotenv": "^16.3.1",

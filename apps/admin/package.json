@@ -6,7 +6,7 @@
         "build": "vite build",
         "dev": "vite --clearScreen false",
         "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-        "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
+        "lint": "tsc --noEmit && eslint \"**/*.{ts,tsx}\""
     },
     "dependencies": {
         "@acme/helpers": "workspace:*",

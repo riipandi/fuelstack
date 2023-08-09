@@ -8,7 +8,7 @@
         "dev": "concurrently \"pnpm watch-compile\" \"pnpm watch-dev\"",
         "watch-compile": "swc src -w --out-dir dist",
         "watch-dev": "nodemon --watch \"dist/**/*\" -e js ./dist/app.js",
-        "lint": "tsc --noEmit && eslint \"src/**/*.ts*\"",
+        "lint": "tsc --noEmit && eslint \"**/*.{ts,tsx}\"",
         "start": "NODE_ENV=production node dist/app.js",
         "test": "NODE_ENV=development jest --detectOpenHandles"
     },
