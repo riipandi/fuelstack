@@ -10,7 +10,8 @@
         "start": "next start"
     },
     "dependencies": {
-        "@acme/logger": "workspace:*",
+        "@acme/envars": "workspace:*",
+        "@acme/helper": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",
         "next": "^13.4.10",

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import { CounterButton, ExternalLink } from '@acme/ui'
-import { log } from '@acme/logger'
+import { log } from '@acme/utils'
 import NextLogo from '~/next.svg'
 
 export const metadata: Metadata = {

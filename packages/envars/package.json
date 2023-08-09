@@ -1,5 +1,5 @@
 {
-    "name": "@acme/utils",
+    "name": "@acme/envars",
     "version": "0.0.0",
     "private": true,
     "main": "./dist/index.js",
@@ -14,9 +14,6 @@
         "dev": "tsc -w",
         "lint": "eslint \"src/**/*.ts*\"",
         "test": "jest"
-    },
-    "dependencies": {
-        "cross-fetch": "^4.0.0"
     },
     "devDependencies": {
         "@acme/eslint-config-common": "workspace:*",

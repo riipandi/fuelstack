@@ -1,5 +1,5 @@
 {
-    "name": "@acme/logger",
+    "name": "@acme/helper",
     "version": "0.0.0",
     "private": true,
     "main": "./dist/index.js",
@@ -10,10 +10,14 @@
     ],
     "scripts": {
         "build": "tsc",
-        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "dev": "tsc -w",
+        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "lint": "eslint \"src/**/*.ts*\"",
         "test": "jest"
+    },
+    "dependencies": {
+        "clsx": "^1.2.1",
+        "tailwind-merge": "^1.13.2"
     },
     "devDependencies": {
         "@acme/eslint-config-common": "workspace:*",

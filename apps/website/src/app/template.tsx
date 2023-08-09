@@ -1,7 +1,7 @@
 'use client'
 
 import { fontMono, fontSans } from '@/utils/fonts'
-import { cn } from '@acme/ui'
+import { cn } from '@acme/helper'
 
 export default function Template({ children }: { children: React.ReactNode }) {
   return (

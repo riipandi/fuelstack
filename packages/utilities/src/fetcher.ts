@@ -1,3 +1,5 @@
+import fetch from 'cross-fetch'
+
 /**
  * Represents the shape of an API response, wrapping the data returned from an API.
  * @template T The type of data returned by the API.

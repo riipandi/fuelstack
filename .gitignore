@@ -52,6 +52,7 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 lerna-debug.log*
+build-errors.log
 testem.log
 *.local
 *.tsbuildinfo
@@ -71,9 +72,10 @@ public/build
 api/index.js*
 api/_assets*
 
-# projects
-.env.*
-!.env.example
-build-errors.log
+# envars
+.env*
+!.env*.example
+
+# Docker
 **/.dockerignore
 !/.dockerignore

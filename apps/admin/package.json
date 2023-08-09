@@ -9,6 +9,7 @@
         "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
     },
     "dependencies": {
+        "@acme/envars": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",
         "react-dom": "^18.2.0",

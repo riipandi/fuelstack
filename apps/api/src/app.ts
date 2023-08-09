@@ -3,7 +3,7 @@ import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import fastifyRequestLogger from '@mgcrea/fastify-request-logger'
 import { join } from 'path'
 
-import { dbClient } from '@acme/entities'
+import { dbClient } from '@acme/database'
 import { env } from '@/env'
 
 export type AppOptions = {
