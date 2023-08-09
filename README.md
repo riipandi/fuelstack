@@ -71,9 +71,12 @@ openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 
 This turborepo uses [pnpm](https://pnpm.io) as a package manager.
 
+Run `pnpm install` to install required npm dependencies.
+
+**Start all packages in development**
+
 ```sh
-pnpm install       # Installing dependencies
-pnpm dev           # Start app in development
+pnpm dotenv -e .env.local -- turbo run dev
 ```
 
 According to [Turborepo](https://turborepo.org/docs/features/scopes) documentation,
