@@ -1,7 +1,7 @@
 {
     "typescript.tsdk": "node_modules/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
-    "eslint.workingDirectories": ["./apps", "./libraries", "./packages"],
+    "eslint.workingDirectories": ["apps", "libraries", "packages"],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {

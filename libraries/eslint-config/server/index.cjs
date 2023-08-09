@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['eslint:recommended', 'turbo'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
   env: {
     node: true,
     es6: true,
@@ -9,9 +9,14 @@ module.exports = {
       version: 29,
     },
   },
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+  },
+  rules: {
+    'no-console': 'warn',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   overrides: [
     {
