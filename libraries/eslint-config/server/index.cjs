@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
   plugins: ['@typescript-eslint', 'simple-import-sort'],
-  ignorePatterns: ['node_modules', '.cache', '.turbo', 'dist'],
+  ignorePatterns: ['node_modules', '.cache', '.turbo', 'dist', 'specs'],
   env: {
     node: true,
     es6: true,

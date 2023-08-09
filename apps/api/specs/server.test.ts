@@ -1,6 +1,6 @@
 import supertest from 'supertest'
 
-import { start } from '../app'
+import { start } from '../src/app'
 
 describe('server', () => {
   it('health check returns 200', async () => {

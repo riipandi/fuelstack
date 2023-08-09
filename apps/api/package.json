@@ -48,6 +48,7 @@
     "nodemonConfig": {
         "verbose": true,
         "ignore": [
+            "**/specs/**",
             "**/test/**",
             "**/docs/**"
         ],

@@ -1,7 +1,7 @@
 module.exports = {
   extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
   plugins: ['@typescript-eslint', 'simple-import-sort'],
-  ignorePatterns: ['node_modules', '.next', '.cache', '.turbo', 'dist', 'out'],
+  ignorePatterns: ['node_modules', '.next', '.cache', '.turbo', 'dist', 'out', 'specs'],
   env: {
     browser: true,
     node: true,
