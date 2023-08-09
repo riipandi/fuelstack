@@ -86,10 +86,10 @@ pnpm dotenv -e .env.local -- turbo run dev
 # Running the Fastify API in development mode
 pnpm dotenv -e .env.local -- turbo run dev --filter=api...
 
-# Running the web Next.js in development mode
+# Running the Next.js application in development mode
 pnpm dotenv -e .env.local -- turbo run dev --filter=website...
 
-# Build the web Next.js for production
+# Build the Next.js application for production
 pnpm dotenv -e .env.local -- turbo run build --filter=website...
 ```
 
