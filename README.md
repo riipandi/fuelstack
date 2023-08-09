@@ -86,11 +86,11 @@ pnpm dotenv -e .env.local -- turbo run dev
 # Running the Fastify API in development mode
 pnpm dotenv -e .env.local -- turbo run dev --filter=api...
 
-# Running the admin React SPA in development mode
-pnpm dotenv -e .env.local -- turbo run dev --filter=admin...
-
 # Running the web Next.js in development mode
 pnpm dotenv -e .env.local -- turbo run dev --filter=website...
+
+# Build the web Next.js for production
+pnpm dotenv -e .env.local -- turbo run build --filter=website...
 ```
 
 For more detailed explanation, check out [Turborepo](https://turborepo.org/docs/features/scopes) documentation.
