@@ -1,3 +1,5 @@
+'use client'
+
 interface ExternalLinkProps {
   children: React.ReactNode
   href: string

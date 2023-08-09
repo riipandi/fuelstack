@@ -10,8 +10,8 @@
     ],
     "scripts": {
         "build": "tsc",
-        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "dev": "tsc -w",
+        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "lint": "eslint \"src/**/*.ts*\"",
         "test": "jest"
     },

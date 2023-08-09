@@ -2,5 +2,5 @@
 import './styles.css'
 
 // Components
-export { ExternalLink } from './components/ExternalLink'
-export { CounterButton } from './components/CounterButton'
+export { ExternalLink } from './components/external-link'
+export { CounterButton } from './components/counter-button'

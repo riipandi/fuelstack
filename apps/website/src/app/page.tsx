@@ -26,8 +26,8 @@ export default function Page() {
             className='pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0'
             href='https://nextjs.org'
           >
-            <span className='font-medium dark:invert'>Powered by</span>
-            <Image src={NextLogo} alt='Vercel Logo' className='h-5 w-auto dark:invert' priority />
+            <span className='font-medium tracking-wide dark:invert'>Powered by</span>
+            <Image src={NextLogo} alt='Vercel Logo' className='h-4 w-auto dark:invert' priority />
           </ExternalLink>
         </div>
       </main>

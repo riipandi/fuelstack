@@ -4,14 +4,14 @@
     "private": true,
     "scripts": {
         "build": "next build",
-        "clean": "rimraf .next",
+        "clean": "rimraf .turbo && rimraf node_modules && rimraf .next",
         "dev": "next dev -p 4200",
         "lint": "next lint",
         "start": "next start"
     },
     "dependencies": {
         "@acme/envars": "workspace:*",
-        "@acme/helper": "workspace:*",
+        "@acme/helpers": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",
         "next": "^13.4.13",

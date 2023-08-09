@@ -10,8 +10,8 @@
     ],
     "scripts": {
         "build": "tsc",
-        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "dev": "tsc -w",
+        "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "db:introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
         "db:migrate": "ts-node src/migrate",
         "db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
