@@ -3,19 +3,24 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "build": "turbo build",
-        "dev": "turbo dev --no-cache --continue --concurrency=20",
+        "build": "turbo build --concurrency=20",
+        "dev": "turbo dev --continue --concurrency=20",
+        "dev:api": "turbo run dev --filter=api...",
+        "dev:admin": "turbo run dev --filter=admin...",
+        "dev:website": "turbo run dev --filter=website...",
+        "build:website": "turbo run build --filter=website...",
         "deps": "npx --yes npm-check-updates -x typescript --deep --interactive",
         "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx}\"",
-        "clean": "turbo clean",
+        "clean": "turbo clean && docker-compose -f compose-development.yml down --remove-orphans",
+        "pre-dev": "docker-compose -f compose-development.yml up -d",
         "lint": "turbo lint",
         "test": "turbo test"
     },
     "devDependencies": {
         "prettier-plugin-tailwindcss": "^0.4.1",
-        "prettier": "^3.0.0",
+        "prettier": "^3.0.1",
         "rimraf": "^5.0.1",
-        "turbo": "^1.10.7"
+        "turbo": "^1.10.12"
     },
     "packageManager": "pnpm@8.6.11"
 }

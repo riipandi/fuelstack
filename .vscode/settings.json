@@ -1,8 +1,14 @@
 {
     "typescript.tsdk": "node_modules/typescript/lib",
     "typescript.enablePromptUseWorkspaceTsdk": true,
+    "eslint.workingDirectories": ["./apps", "./libraries", "./packages"],
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true,
+        "source.fixAll.eslint": true
+    },
     "files.exclude": {
-        "**/.next/**": true,
         "**/.tsbuildinfo": true,
         "**/.turbo/**": true
     },
@@ -15,7 +21,8 @@
     },
     "search.exclude": {
         "**/.tsbuildinfo": true,
-        "**/.turbo/**": true
+        "**/.turbo/**": true,
+        "templates/**": true
     },
     "tailwindCSS.files.exclude": [
         "**/.git/**",
@@ -23,5 +30,8 @@
         "**/.vscode/**",
         "**/node_modules/**",
         "**/*.{md,js,ts}"
-    ]
+    ],
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    }
 }

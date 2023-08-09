@@ -23,17 +23,17 @@
     },
     "dependencies": {
         "dotenv": "^16.3.1",
-        "drizzle-orm": "^0.27.2",
-        "drizzle-zod": "^0.4.4",
+        "drizzle-orm": "^0.28.1",
+        "drizzle-zod": "^0.5.0",
         "postgres": "^3.3.5",
         "zod": "^3.21.4"
     },
     "devDependencies": {
         "@acme/eslint-config-common": "workspace:*",
         "@acme/tsconfig": "workspace:*",
-        "@types/node": "^20.4.2",
-        "drizzle-kit": "^0.19.5",
-        "eslint": "^8.45.0",
+        "@types/node": "^20.4.9",
+        "drizzle-kit": "^0.19.12",
+        "eslint": "^8.46.0",
         "ts-node": "^10.9.1",
         "typescript": "^5.0.4"
     }

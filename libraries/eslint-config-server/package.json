@@ -5,7 +5,7 @@
     "license": "MIT",
     "main": "index.cjs",
     "dependencies": {
-        "eslint-config-turbo": "^1.10.7"
+        "eslint-config-turbo": "^1.10.12"
     },
     "publishConfig": {
         "access": "public"

@@ -14,7 +14,7 @@
         "@acme/helper": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",
-        "next": "^13.4.10",
+        "next": "^13.4.13",
         "react-dom": "^18.2.0",
         "react": "^18.2.0"
     },
@@ -23,11 +23,11 @@
         "@acme/tailwind-config": "workspace:*",
         "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
-        "@types/node": "^20.4.2",
+        "@types/node": "^20.4.9",
         "@types/react-dom": "^18.2.7",
-        "@types/react": "^18.2.15",
+        "@types/react": "^18.2.19",
         "autoprefixer": "^10.4.14",
-        "postcss": "^8.4.26",
+        "postcss": "^8.4.27",
         "tailwindcss": "^3.3.3",
         "typescript": "^5.0.4"
     }

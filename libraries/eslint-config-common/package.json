@@ -5,9 +5,9 @@
     "license": "MIT",
     "main": "index.cjs",
     "dependencies": {
-        "eslint-config-prettier": "^8.8.0",
-        "eslint-plugin-react": "7.32.2",
-        "eslint-config-turbo": "^1.10.7"
+        "eslint-config-prettier": "^9.0.0",
+        "eslint-plugin-react": "7.33.1",
+        "eslint-config-turbo": "^1.10.12"
     },
     "publishConfig": {
         "access": "public"

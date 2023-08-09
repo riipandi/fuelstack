@@ -1,15 +1,13 @@
-import type { Metadata } from 'next'
 import Image from 'next/image'
+import { Metadata } from 'next/types'
 import { CounterButton, ExternalLink } from '@acme/ui'
-import { log } from '@acme/utils'
 import NextLogo from '~/next.svg'
 
 export const metadata: Metadata = {
   title: 'Website | FuelStack',
 }
 
-export default function Store() {
-  log('Hey! This is website home')
+export default function Page() {
   return (
     <>
       <main className='mx-auto flex w-full max-w-4xl grow flex-col justify-center px-4 sm:px-6 lg:px-8'>

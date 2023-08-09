@@ -14,13 +14,8 @@ module.exports = {
         gray: colors.gray,
         primary: colors.blue,
         secondary: colors.indigo,
-        brandblue: colors.blue[500],
-        brandred: colors.red[500],
       },
     },
-    debugScreens: {
-      position: ['bottom', 'left'],
-    },
   },
-  plugins: [require('tailwindcss-debug-screens')],
+  plugins: [],
 }
