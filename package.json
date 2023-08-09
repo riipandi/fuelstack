@@ -22,8 +22,9 @@
         "cleanup": "turbo clean && docker-compose -f docker-compose.yml down --remove-orphans",
         "start-docker": "docker-compose -f docker-compose.yml up -d",
         "pre-dev": "pnpm start-docker && pnpm db:migrate",
-        "lint": "turbo lint",
-        "test": "turbo test"
+        "lint:fix": "turbo run lint -- --fix",
+        "lint": "turbo run lint",
+        "test": "turbo run test"
     },
     "devDependencies": {
         "prettier-plugin-tailwindcss": "^0.4.1",

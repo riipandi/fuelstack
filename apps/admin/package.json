@@ -16,7 +16,7 @@
         "react": "^18.2.0"
     },
     "devDependencies": {
-        "@acme/eslint-config-react": "workspace:*",
+        "@acme/eslint-config": "workspace:*",
         "@acme/tailwind-config": "workspace:*",
         "@types/react-dom": "^18.2.7",
         "@types/react": "^18.2.19",

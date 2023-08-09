@@ -19,7 +19,7 @@
         "cross-fetch": "^4.0.0"
     },
     "devDependencies": {
-        "@acme/eslint-config-common": "workspace:*",
+        "@acme/eslint-config": "workspace:*",
         "@acme/jest-presets": "workspace:*",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.9",

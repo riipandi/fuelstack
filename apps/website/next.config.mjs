@@ -6,9 +6,6 @@ const nextConfig = {
   },
   reactStrictMode: true,
   poweredByHeader: false,
-  experimental: {
-    serverActions: true,
-  },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
