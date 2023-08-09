@@ -2,7 +2,7 @@ import { CounterButton, ExternalLink } from '@acme/ui'
 
 export default function App() {
   return (
-    <div className='flex min-h-screen flex-col bg-white pb-12 pt-16 dark:bg-black'>
+    <div className='flex min-h-screen flex-col bg-white pb-12 pt-16 dark:bg-gray-950'>
       <main className='mx-auto flex w-full max-w-4xl grow flex-col justify-center px-4 sm:px-6 lg:px-8'>
         <div className='py-16'>
           <div className='text-center'>

@@ -13,8 +13,8 @@ module.exports = {
       colors: {
         black: '#121314',
         gray: colors.slate,
-        primary: colors.red,
-        secondary: colors.indigo,
+        primary: colors.indigo,
+        secondary: colors.teal,
       },
     },
   },

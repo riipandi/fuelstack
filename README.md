@@ -35,7 +35,6 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 1. Install Node.js `v18.16.1` or greater: https://nodejs.org/en/download
 2. Install Docker and Docker Compose: https://docs.docker.com/desktop
-3. Install Taskfile: https://taskfile.dev/installation
 
 ### Setup New Project
 
