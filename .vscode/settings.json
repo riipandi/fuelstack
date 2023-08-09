@@ -9,19 +9,25 @@
         "source.fixAll.eslint": true
     },
     "files.exclude": {
+        "**/.next/**": true,
+        "**/.turbo/**": true,
         "**/.tsbuildinfo": true,
-        "**/.turbo/**": true
+        "**/dist": true
     },
     "files.watcherExclude": {
         "**/.github/FUNDING.yml": true,
         "**/.github/ISSUE_TEMPLATE/**": true,
         "**/.github/PULL_REQUEST_TEMPLATE.md": true,
+        "**/.next/**": true,
+        "**/.turbo/**": true,
         "**/.tsbuildinfo": true,
-        "**/.turbo/**": true
+        "**/dist/**": true
     },
     "search.exclude": {
-        "**/.tsbuildinfo": true,
+        "**/.next/**": true,
         "**/.turbo/**": true,
+        "**/.tsbuildinfo": true,
+        "**/dist/**": true,
         "templates/**": true
     },
     "tailwindCSS.files.exclude": [

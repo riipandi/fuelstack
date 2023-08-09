@@ -66,7 +66,7 @@ services:
       - 'minio_data:/data/minio'
     command: minio server --address ":9000" /data/minio --console-address ":9001"
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:9000/minio/health/live" ]
+      test: ['CMD', 'curl', '-f', 'http://localhost:9000/minio/health/live']
       retries: 3
       timeout: 5s
     environment:

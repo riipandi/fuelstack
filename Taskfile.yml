@@ -1,12 +1,12 @@
 # yaml-language-server: $schema = https://taskfile.dev/schema.json
 
-version: "3"
+version: '3'
 
 vars:
   APP_VERSION: '{{.APP_VERSION | default "1.0.0"}}'
   CONCURRENCY: '{{.CONCURRENCY | default "20"}}'
-  GIT_SHA: {sh: git rev-parse --short HEAD}
-  ROOT_DIR: {sh: pwd}
+  GIT_SHA: { sh: git rev-parse --short HEAD }
+  ROOT_DIR: { sh: pwd }
 
 tasks:
   prepare:
@@ -21,11 +21,17 @@ tasks:
 
   dev:admin:
     desc: Start development Admin (including API)
-    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,admin}...']
+    cmds:
+      [
+        'pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,admin}...',
+      ]
 
   dev:website:
     desc: Start development Website (including API)
-    cmds: ['pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,website}...']
+    cmds:
+      [
+        'pnpm turbo dev --no-cache --continue --concurrency={{.CONCURRENCY}} --filter={api,website}...',
+      ]
 
   db:introspect:
     cmds: ['pnpm turbo db:introspect --no-cache --filter=@acme/database']
