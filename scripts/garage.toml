@@ -25,6 +25,7 @@ index = "index.html"
 [admin]
 api_bind_addr = "[::]:3903"
 admin_token = "s3AdminToken"
+metrics_token = "s3MetricsToken"
 
 [k2v_api]
 api_bind_addr = "[::]:3904"
