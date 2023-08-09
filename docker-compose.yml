@@ -55,11 +55,10 @@ services:
       # https://github.com/axllent/mailpit/wiki/Runtime-options
       TZ: 'Asia/Jakarta'
 
-  # docker exec -ti garage sh
-  #  > garage key new --name nextcloud-key
-  # docker run --rm -it ubuntu bash
-  # docker run --name garage_cli --rm -it dxflrs/garage:v0.8.0 garage
-  # docker exec -it garage garage
+
+  # docker exec -ti garaged /garage status
+  # docker exec -ti garaged /garage bucket list
+  # docker exec -ti garaged /garage key new --name=s3key
   garaged:
     image: dxflrs/garage:v0.8.2
     container_name: garaged
