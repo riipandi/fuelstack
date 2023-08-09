@@ -23,9 +23,6 @@ importers:
 
   apps/admin:
     dependencies:
-      '@acme/envars':
-        specifier: workspace:*
-        version: link:../../packages/envars
       '@acme/helpers':
         specifier: workspace:*
         version: link:../../packages/ui-helpers
@@ -81,9 +78,6 @@ importers:
       '@acme/database':
         specifier: workspace:*
         version: link:../../packages/database
-      '@acme/envars':
-        specifier: workspace:*
-        version: link:../../packages/envars
       '@acme/utils':
         specifier: workspace:*
         version: link:../../packages/utilities
@@ -163,9 +157,6 @@ importers:
 
   apps/website:
     dependencies:
-      '@acme/envars':
-        specifier: workspace:*
-        version: link:../../packages/envars
       '@acme/helpers':
         specifier: workspace:*
         version: link:../../packages/ui-helpers
@@ -339,30 +330,6 @@ importers:
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@20.4.9)(typescript@5.0.4)
-      typescript:
-        specifier: ^5.0.4
-        version: 5.0.4
-
-  packages/envars:
-    devDependencies:
-      '@acme/eslint-config-common':
-        specifier: workspace:*
-        version: link:../../libraries/eslint-config-common
-      '@acme/jest-presets':
-        specifier: workspace:*
-        version: link:../../libraries/jest-presets
-      '@types/jest':
-        specifier: ^29.5.3
-        version: 29.5.3
-      '@types/node':
-        specifier: ^20.4.9
-        version: 20.4.9
-      eslint:
-        specifier: ^8.46.0
-        version: 8.46.0
-      jest:
-        specifier: ^29.6.2
-        version: 29.6.2(@types/node@20.4.9)
       typescript:
         specifier: ^5.0.4
         version: 5.0.4

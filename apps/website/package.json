@@ -10,7 +10,6 @@
         "start": "next start"
     },
     "dependencies": {
-        "@acme/envars": "workspace:*",
         "@acme/helpers": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",

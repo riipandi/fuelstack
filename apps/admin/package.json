@@ -9,7 +9,6 @@
         "lint": "tsc --noEmit && eslint \"src/**/*.ts*\""
     },
     "dependencies": {
-        "@acme/envars": "workspace:*",
         "@acme/helpers": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",

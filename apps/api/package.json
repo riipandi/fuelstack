@@ -14,7 +14,6 @@
     },
     "dependencies": {
         "@acme/database": "workspace:*",
-        "@acme/envars": "workspace:*",
         "@acme/utils": "workspace:*",
         "@fastify/autoload": "^5.7.1",
         "@fastify/sensible": "^5.2.0",
