@@ -13,8 +13,7 @@
     "files.exclude": {
         "**/*.tsbuildinfo": true,
         "**/.next/**": true,
-        "**/.turbo/**": true,
-        "**/dist": true
+        "**/.turbo/**": true
     },
     "files.watcherExclude": {
         "**/.github/FUNDING.yml": true,

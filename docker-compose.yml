@@ -55,7 +55,6 @@ services:
       # https://github.com/axllent/mailpit/wiki/Runtime-options
       TZ: 'Asia/Jakarta'
 
-
   # docker exec -ti garaged /garage status
   # docker exec -ti garaged /garage bucket list
   # docker exec -ti garaged /garage key new --name=s3key
@@ -65,11 +64,11 @@ services:
     restart: unless-stopped
     network_mode: host
     ports:
-      - '3900:3900'  # s3_api_bind_addr
-      - '3901:3901'  # rpc_bind_addr
-      - '3902:3902'  # s3_web_bind_addr
-      - '3903:3903'  # admin_api_bind_addr
-      - '3904:3904'  # k2v_api_bind_addr
+      - '3900:3900' # s3_api_bind_addr
+      - '3901:3901' # rpc_bind_addr
+      - '3902:3902' # s3_web_bind_addr
+      - '3903:3903' # admin_api_bind_addr
+      - '3904:3904' # k2v_api_bind_addr
     volumes:
       - 'garage_meta:/var/lib/garage/meta'
       - 'garage_data:/var/lib/garage/data'

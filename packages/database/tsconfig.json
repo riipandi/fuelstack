@@ -9,6 +9,7 @@
         "outDir": "./dist",
         "rootDir": "./src",
         "sourceMap": true,
+        // Drizzle doesn't support es5 yet
         "target": "ES6"
     },
     "ts-node": {

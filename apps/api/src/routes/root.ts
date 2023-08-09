@@ -1,4 +1,4 @@
-import { FastifyPluginAsync, RouteShorthandOptions } from 'fastify'
+import { FastifyInstance, FastifyReply, FastifyRequest, RouteShorthandOptions } from 'fastify'
 
 const opts: RouteShorthandOptions = {
   schema: {
@@ -6,7 +6,10 @@ const opts: RouteShorthandOptions = {
       200: {
         type: 'object',
         properties: {
-          pong: {
+          status_code: {
+            type: 'number',
+          },
+          message: {
             type: 'string',
           },
         },
@@ -15,10 +18,8 @@ const opts: RouteShorthandOptions = {
   },
 }
 
-const root: FastifyPluginAsync = async (fastify, _opts): Promise<void> => {
-  fastify.get('/', opts, async (_request, _reply) => {
-    return { pong: 'it worked!' }
+export default async function (fastify: FastifyInstance) {
+  fastify.get('/', opts, async function (_request: FastifyRequest, reply: FastifyReply) {
+    reply.send(fastify.jsonResponse('All is well', undefined, 200))
   })
 }
-
-export default root

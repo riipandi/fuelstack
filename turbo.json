@@ -1,6 +1,6 @@
 {
     "$schema": "https://turbo.build/schema.json",
-    "globalDependencies": ["**/.env.local"],
+    "globalDependencies": [".env.local"],
     "globalEnv": ["NODE_ENV", "PORT", "DATABASE_URL"],
     "pipeline": {
         "build": {
@@ -9,7 +9,7 @@
         },
         "dev": {
             "dependsOn": ["^build"],
-            "persistent": true,
+            "persistent": false,
             "cache": false
         },
         "test": {

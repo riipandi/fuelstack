@@ -1,8 +1,9 @@
+import { join } from 'node:path'
+
 import { drizzle } from 'drizzle-orm/postgres-js'
 import { migrate } from 'drizzle-orm/postgres-js/migrator'
-import { join } from 'path'
 
-import { migrationClient } from '.'
+import { migrationClient } from './client'
 
 // This will automatically run needed migrations on the database
 migrate(drizzle(migrationClient), {
