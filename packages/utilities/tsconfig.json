@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "../../libraries/tsconfig/base.json",
     "compilerOptions": {
-        "lib": ["ES2019"],
+        "lib": ["ES2020"],
         "module": "CommonJS",
         "outDir": "./dist",
         "rootDir": "./src"

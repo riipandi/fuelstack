@@ -1,25 +1,25 @@
 {
-  "minify": false,
-  "jsc": {
-    "minify": {
-      "compress": {
-        "unused": true
-      },
-      "mangle": true
+    "minify": false,
+    "jsc": {
+        "minify": {
+            "compress": {
+                "unused": true
+            },
+            "mangle": true
+        },
+        "parser": {
+            "syntax": "typescript",
+            "tsx": false,
+            "decorators": true,
+            "dynamicImport": true
+        },
+        "target": "es2020",
+        "paths": {
+            "@/*": ["./src/*"]
+        },
+        "baseUrl": "."
     },
-    "parser": {
-      "syntax": "typescript",
-      "tsx": false,
-      "decorators": true,
-      "dynamicImport": true
-    },
-    "target": "es2020",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
-    "baseUrl": "."
-  },
-  "module": {
-    "type": "commonjs"
-  }
+    "module": {
+        "type": "commonjs"
+    }
 }

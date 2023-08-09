@@ -20,8 +20,7 @@
         "db:drop": "turbo run db:drop --filter=@acme/database",
         "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx,yml}\"",
         "cleanup": "turbo clean && docker-compose -f docker-compose.yml down --remove-orphans",
-        "start-docker": "docker-compose -f docker-compose.yml up -d",
-        "pre-dev": "pnpm start-docker && pnpm db:migrate",
+        "pre-dev": "docker-compose -f docker-compose.yml up -d",
         "lint:fix": "turbo run lint -- --fix",
         "lint": "turbo run lint",
         "test": "turbo run test"
