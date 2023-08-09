@@ -11,7 +11,7 @@ export const CounterButton = () => {
       </p>
       <button
         type='button'
-        className='inline-block w-full cursor-pointer rounded-md bg-black px-4 py-2 text-white'
+        className='inline-block w-full cursor-pointer rounded-md bg-black px-4 py-2 text-white transition-all hover:bg-black/80'
         onClick={() => setCount((c) => c + 1)}
       >
         Count: {count}

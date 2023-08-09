@@ -2,7 +2,7 @@ import { cn } from '@acme/helpers'
 
 import { fontMono, fontSans } from '@/utils/fonts'
 
-import '@/app/styles.css'
+import '@/assets/styles/globals.css'
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
