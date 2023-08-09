@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@acme/envars": "workspace:*",
+        "@acme/helpers": "workspace:*",
         "@acme/ui": "workspace:*",
         "@acme/utils": "workspace:*",
         "react-dom": "^18.2.0",
@@ -18,7 +19,6 @@
     "devDependencies": {
         "@acme/eslint-config-react": "workspace:*",
         "@acme/tailwind-config": "workspace:*",
-        "@acme/tsconfig": "workspace:*",
         "@types/react-dom": "^18.2.7",
         "@types/react": "^18.2.19",
         "@vitejs/plugin-react": "^4.0.4",

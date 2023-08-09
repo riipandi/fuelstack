@@ -21,12 +21,12 @@
     "devDependencies": {
         "@acme/eslint-config-nextjs": "workspace:*",
         "@acme/tailwind-config": "workspace:*",
-        "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.9",
         "@types/react-dom": "^18.2.7",
         "@types/react": "^18.2.19",
         "autoprefixer": "^10.4.14",
+        "eslint": "^8.46.0",
         "postcss": "^8.4.27",
         "tailwindcss": "^3.3.3",
         "typescript": "^5.0.4"

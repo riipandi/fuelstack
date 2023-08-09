@@ -7,7 +7,7 @@ export default function App() {
         <div className='py-16'>
           <div className='text-center'>
             <h1 className='mt-4 text-2xl font-bold tracking-tight text-gray-900 dark:invert sm:text-3xl lg:text-5xl'>
-              Vite React.js
+              Vite React
             </h1>
             <div className='mt-12 flex items-center justify-center space-x-3'>
               <CounterButton />

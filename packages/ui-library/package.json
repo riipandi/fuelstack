@@ -29,7 +29,6 @@
         "@acme/eslint-config-common": "workspace:*",
         "@acme/jest-presets": "workspace:*",
         "@acme/tailwind-config": "workspace:*",
-        "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
         "@types/react-dom": "^18.2.7",
         "@types/react": "^18.2.19",

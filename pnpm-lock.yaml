@@ -26,6 +26,9 @@ importers:
       '@acme/envars':
         specifier: workspace:*
         version: link:../../packages/envars
+      '@acme/helpers':
+        specifier: workspace:*
+        version: link:../../packages/ui-helpers
       '@acme/ui':
         specifier: workspace:*
         version: link:../../packages/ui-library
@@ -45,9 +48,6 @@ importers:
       '@acme/tailwind-config':
         specifier: workspace:*
         version: link:../../libraries/tailwind-config
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/react':
         specifier: ^18.2.19
         version: 18.2.19
@@ -121,9 +121,6 @@ importers:
       '@acme/jest-presets':
         specifier: workspace:*
         version: link:../../libraries/jest-presets
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@swc/cli':
         specifier: ^0.1.62
         version: 0.1.62(@swc/core@1.3.75)
@@ -194,9 +191,6 @@ importers:
       '@acme/tailwind-config':
         specifier: workspace:*
         version: link:../../libraries/tailwind-config
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/jest':
         specifier: ^29.5.3
         version: 29.5.3
@@ -212,6 +206,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.27)
+      eslint:
+        specifier: ^8.46.0
+        version: 8.46.0
       postcss:
         specifier: ^8.4.27
         version: 8.4.27
@@ -277,7 +274,7 @@ importers:
     dependencies:
       ts-jest:
         specifier: ^29.1.1
-        version: 29.1.1(jest@29.6.2)(typescript@5.0.4)
+        version: 29.1.1(@babel/core@7.22.10)(jest@29.6.2)(typescript@5.0.4)
 
   libraries/tailwind-config:
     devDependencies:
@@ -309,8 +306,6 @@ importers:
         specifier: ^1.0.6
         version: 1.0.6(tailwindcss@3.3.3)
 
-  libraries/tsconfig: {}
-
   packages/database:
     dependencies:
       dotenv:
@@ -332,9 +327,6 @@ importers:
       '@acme/eslint-config-common':
         specifier: workspace:*
         version: link:../../libraries/eslint-config-common
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/node':
         specifier: ^20.4.9
         version: 20.4.9
@@ -359,9 +351,6 @@ importers:
       '@acme/jest-presets':
         specifier: workspace:*
         version: link:../../libraries/jest-presets
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/jest':
         specifier: ^29.5.3
         version: 29.5.3
@@ -393,9 +382,6 @@ importers:
       '@acme/jest-presets':
         specifier: workspace:*
         version: link:../../libraries/jest-presets
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/jest':
         specifier: ^29.5.3
         version: 29.5.3
@@ -433,9 +419,6 @@ importers:
       '@acme/tailwind-config':
         specifier: workspace:*
         version: link:../../libraries/tailwind-config
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/jest':
         specifier: ^29.5.3
         version: 29.5.3
@@ -482,9 +465,6 @@ importers:
       '@acme/jest-presets':
         specifier: workspace:*
         version: link:../../libraries/jest-presets
-      '@acme/tsconfig':
-        specifier: workspace:*
-        version: link:../../libraries/tsconfig
       '@types/jest':
         specifier: ^29.5.3
         version: 29.5.3
@@ -7115,7 +7095,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-jest@29.1.1(jest@29.6.2)(typescript@5.0.4):
+  /ts-jest@29.1.1(@babel/core@7.22.10)(jest@29.6.2)(typescript@5.0.4):
     resolution: {integrity: sha512-D6xjnnbP17cC85nliwGiL+tpoKN0StpgE0TeOjXQTU6MVCfsB4v7aW05CgQ/1OywGb0x/oy9hHFnN+sczTiRaA==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -7136,6 +7116,7 @@ packages:
       esbuild:
         optional: true
     dependencies:
+      '@babel/core': 7.22.10
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
       jest: 29.6.2(@types/node@20.4.9)

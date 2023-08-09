@@ -30,7 +30,6 @@
     },
     "devDependencies": {
         "@acme/eslint-config-common": "workspace:*",
-        "@acme/tsconfig": "workspace:*",
         "@types/node": "^20.4.9",
         "drizzle-kit": "^0.19.12",
         "eslint": "^8.46.0",
