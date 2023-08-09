@@ -1,9 +1,8 @@
-import Fastify, { FastifyInstance, FastifyPluginAsync } from 'fastify'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import fastifyRequestLogger from '@mgcrea/fastify-request-logger'
+import Fastify, { FastifyInstance } from 'fastify'
 import { join } from 'path'
 
-import { dbClient } from '@acme/database'
 import { env } from '@/env'
 
 export type AppOptions = {
@@ -11,7 +10,7 @@ export type AppOptions = {
 } & Partial<AutoloadPluginOptions>
 
 // Pass --options via CLI arguments in command to enable these options.
-const options: AppOptions = {}
+const _options: AppOptions = {}
 
 const server: FastifyInstance = Fastify({
   logger: {
@@ -42,7 +41,7 @@ export const start = async () => {
   try {
     await server.listen({ port: env.PORT })
     const address = server.server.address()
-    const port = typeof address === 'string' ? address : address?.port
+    const _port = typeof address === 'string' ? address : address?.port
   } catch (err) {
     server.log.error(err)
     process.exit(1)

@@ -3,7 +3,11 @@
     "version": "0.0.0",
     "private": true,
     "license": "MIT",
-    "dependencies": {
+    "files": [
+        "jsdom/**",
+        "node/**"
+    ],
+    "devDependencies": {
         "ts-jest": "^29.1.1"
     }
 }

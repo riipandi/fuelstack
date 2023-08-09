@@ -13,11 +13,12 @@
         "resolveJsonModule": true,
         "sourceMap": true,
         "target": "es2020",
+        "types": ["jest", "node"],
         "typeRoots": ["./node_modules/@types", "./node_modules/@acme"],
         "paths": {
             "@/*": ["./src/*"]
         }
     },
-    "include": ["src/**/*.ts"],
+    "include": ["src/**/*.ts", "**/*.spec.ts"],
     "exclude": ["node_modules"]
 }

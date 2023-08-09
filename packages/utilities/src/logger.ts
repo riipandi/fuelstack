@@ -1,3 +1,3 @@
-export const log = (str: any) => {
-  console.log('logger: ' + str)
+export const log = (str: string | object) => {
+  console.info('logger: ' + str)
 }

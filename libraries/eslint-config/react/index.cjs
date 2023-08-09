@@ -15,7 +15,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'no-console': 'warn',
+    'no-console': ['warn', { allow: ['error', 'info'] }],
     '@typescript-eslint/no-non-null-assertion': 'off',
   },
 }

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { Metadata } from 'next/types'
 import { CounterButton, ExternalLink } from '@acme/ui'
+
 import NextLogo from '~/next.svg'
 
 export const metadata: Metadata = {

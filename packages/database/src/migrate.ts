@@ -1,6 +1,7 @@
-import { migrate } from 'drizzle-orm/postgres-js/migrator'
 import { drizzle } from 'drizzle-orm/postgres-js'
+import { migrate } from 'drizzle-orm/postgres-js/migrator'
 import { join } from 'path'
+
 import { migrationClient } from '.'
 
 // This will automatically run needed migrations on the database
@@ -9,7 +10,7 @@ migrate(drizzle(migrationClient), {
   migrationsTable: '_migrations',
 })
   .then(() => {
-    console.log('Migrations complete!')
+    console.info('Migrations complete!')
     process.exit(0)
   })
   .catch((err) => {

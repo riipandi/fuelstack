@@ -1,5 +1,7 @@
-import { fontMono, fontSans } from '@/utils/fonts'
 import { cn } from '@acme/helpers'
+
+import { fontMono, fontSans } from '@/utils/fonts'
+
 import '@/app/styles.css'
 
 export default function RootLayout({ children }: React.PropsWithChildren) {

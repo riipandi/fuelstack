@@ -1,4 +1,5 @@
 import supertest from 'supertest'
+
 import { start } from '../app'
 
 describe('server', () => {
