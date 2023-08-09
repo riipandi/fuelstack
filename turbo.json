@@ -4,15 +4,13 @@
     "globalEnv": ["PORT"],
     "pipeline": {
         "build": {
-            "outputs": [
-                "dist/**",
-                ".next/**",
-                "!.next/cache/**",
-                "build/**",
-                "api/**",
-                "public/build/**"
-            ],
+            "outputs": ["dist/**", ".next/**", "!.next/cache/**", "api/**"],
             "dependsOn": ["^build"]
+        },
+        "dev": {
+            "dependsOn": ["^build"],
+            "cache": false,
+            "persistent": true
         },
         "test": {
             "outputs": ["coverage/**"],
@@ -21,11 +19,6 @@
         },
         "lint": {
             "dependsOn": ["^build"]
-        },
-        "dev": {
-            "dependsOn": ["^build"],
-            "cache": false,
-            "persistent": true
         },
         "clean": { "cache": false },
         "db:introspect": { "cache": false },
