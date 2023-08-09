@@ -9,9 +9,9 @@
         "source.fixAll.eslint": true
     },
     "files.exclude": {
+        "**/*.tsbuildinfo": true,
         "**/.next/**": true,
         "**/.turbo/**": true,
-        "**/.tsbuildinfo": true,
         "**/dist": true
     },
     "files.watcherExclude": {
@@ -20,13 +20,11 @@
         "**/.github/PULL_REQUEST_TEMPLATE.md": true,
         "**/.next/**": true,
         "**/.turbo/**": true,
-        "**/.tsbuildinfo": true,
         "**/dist/**": true
     },
     "search.exclude": {
         "**/.next/**": true,
         "**/.turbo/**": true,
-        "**/.tsbuildinfo": true,
         "**/dist/**": true,
         "templates/**": true
     },
