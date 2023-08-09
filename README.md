@@ -26,7 +26,8 @@ This starter kit is already pre-configured with some additional packages and too
 - [Prettier](https://prettier.io) for code formatting
 - [tsup](https://tsup.egoist.dev) TypeScript library bundler powered by esbuild
 - [Jest](https://jestjs.io) test runner for all things JavaScript
-- [Minio](https://min.io/) for S3 storage backend
+- <s>[Minio](https://min.io/) for S3 storage backend</s>
+- [Garage S3](https://garagehq.deuxfleurs.fr) for S3 storage backend
 
 Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 
@@ -35,7 +36,8 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 ### Prerequisites
 
 1. Install Node.js `v18.16.1` or greater: https://nodejs.org/en/download
-2. Install Docker and Docker Compose: https://docs.docker.com/desktop
+2. Install `pnpm` package manager: https://pnpm.io/installation
+3. Docker and Docker Compose: https://docs.docker.com/desktop
 
 ### Setup New Project
 
@@ -70,7 +72,6 @@ openssl rand -base64 500 | tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
 ### Up and Running
 
 This turborepo uses [pnpm](https://pnpm.io) as a package manager.
-
 Run `pnpm install` to install required npm dependencies.
 
 **Start all packages in development**
@@ -79,16 +80,25 @@ Run `pnpm install` to install required npm dependencies.
 pnpm dotenv -e .env.local -- turbo run dev
 ```
 
-According to [Turborepo](https://turborepo.org/docs/features/scopes) documentation,
-you can run or build single package using these command:
+**Run or build partial apps or package**
 
 ```sh
-pnpm turbo run dev --filter=api...        # Running the Fastify API in development mode
-pnpm turbo run dev --filter=admin...      # Running the admin React SPA in development mode
-pnpm turbo run dev --filter=website...    # Running the web Next.js in development mode
+# Running the Fastify API in development mode
+pnpm dotenv -e .env.local -- turbo run dev --filter=api...
+
+# Running the admin React SPA in development mode
+pnpm dotenv -e .env.local -- turbo run dev --filter=admin...
+
+# Running the web Next.js in development mode
+pnpm dotenv -e .env.local -- turbo run dev --filter=website...
 ```
 
-For detailed explanation of how things work, check out their official documentation.
+For more detailed explanation, check out [Turborepo](https://turborepo.org/docs/features/scopes) documentation.
+
+Turborepo's team currently [recommend](https://turbo.build/repo/docs/handbook/environment-variables)
+using `dotenv-cli` as the simplest way to bring your environment variables into your development tasks.
+Turborepo's team looking forward to improving the developer experience and ergonomics for your
+environment variables in a future release of Turborepo.
 
 ### Turborepo Remote Caching
 
