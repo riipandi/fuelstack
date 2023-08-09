@@ -24,6 +24,7 @@ This starter kit is already pre-configured with some additional packages and too
 - [Tailwind CSS](https://tailwindcss.com) for the styling the frontend
 - [ESLint](https://eslint.org) for code linting
 - [Prettier](https://prettier.io) for code formatting
+- [tsup](https://tsup.egoist.dev) TypeScript library bundler powered by esbuild
 - [Jest](https://jestjs.io) test runner for all things JavaScript
 - [Minio](https://min.io/) for S3 storage backend
 
