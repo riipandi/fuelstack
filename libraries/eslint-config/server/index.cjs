@@ -35,17 +35,17 @@ module.exports = {
       'error',
       {
         groups: [
-          // Packages `fastify` related packages come first.
-          ['^dotenv', '^@fastify', '^@fastify(?!/?$)', '^@?\\w'],
+          // Packages `node` related come first.
+          ['^node(?!:?$)', '^dotenv'],
+          // Packages `fastify` related come after.
+          ['^fastify', '^@fastify(?!/?$)', '^@?\\w'],
           // Internal packages.
           ['^(@|plugins)(/.*|$)', '^(@|routes)(/.*|$)'],
           // Side effect imports.
           ['^\\u0000'],
-          // Parent imports. Put `..` last.
-          ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-          // Other relative imports. Put same-folder imports and `.` last.
-          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-          // Style imports.
+          // Other relative imports. Put same-folder imports and `..` last.
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$', '^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          // Stylesheet file imports.
           ['^.+\\.?(css)$'],
         ],
       },

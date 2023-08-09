@@ -42,17 +42,17 @@ module.exports = {
       'error',
       {
         groups: [
-          // Packages `react` related packages come first.
-          ['^dotenv', '^react', '^@?\\w'],
+          // Packages `node` related come first.
+          ['^node(?!:?$)', '^dotenv'],
+          // Packages `react` related come after.
+          ['^react', '^@?\\w'],
           // Internal packages.
-          ['^(@|components)(/.*|$)'],
+          ['^(@|components)(/.*|$)', '^(@|context)(/.*|$)'],
           // Side effect imports.
           ['^\\u0000'],
-          // Parent imports. Put `..` last.
-          ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-          // Other relative imports. Put same-folder imports and `.` last.
-          ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-          // Style imports.
+          // Other relative imports. Put same-folder imports and `..` last.
+          ['^\\.\\.(?!/?$)', '^\\.\\./?$', '^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+          // Stylesheet file imports.
           ['^.+\\.?(css)$'],
         ],
       },

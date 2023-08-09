@@ -1,7 +1,8 @@
+import { join } from 'node:path'
+
+import Fastify, { FastifyInstance } from 'fastify'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import fastifyRequestLogger from '@mgcrea/fastify-request-logger'
-import Fastify, { FastifyInstance } from 'fastify'
-import { join } from 'path'
 
 import { env } from '@/env'
 
