@@ -11,8 +11,8 @@
         "dist/**"
     ],
     "scripts": {
-        "build": "tsup src/index.ts --format esm,cjs --dts",
-        "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+        "build": "tsup --config tsup.config.ts",
+        "dev": "tsup --config tsup.config.ts --watch",
         "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "lint": "eslint \"**/*.{ts,tsx}\"",
         "test": "jest"
