@@ -21,7 +21,7 @@
         "**/.github/PULL_REQUEST_TEMPLATE.md": true,
         "**/.next/**": true,
         "**/.turbo/**": true,
-        "**/dist/**": true
+        "**/dist/**": false
     },
     "search.exclude": {
         "**/.next/**": true,

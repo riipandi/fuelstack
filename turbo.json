@@ -20,6 +20,9 @@
         "lint": {
             "dependsOn": ["^build"]
         },
+        "//#format": {
+            "dependsOn": []
+        },
         "clean": { "cache": false },
         "db:introspect": { "cache": false },
         "db:migrate": { "cache": false },
@@ -27,6 +30,9 @@
         "db:check": { "cache": false },
         "db:up": { "cache": false },
         "db:drop": { "cache": false },
-        "db:seed": { "cache": false }
+        "db:seed": {
+            "dependsOn": ["@acme/utils#build"],
+            "cache": false
+        }
     }
 }
