@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "pg",
-  "id": "3b6264f6-8766-48e7-906c-530627fad114",
+  "id": "e48b85b6-4e52-4238-a9e9-80036c0f876f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "users": {
@@ -81,6 +81,12 @@
         "password_hash": {
           "name": "password_hash",
           "type": "varchar",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_verified_at": {
+          "name": "email_verified_at",
+          "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": false
         },

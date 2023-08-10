@@ -1,5 +1,5 @@
 import { InferModel } from 'drizzle-orm'
-import { jsonb, pgEnum, pgTable, uuid, varchar } from 'drizzle-orm/pg-core'
+import { jsonb, pgEnum, pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
 
 import { defaultId, defaultJsonbValue, timeStamps } from '../extend'
 
@@ -18,6 +18,7 @@ export const userTable = pgTable('users', {
   phone: varchar('phone', { length: 20 }),
   role: roleEnum('role').default('user').notNull(),
   passwordHash: varchar('password_hash'),
+  emailVerifiedAt: timestamp('email_verified_at', { withTimezone: true }),
   ...timeStamps(false),
 })
 

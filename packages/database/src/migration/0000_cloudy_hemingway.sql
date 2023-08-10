@@ -17,6 +17,7 @@ CREATE TABLE IF NOT EXISTS "users" (
 	"phone" varchar(20),
 	"role" "role" DEFAULT 'user' NOT NULL,
 	"password_hash" varchar,
+	"email_verified_at" timestamp with time zone,
 	"created_at" timestamp with time zone DEFAULT now() NOT NULL,
 	"updated_at" timestamp with time zone DEFAULT now() NOT NULL,
 	CONSTRAINT "users_tid_unique" UNIQUE("tid"),
