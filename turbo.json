@@ -1,7 +1,7 @@
 {
     "$schema": "https://turbo.build/schema.json",
     "globalDependencies": [".env.local"],
-    "globalEnv": ["NODE_ENV", "PORT", "DATABASE_URL"],
+    "globalEnv": ["NODE_ENV", "PORT", "DATABASE_DRIVER", "DATABASE_URL"],
     "pipeline": {
         "build": {
             "outputs": ["dist/**", ".next/**", "!.next/cache/**", "api/**"],
@@ -26,6 +26,7 @@
         "db:generate": { "cache": false },
         "db:check": { "cache": false },
         "db:up": { "cache": false },
-        "db:drop": { "cache": false }
+        "db:drop": { "cache": false },
+        "db:seed": { "cache": false }
     }
 }

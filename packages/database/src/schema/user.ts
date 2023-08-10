@@ -1,25 +1,26 @@
 import { InferModel } from 'drizzle-orm'
-import { json, pgEnum, pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
+import { json, pgEnum, pgTable, uuid, varchar } from 'drizzle-orm/pg-core'
 
-export const roleEnum = pgEnum('role', ['user', 'admin'])
+import { defaultId, timeStamps } from '../extend'
 
-/**
- * This table contains user data. Users should only be able to view and update their own data.
- */
+export const roleEnum = pgEnum('role', ['admin', 'user'])
+
 export const userTable = pgTable('users', {
-  id: uuid('id').primaryKey(),
+  id: uuid('id').default(defaultId).primaryKey(),
+  tid: varchar('tid', { length: 100 }).notNull().unique(),
+  email: varchar('email').notNull().unique(),
   firstName: varchar('first_name').notNull(),
   lastName: varchar('last_name').notNull(),
   avatarUrl: varchar('avatar_url'),
-  billingProvider: varchar('billing_provider').$type<'lemonsqueezy' | 'stripe' | 'xendit'>(),
+  billingProvider: varchar('billing_provider').$type<'lemonsqueezy' | 'stripe'>(),
   billingAddress: json('billing_address'),
   paymentMethod: json('payment_method'),
   phone: varchar('phone', { length: 20 }),
   role: roleEnum('role').default('user').notNull(),
-  createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),
-  updatedAt: timestamp('updated_at', { withTimezone: true }).defaultNow().notNull(),
+  passwordHash: varchar('password_hash'),
+  ...timeStamps(false),
 })
 
-export type User = InferModel<typeof userTable>
+export type User = InferModel<typeof userTable, 'select'>
 
 export type NewUser = InferModel<typeof userTable, 'insert'>

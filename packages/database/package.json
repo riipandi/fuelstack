@@ -13,19 +13,24 @@
         "dev": "tsc -w",
         "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
         "db:introspect": "drizzle-kit introspect:pg --config=drizzle.config.ts",
-        "db:migrate": "ts-node src/migrate",
         "db:generate": "drizzle-kit generate:pg --config=drizzle.config.ts",
         "db:check": "drizzle-kit check:pg --config=drizzle.config.ts",
         "db:up": "drizzle-kit up:pg --config=drizzle.config.ts",
         "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
         "db:studio": "drizzle-kit studio --config=drizzle.config.ts --port 8090",
+        "db:migrate": "ts-node src/migrate",
+        "db:seed": "ts-node src/seed",
         "lint": "eslint \"**/*.{ts,tsx}\""
     },
     "dependencies": {
+        "@acme/utils": "workspace:*",
+        "@neondatabase/serverless": "^0.5.7",
         "dotenv": "^16.3.1",
         "drizzle-orm": "^0.28.1",
         "drizzle-zod": "^0.5.0",
         "postgres": "^3.3.5",
+        "pure-uuid": "^1.6.4",
+        "typeid-js": "^0.3.0",
         "zod": "^3.21.4"
     },
     "devDependencies": {

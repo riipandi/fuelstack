@@ -287,18 +287,30 @@ importers:
 
   packages/database:
     dependencies:
+      '@acme/utils':
+        specifier: workspace:*
+        version: link:../utilities
+      '@neondatabase/serverless':
+        specifier: ^0.5.7
+        version: 0.5.7
       dotenv:
         specifier: ^16.3.1
         version: 16.3.1
       drizzle-orm:
         specifier: ^0.28.1
-        version: 0.28.1(postgres@3.3.5)
+        version: 0.28.1(@neondatabase/serverless@0.5.7)(postgres@3.3.5)
       drizzle-zod:
         specifier: ^0.5.0
         version: 0.5.0(drizzle-orm@0.28.1)(zod@3.21.4)
       postgres:
         specifier: ^3.3.5
         version: 3.3.5
+      pure-uuid:
+        specifier: ^1.6.4
+        version: 1.6.4
+      typeid-js:
+        specifier: ^0.3.0
+        version: 0.3.0
       zod:
         specifier: ^3.21.4
         version: 3.21.4
@@ -416,6 +428,9 @@ importers:
 
   packages/utilities:
     dependencies:
+      '@node-rs/bcrypt':
+        specifier: ^1.7.3
+        version: 1.7.3
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
@@ -2386,6 +2401,12 @@ packages:
       os-filter-obj: 2.0.0
     dev: true
 
+  /@neondatabase/serverless@0.5.7:
+    resolution: {integrity: sha512-pIcgFWueCn5WQvtwHxji1EBpo1iGnlnPs/K02qmy7P150oHiohvgH5C4gWMTW52fqiMpPvK9kAdV9D07oJsd7w==}
+    dependencies:
+      '@types/pg': 8.6.6
+    dev: false
+
   /@next/env@13.4.13:
     resolution: {integrity: sha512-fwz2QgVg08v7ZL7KmbQBLF2PubR/6zQdKBgmHEl3BCyWTEDsAQEijjw2gbFhI1tcKfLdOOJUXntz5vZ4S0Polg==}
     dev: false
@@ -2481,6 +2502,142 @@ packages:
     resolution: {integrity: sha512-3Yc1fUTs69MG/uZbJlLSI3JISMn2UV2rg+1D/vROUqZyh3l6iYHCs7GMp+M40ZD7yOdDbYjJcU1oTJhrc+dGKg==}
     hasBin: true
     dev: true
+
+  /@node-rs/bcrypt-android-arm-eabi@1.7.3:
+    resolution: {integrity: sha512-l53RuBqnqNvBN2jx09Ws6jpLmuQdSDx10n0GeaTfwh1svxsC8bPpVmxkfBExsT2Tu7KF38gTnPZvwsxysZQyPQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-android-arm64@1.7.3:
+    resolution: {integrity: sha512-TZpm4VbiViqDMvusrcYzLr1b1M5FDF0cDNiTUciLeBSsKtU5lNdEZGAU7gvCnrKoUWpGuOblHU7613zuB7SiNQ==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-darwin-arm64@1.7.3:
+    resolution: {integrity: sha512-SiUuAabynVsmixZMjh5xrn8w47EnV0HzbW9st4DPoVhn/wzdUcksIXDY75aoQG2EIzKLN8IGb+CIVnPGmRyhxw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-darwin-x64@1.7.3:
+    resolution: {integrity: sha512-R+81Z0eX4hZPvCXY5Z6l0l+JrTU3WcSYGHP0QYV9uwdaafOz6EhrCXUzZ02AIcAbNoVR8eucYVruq9PiasXoVw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-freebsd-x64@1.7.3:
+    resolution: {integrity: sha512-0pItU/5K3e83JjcJj9fZv+78txUoZ3hHCT7n/UMdu9mkpUzhX/rqb4jmQpJpD+UQoR76xp3qDo5RMgQBffBVNg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [freebsd]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-linux-arm-gnueabihf@1.7.3:
+    resolution: {integrity: sha512-HTSybWUjNe8rWuXkTkMeFDiQNHc6VioRcgv6AeHZphIxiT6dFbnhXNkfz4Hr0zxvyPhZ3NrYjT2AmPVFT6VW3Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-linux-arm64-gnu@1.7.3:
+    resolution: {integrity: sha512-rWep6Y+v/c4bZHaM8LmSsrMwMmDR9wG4/q+3Z9VzR8xdnt5VCbuQdYWpf3sgGRGjTRdTBAdSK8x1reOjqsJ3Jg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-linux-arm64-musl@1.7.3:
+    resolution: {integrity: sha512-TyWEKhxr+yfGcMKzVV/ARZw+Hrky2yl91bo0XYU2ZW6I6LDC0emNsXugdWjwz8ADI4OWhhrOjXD8GCilxiB2Rg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-linux-x64-gnu@1.7.3:
+    resolution: {integrity: sha512-PofxM1Qg7tZKj1oP0I7tBTSSLr8Xc2uxx+P3pBCPmYzaBwWqGteNHJlF7n2q5xiH7YOlguH4w5CmcEjsiA3K4A==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-linux-x64-musl@1.7.3:
+    resolution: {integrity: sha512-D5V6/dDVKP8S/ieDBLGhTn4oTo3upbrpWInynbhOMjJvPiIxVG1PiI3MXkWBtG9qtfleDk7gUkEKtAOxlIxDTQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-win32-arm64-msvc@1.7.3:
+    resolution: {integrity: sha512-b4gH2Yj5R4TwULrfMHd1Qqr+MrnFjVRUAJujDKPqi+PppSqezW8QF6DRSOL4GjnBmz5JEd64wxgeidvy7dsbGw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-win32-ia32-msvc@1.7.3:
+    resolution: {integrity: sha512-E91ro+ybI0RhNc89aGaZQGll0YhPoHr8JacoWrNKwhg9zwNOYeuO0tokdMZdm6nF0/8obll0Mq7wO9AXO9iffw==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt-win32-x64-msvc@1.7.3:
+    resolution: {integrity: sha512-LO/p9yjPODj/pQvPnowBuwpDdqiyUXQbqL1xb1RSP3NoyCFAGmjL5h0plSQrhLh8hskQiozBRXNaQurtsM7o0Q==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    requiresBuild: true
+    dev: false
+    optional: true
+
+  /@node-rs/bcrypt@1.7.3:
+    resolution: {integrity: sha512-BF6u9CBPUiyk1zU+5iwikezf+xM4MFSu5cmrrg/PLKffGgIM13ZsY6DHftcTraETB04ryasjM/5IejotH+sO5Q==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@node-rs/bcrypt-android-arm-eabi': 1.7.3
+      '@node-rs/bcrypt-android-arm64': 1.7.3
+      '@node-rs/bcrypt-darwin-arm64': 1.7.3
+      '@node-rs/bcrypt-darwin-x64': 1.7.3
+      '@node-rs/bcrypt-freebsd-x64': 1.7.3
+      '@node-rs/bcrypt-linux-arm-gnueabihf': 1.7.3
+      '@node-rs/bcrypt-linux-arm64-gnu': 1.7.3
+      '@node-rs/bcrypt-linux-arm64-musl': 1.7.3
+      '@node-rs/bcrypt-linux-x64-gnu': 1.7.3
+      '@node-rs/bcrypt-linux-x64-musl': 1.7.3
+      '@node-rs/bcrypt-win32-arm64-msvc': 1.7.3
+      '@node-rs/bcrypt-win32-ia32-msvc': 1.7.3
+      '@node-rs/bcrypt-win32-x64-msvc': 1.7.3
+    dev: false
 
   /@nodelib/fs.scandir@2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -3274,7 +3431,14 @@ packages:
 
   /@types/node@20.4.9:
     resolution: {integrity: sha512-8e2HYcg7ohnTUbHk8focoklEQYvemQmu9M/f43DZVx43kHn0tE3BY/6gSDxS7k0SprtS0NHvj+L80cGLnoOUcQ==}
-    dev: true
+
+  /@types/pg@8.6.6:
+    resolution: {integrity: sha512-O2xNmXebtwVekJDD+02udOncjVcMZQuTEQEMpKJ0ZRf5E7/9JJX3izhKUcUifBkyKpljyUM6BTgy2trmviKlpw==}
+    dependencies:
+      '@types/node': 20.4.9
+      pg-protocol: 1.6.0
+      pg-types: 2.2.0
+    dev: false
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -4506,7 +4670,7 @@ packages:
       - supports-color
     dev: true
 
-  /drizzle-orm@0.28.1(postgres@3.3.5):
+  /drizzle-orm@0.28.1(@neondatabase/serverless@0.5.7)(postgres@3.3.5):
     resolution: {integrity: sha512-6ms2pVxvkBJtuP1BZTUCzLLkr+iK/cNgd+tCw+I5/PoM8PB9kXaYoW9yNe/cnaXb0TLJ1gDEndDIyQdRX7zCdQ==}
     peerDependencies:
       '@aws-sdk/client-rds-data': '>=3'
@@ -4568,6 +4732,7 @@ packages:
       sqlite3:
         optional: true
     dependencies:
+      '@neondatabase/serverless': 0.5.7
       postgres: 3.3.5
     dev: false
 
@@ -4577,7 +4742,7 @@ packages:
       drizzle-orm: '>=0.23.13'
       zod: '*'
     dependencies:
-      drizzle-orm: 0.28.1(postgres@3.3.5)
+      drizzle-orm: 0.28.1(@neondatabase/serverless@0.5.7)(postgres@3.3.5)
       zod: 3.21.4
     dev: false
 
@@ -7409,6 +7574,26 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
+  /pg-int8@1.0.1:
+    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
+    engines: {node: '>=4.0.0'}
+    dev: false
+
+  /pg-protocol@1.6.0:
+    resolution: {integrity: sha512-M+PDm637OY5WM307051+bsDia5Xej6d9IR4GwJse1qA1DIhiKlksvrneZOYQq42OM+spubpcNYEo2FcKQrDk+Q==}
+    dev: false
+
+  /pg-types@2.2.0:
+    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
+    engines: {node: '>=4'}
+    dependencies:
+      pg-int8: 1.0.1
+      postgres-array: 2.0.0
+      postgres-bytea: 1.0.0
+      postgres-date: 1.0.7
+      postgres-interval: 1.2.0
+    dev: false
+
   /picocolors@1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
@@ -7576,6 +7761,28 @@ packages:
       source-map-js: 1.0.2
     dev: true
 
+  /postgres-array@2.0.0:
+    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
+    engines: {node: '>=4'}
+    dev: false
+
+  /postgres-bytea@1.0.0:
+    resolution: {integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
+  /postgres-date@1.0.7:
+    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
+    engines: {node: '>=0.10.0'}
+    dev: false
+
+  /postgres-interval@1.2.0:
+    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      xtend: 4.0.2
+    dev: false
+
   /postgres@3.3.5:
     resolution: {integrity: sha512-+JD93VELV9gHkqpV5gdL5/70HdGtEw4/XE1S4BC8f1mcPmdib3K5XsKVbnR1XcAyC41zOnifJ+9YRKxdIsXiUw==}
     dev: false
@@ -7713,6 +7920,11 @@ packages:
   /pure-rand@6.0.2:
     resolution: {integrity: sha512-6Yg0ekpKICSjPswYOuC5sku/TSWaRYlA0qsXqJgM/d/4pLPHPuTxK7Nbf7jFKzAeedUhR8C7K9Uv63FBsSo8xQ==}
     dev: true
+
+  /pure-uuid@1.6.4:
+    resolution: {integrity: sha512-ZMpDd+v9JWxU4Lqrpf2oBTwHQakCIC7px8iNv8P/EkMvoRvr9N4z/PQT+nZ3Lbrhelmq/ejibLOlMnmJj+f+Pg==}
+    engines: {node: '>=8.0.0'}
+    dev: false
 
   /qs@6.11.1:
     resolution: {integrity: sha512-0wsrzgTz/kAVIeuxSjnpGC56rzYtr6JT/2BwEvMaPhFIoYa1aGO8LbzuU1R0uUYQkLpWBTOj0l/CLAJB64J6nQ==}
@@ -8861,6 +9073,12 @@ packages:
       is-typed-array: 1.1.10
     dev: true
 
+  /typeid-js@0.3.0:
+    resolution: {integrity: sha512-A1EmvIWG6xwYRfHuYUjPltHqteZ1EiDG+HOmbIYXeHUVztmnGrPIfU9KIK1QC30x59ko0r4JsMlwzsALCyiB3Q==}
+    dependencies:
+      uuidv7: 0.4.4
+    dev: false
+
   /typescript@5.1.6:
     resolution: {integrity: sha512-zaWCozRZ6DLEWAWFrVDz1H6FVXzUSfTy5FUMWsQlU8Ym5JP9eO4xkTIROFCQvhQf61z6O/G6ugw3SgAnvvm+HA==}
     engines: {node: '>=14.17'}
@@ -8913,6 +9131,11 @@ packages:
 
   /uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: false
+
+  /uuidv7@0.4.4:
+    resolution: {integrity: sha512-jjRGChg03uGp9f6wQYSO8qXkweJwRbA5WRuEQE8xLIiehIzIIi23qZSzsyvZPCPoFqkeLtZuz7Plt1LGukAInA==}
     hasBin: true
     dev: false
 
@@ -9138,6 +9361,11 @@ packages:
   /xmlchars@2.2.0:
     resolution: {integrity: sha512-JZnDKK8B0RCDw84FNdDAIpZK+JuJw+s7Lz8nksI7SIuU3UXJJslUthsi+uWBUYOwPFwW7W7PRLRfUKpxjtjFCw==}
     dev: true
+
+  /xtend@4.0.2:
+    resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
+    engines: {node: '>=0.4'}
+    dev: false
 
   /y18n@5.0.8:
     resolution: {integrity: sha512-0pfFzegeDWJHJIAmTLRP2DwHjdF5s7jo9tuztdQxAhINCdvS+3nGINqPd00AphqJR/0LhANUS6/+7SCb98YOfA==}

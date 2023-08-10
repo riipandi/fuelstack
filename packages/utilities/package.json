@@ -16,6 +16,7 @@
         "test": "jest"
     },
     "dependencies": {
+        "@node-rs/bcrypt": "^1.7.3",
         "cross-fetch": "^4.0.0"
     },
     "devDependencies": {

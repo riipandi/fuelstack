@@ -1,5 +1,5 @@
 import fp from 'fastify-plugin'
-import { db, dbClient, type PostgresJsDatabase } from '@acme/database'
+import { db, dbClient, dbClientType } from '@acme/database'
 
 /**
  * Using declaration merging, add plugin props to the appropriate
@@ -8,7 +8,7 @@ import { db, dbClient, type PostgresJsDatabase } from '@acme/database'
  */
 declare module 'fastify' {
   export interface FastifyInstance {
-    db: PostgresJsDatabase
+    db: dbClientType
   }
 }
 
@@ -16,7 +16,7 @@ declare module 'fastify' {
  * This plugins adds Drizzle ORM integration using decorator
  */
 export default fp(async (fastify) => {
-  fastify.decorate<PostgresJsDatabase>('db', db)
+  fastify.decorate<dbClientType>('db', db)
   fastify.addHook('onClose', async (_fastify) => {
     dbClient.CLOSE
   })
