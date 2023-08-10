@@ -18,15 +18,13 @@
         "db:up": "drizzle-kit up:pg --config=drizzle.config.ts",
         "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
         "db:studio": "drizzle-kit studio --config=drizzle.config.ts --port 8090",
-        "db:migrate": "ts-node src/scripts/migrate",
-        "db:seed": "ts-node src/scripts/seed",
         "lint": "eslint \"**/*.{ts,tsx}\""
     },
     "dependencies": {
         "@acme/utils": "workspace:*",
         "@neondatabase/serverless": "^0.5.7",
         "dotenv": "^16.3.1",
-        "drizzle-orm": "^0.28.1",
+        "drizzle-orm": "^0.28.2",
         "drizzle-zod": "^0.5.0",
         "postgres": "^3.3.5",
         "pure-uuid": "^1.6.4",

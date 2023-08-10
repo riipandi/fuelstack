@@ -4,14 +4,17 @@ import Fastify, { FastifyInstance } from 'fastify'
 import AutoLoad, { AutoloadPluginOptions } from '@fastify/autoload'
 import fastifyRequestLogger from '@mgcrea/fastify-request-logger'
 
-import { env } from '@/env'
+import { env } from './env'
 
+// Place your custom options for app below here.
 export type AppOptions = {
-  // Place your custom options for app below here.
+  autoMigrate?: boolean
 } & Partial<AutoloadPluginOptions>
 
 // Pass --options via CLI arguments in command to enable these options.
-const _options: AppOptions = {}
+const options: AppOptions = {
+  autoMigrate: false,
+}
 
 const server: FastifyInstance = Fastify({
   logger: {

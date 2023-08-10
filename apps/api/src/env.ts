@@ -20,7 +20,10 @@ export const env = zennv({
     NODE_ENV: z.enum(ENV_VALUES).default('development'),
     PORT: z.number().default(5100),
     HOST: z.string().default('0.0.0.0'),
+    // Database connection parameter
     DATABASE_URL: z.string(),
+    DATABASE_DRIVER: z.enum(['postgres', 'neon']).default('postgres'),
+    DATABASE_MAX_POOL: z.number().default(10),
     // S3 storage configuration
     // CloudFlare R2 endpoint: https://xxxxxxxxx.r2.cloudflarestorage.com
     // Garage S3 endpoint: http://localhost:3900

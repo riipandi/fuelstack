@@ -19,6 +19,12 @@
             "@/*": ["./src/*"]
         }
     },
+    "ts-node": {
+        "swc": true,
+        "compilerOptions": {
+            "module": "CommonJS"
+        }
+    },
     "include": ["src/**/*.ts", "**/*.spec.ts"],
     "exclude": ["node_modules"]
 }
