@@ -190,6 +190,12 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      zennv:
+        specifier: ^0.1.1
+        version: 0.1.1
+      zod:
+        specifier: ^3.21.4
+        version: 3.21.4
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -311,6 +317,9 @@ importers:
       typeid-js:
         specifier: ^0.3.0
         version: 0.3.0
+      zennv:
+        specifier: ^0.1.1
+        version: 0.1.1
       zod:
         specifier: ^3.21.4
         version: 3.21.4

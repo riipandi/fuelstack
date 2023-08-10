@@ -18,8 +18,8 @@
         "db:up": "drizzle-kit up:pg --config=drizzle.config.ts",
         "db:drop": "drizzle-kit drop --config=drizzle.config.ts",
         "db:studio": "drizzle-kit studio --config=drizzle.config.ts --port 8090",
-        "db:migrate": "ts-node src/migrate",
-        "db:seed": "ts-node src/seed",
+        "db:migrate": "ts-node src/scripts/migrate",
+        "db:seed": "ts-node src/scripts/seed",
         "lint": "eslint \"**/*.{ts,tsx}\""
     },
     "dependencies": {
@@ -31,6 +31,7 @@
         "postgres": "^3.3.5",
         "pure-uuid": "^1.6.4",
         "typeid-js": "^0.3.0",
+        "zennv": "^0.1.1",
         "zod": "^3.21.4"
     },
     "devDependencies": {

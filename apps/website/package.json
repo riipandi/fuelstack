@@ -15,7 +15,9 @@
         "@acme/utils": "workspace:*",
         "next": "^13.4.13",
         "react-dom": "^18.2.0",
-        "react": "^18.2.0"
+        "react": "^18.2.0",
+        "zennv": "^0.1.1",
+        "zod": "^3.21.4"
     },
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",

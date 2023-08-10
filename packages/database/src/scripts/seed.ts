@@ -1,5 +1,5 @@
-import { db } from './client'
-import { userSeeder } from './seeders'
+import { db } from '../client'
+import { userSeeder } from '../seeders'
 
 async function seed() {
   await userSeeder(db)

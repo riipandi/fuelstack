@@ -9,7 +9,7 @@ export default defineConfig((options: Options) => ({
   silent: true,
   splitting: false,
   sourcemap: true,
-  minify: !options.watch,
+  minify: false,
   clean: true,
   dts: true,
   target: 'es2020',
