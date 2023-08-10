@@ -5,7 +5,6 @@ export default defineConfig((options: Options) => ({
   entry: {
     index: 'src/index.ts',
   },
-  publicDir: 'src/migration',
   format: ['cjs', 'esm'],
   silent: true,
   splitting: false,

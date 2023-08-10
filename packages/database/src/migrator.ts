@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import { join } from 'node:path'
 
 import { neon } from '@neondatabase/serverless'
 import { MigrationConfig } from 'drizzle-orm/migrator'
@@ -9,7 +9,7 @@ import { migrate as migratePg } from 'drizzle-orm/postgres-js/migrator'
 import postgres from 'postgres'
 
 const migrationConfig: MigrationConfig = {
-  migrationsFolder: resolve(__dirname, 'migration'),
+  migrationsFolder: join(__dirname, 'migration'),
   migrationsTable: '_migrations',
 }
 
@@ -18,7 +18,6 @@ const migrationConfig: MigrationConfig = {
  * migrations strongly encourage you to use max: 1 connection configuration.
  */
 export const migrateDatabase = (driver: 'neon' | 'postgres', connectionString: string) => {
-  console.info('DB Connection for migration:', connectionString)
   return driver === 'neon'
     ? migrateNeon(drizzleNeon(neon(connectionString)), migrationConfig)
     : migratePg(drizzlePg(postgres(connectionString, { max: 1 })), migrationConfig)
