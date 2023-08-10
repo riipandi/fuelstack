@@ -11,6 +11,9 @@ importers:
       '@acme/eslint-config':
         specifier: workspace:*
         version: link:libraries/eslint-config
+      dotenv-cli:
+        specifier: ^7.2.1
+        version: 7.2.1
       eslint:
         specifier: ^8.46.0
         version: 8.46.0
@@ -314,12 +317,6 @@ importers:
       postgres:
         specifier: ^3.3.5
         version: 3.3.5
-      pure-uuid:
-        specifier: ^1.6.4
-        version: 1.6.4
-      typeid-js:
-        specifier: ^0.3.0
-        version: 0.3.0
       zennv:
         specifier: ^0.1.1
         version: 0.1.1
@@ -449,6 +446,12 @@ importers:
       cross-fetch:
         specifier: ^4.0.0
         version: 4.0.0
+      pure-uuid:
+        specifier: ^1.6.4
+        version: 1.6.4
+      typeid-js:
+        specifier: ^0.3.0
+        version: 0.3.0
     devDependencies:
       '@acme/eslint-config':
         specifier: workspace:*
@@ -4652,6 +4655,21 @@ packages:
       webidl-conversions: 7.0.0
     dev: true
 
+  /dotenv-cli@7.2.1:
+    resolution: {integrity: sha512-ODHbGTskqRtXAzZapDPvgNuDVQApu4oKX8lZW7Y0+9hKA6le1ZJlyRS687oU9FXjOVEDU/VFV6zI125HzhM1UQ==}
+    hasBin: true
+    dependencies:
+      cross-spawn: 7.0.3
+      dotenv: 16.3.1
+      dotenv-expand: 10.0.0
+      minimist: 1.2.8
+    dev: true
+
+  /dotenv-expand@10.0.0:
+    resolution: {integrity: sha512-GopVGCpVS1UKH75VKHGuQFqS1Gusej0z4FyQkPdwjil2gNIv+LNsqBlboOzpJFZKVT95GkCyWJbBSdFEFUWI2A==}
+    engines: {node: '>=12'}
+    dev: true
+
   /dotenv@16.0.3:
     resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
     engines: {node: '>=12'}
@@ -4660,7 +4678,6 @@ packages:
   /dotenv@16.3.1:
     resolution: {integrity: sha512-IPzF4w4/Rd94bA9imS68tZBaYyBWSCE47V1RGuMrB94iyTOIEwRmVL2x/4An+6mETpLrKJ5hQkB8W4kFAadeIQ==}
     engines: {node: '>=12'}
-    dev: false
 
   /dreamopt@0.8.0:
     resolution: {integrity: sha512-vyJTp8+mC+G+5dfgsY+r3ckxlz+QMX40VjPQsZc5gxVAxLmi64TBoVkP54A/pRAXMXsbu2GMMBrZPxNv23waMg==}

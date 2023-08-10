@@ -17,7 +17,9 @@
     },
     "dependencies": {
         "@node-rs/bcrypt": "^1.7.3",
-        "cross-fetch": "^4.0.0"
+        "cross-fetch": "^4.0.0",
+        "pure-uuid": "^1.6.4",
+        "typeid-js": "^0.3.0"
     },
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",

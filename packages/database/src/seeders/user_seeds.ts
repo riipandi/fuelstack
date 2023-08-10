@@ -1,15 +1,13 @@
-import { hashPassword } from '@acme/utils'
-import { TypeID } from 'typeid-js'
+import { generateTypeId, hashPassword, typeIdFromString } from '@acme/utils'
 
 import { dbClientType } from '../client'
-import { insertId } from '../extend'
 import { NewUser, userTable } from '../schema/user'
 
 export async function userSeeder(db: dbClientType) {
   const passwordHash = await hashPassword('secret')
   const users: NewUser[] = [
     {
-      ...insertId('user'),
+      ...generateTypeId(),
       email: 'admin@example.com',
       firstName: 'Admin',
       lastName: 'Sistem',
@@ -17,7 +15,7 @@ export async function userSeeder(db: dbClientType) {
       passwordHash,
     },
     {
-      ...insertId('user'),
+      ...generateTypeId(),
       email: 'user@example.com',
       firstName: 'John',
       lastName: 'Doe',
@@ -33,6 +31,6 @@ export async function userSeeder(db: dbClientType) {
     .returning()
 
   newUsers.map(({ tid }) => {
-    console.info(`🍀 User ${tid} created with id: ${TypeID.fromString(tid).toUUID()}`)
+    console.info(`🍀 User ${tid} created with id: ${typeIdFromString(tid).toUUID()}`)
   })
 }

@@ -1,16 +1,13 @@
 import { sql } from 'drizzle-orm'
 import { timestamp } from 'drizzle-orm/pg-core'
-import UUID from 'pure-uuid'
-import { TypeID } from 'typeid-js'
 
+// Generate UUIDv1 for primary key or UUID columns
 export const defaultId = sql`uuid_generate_v1mc()`
 
-export const insertId = (prefix: string) => {
-  const id = new UUID(1).toString()
-  const tid = TypeID.fromUUID(prefix, id).toString()
-  return { id, tid }
-}
+// Generate default value for JSONB column
+export const defaultJsonbValue = sql`'{}'::jsonb`
 
+// This is common columns, `deleted_at` are optional
 export const timeStamps = (softDelete = false) => {
   const commonTimestamps = {
     createdAt: timestamp('created_at', { withTimezone: true }).defaultNow().notNull(),

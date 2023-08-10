@@ -6,8 +6,8 @@
         "build": "turbo build --concurrency=20",
         "dev": "turbo dev --continue --concurrency=20",
         "dev:api": "turbo run dev --filter=api...",
-        "dev:admin": "turbo run dev --filter={api,admin}",
-        "dev:website": "turbo run dev --filter={api,website}...",
+        "dev:admin": "turbo run dev --filter=admin...",
+        "dev:website": "turbo run dev --filter=website...",
         "build:api": "turbo run build --filter=api...",
         "build:admin": "turbo run build --filter=admin...",
         "build:website": "turbo run build --filter=website...",
@@ -23,9 +23,10 @@
     },
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",
+        "dotenv-cli": "^7.2.1",
         "eslint": "^8.46.0",
-        "prettier": "^3.0.1",
         "prettier-plugin-tailwindcss": "^0.5.1",
+        "prettier": "^3.0.1",
         "rimraf": "^5.0.1",
         "turbo": "^1.10.12",
         "typescript": "5.1.6"
