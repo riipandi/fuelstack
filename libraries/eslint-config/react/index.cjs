@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
-  plugins: ['@typescript-eslint', 'simple-import-sort'],
+  plugins: ['@typescript-eslint', 'simple-import-sort', 'turbo'],
   ignorePatterns: ['node_modules', '.cache', '.turbo', 'build', 'dist', 'out', 'specs'],
   env: {
     browser: true,
@@ -57,6 +57,8 @@ module.exports = {
         ],
       },
     ],
+    // Automatically flag env vars missing from turbo.json
+    "turbo/no-undeclared-env-vars": "error",
   },
   overrides: [
     {
