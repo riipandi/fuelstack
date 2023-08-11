@@ -1,6 +1,6 @@
 module.exports = {
   extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
-  plugins: ['@typescript-eslint', 'simple-import-sort', 'turbo'],
+  plugins: ['@typescript-eslint', 'simple-import-sort'],
   ignorePatterns: [
     '.cache',
     '.next',
@@ -15,8 +15,13 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   rules: {
     'turbo/no-undeclared-env-vars': 'error',
-    'no-console': ['warn', { allow: ['error', 'info'] }],
     'import/no-anonymous-default-export': 'off',
+    'no-console': [
+      'warn',
+      {
+        allow: ['error', 'info'],
+      },
+    ],
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',

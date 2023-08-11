@@ -3,34 +3,23 @@ version: '3.8'
 services:
   pgsql:
     image: postgres:15-alpine
+    # image: ghcr.io/hydradatabase/hydra:latest
     container_name: pgsql
     hostname: postgres
     ports:
       - 5432:5432
     volumes:
       - pg_data:/var/lib/postgresql/data
-      - ./scripts/initialize.sql:/docker-entrypoint-initdb.d/initialize.sql
+      - ./support/initialize.sql:/docker-entrypoint-initdb.d/initialize.sql
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: fuelstack
     healthcheck:
-      test: ['CMD', 'pg_isready -U postgres']
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d fuelstack']
       interval: 30s
       timeout: 20s
       retries: 3
-
-  pgweb:
-    image: ghcr.io/sosedoff/pgweb:latest
-    container_name: pgweb
-    restart: always
-    ports:
-      - '54321:8081'
-    environment:
-      DATABASE_URL: 'postgres://postgres:postgres@pgsql:5432/fuelstack?sslmode=disable'
-      PGWEB_LOCK_SESSION: true
-    depends_on:
-      - pgsql
 
   keydb:
     image: eqalpha/keydb:latest
@@ -41,6 +30,18 @@ services:
     volumes:
       - 'keydb_data:/data'
     command: 'keydb-server /etc/keydb/redis.conf --server-threads 2'
+
+  pgweb:
+    image: ghcr.io/sosedoff/pgweb:latest
+    container_name: pgweb
+    restart: always
+    ports:
+      - '54321:8081'
+    environment:
+      PGWEB_DATABASE_URL: 'postgres://postgres:postgres@pgsql:5432/fuelstack?sslmode=disable'
+      PGWEB_LOCK_SESSION: true
+    depends_on:
+      - pgsql
 
   mailpit:
     image: axllent/mailpit:v1.6
@@ -72,7 +73,7 @@ services:
     volumes:
       - 'garage_meta:/var/lib/garage/meta'
       - 'garage_data:/var/lib/garage/data'
-      - './scripts/garage.toml:/etc/garage.toml'
+      - './support/garage.toml:/etc/garage.toml'
 
 volumes:
   pg_data:

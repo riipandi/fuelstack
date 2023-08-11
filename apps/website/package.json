@@ -22,6 +22,7 @@
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",
         "@acme/tailwind-config": "workspace:*",
+        "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.9",
         "@types/react-dom": "^18.2.7",

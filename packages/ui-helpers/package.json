@@ -2,7 +2,6 @@
     "name": "@acme/helpers",
     "version": "0.0.0",
     "private": true,
-    "license": "MIT",
     "sideEffects": false,
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
@@ -24,6 +23,7 @@
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",
         "@acme/jest-presets": "workspace:*",
+        "@acme/tsconfig": "workspace:*",
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",

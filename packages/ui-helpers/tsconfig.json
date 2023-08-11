@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "../../libraries/tsconfig/react-library.json",
+    "extends": "@acme/tsconfig/react-library.json",
     "compilerOptions": {
         "lib": ["DOM", "ES2022"]
     },

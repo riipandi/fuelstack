@@ -1,4 +1,7 @@
+# Read more at: https://pnpm.io/pnpm-workspace_yaml
+# all packages in direct subdirs of: apps, libraries, packages
 packages:
   - 'apps/*'
   - 'libraries/*'
   - 'packages/*'
+  - '!**/specs/**'

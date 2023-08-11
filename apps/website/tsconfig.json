@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "../../libraries/tsconfig/nextjs.json",
+    "extends": "@acme/tsconfig/nextjs.json",
     "compilerOptions": {
         "outDir": "dist",
         "plugins": [{ "name": "next" }],

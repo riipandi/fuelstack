@@ -1,6 +1,6 @@
 {
     "$schema": "https://json.schemastore.org/tsconfig",
-    "extends": "../../libraries/tsconfig/base.json",
+    "extends": "@acme/tsconfig/base.json",
     "compilerOptions": {
         "allowJs": true,
         "baseUrl": ".",
@@ -14,7 +14,6 @@
         "sourceMap": true,
         "target": "es2022",
         "types": ["jest", "node"],
-        "typeRoots": ["./node_modules/@types", "./node_modules/@acme"],
         "paths": {
             "@/*": ["./src/*"]
         }
@@ -25,6 +24,6 @@
             "module": "CommonJS"
         }
     },
-    "include": ["src/**/*.ts", "**/*.spec.ts"],
+    "include": ["src"],
     "exclude": ["node_modules"]
 }

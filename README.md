@@ -116,7 +116,7 @@ pnpm dlx turbo login
 pnpm dlx turbo link
 ```
 
-### Usefull Commands
+### Useful Commands
 
 This starter contains a command line script to help you manage the project such as running
 the PostgreSQL, Redis, and Mailpit on Docker.
@@ -130,10 +130,29 @@ pnpm cleanup      # Clean up all node_modules and dist folders
 
 ## Deploying with Docker
 
-```
+### Build Docker image
+
+```sh
 docker build -f apps/website/Dockerfile . --no-cache \
-  --build-arg TURBO_TEAM="your-team-name" \
-  --build-arg TURBO_TOKEN="your-token"
+  -t acme-website:$(npm pkg get version | tr -d "\042") \
+  -t acme-website:latest
+```
+
+If you want to use Turbo caching:
+
+```sh
+docker build -f apps/website/Dockerfile . --no-cache \
+  --build-arg TURBO_TEAM="your_team_name" \
+  --build-arg TURBO_TOKEN="your_token" \
+  -t acme-website:$(npm pkg get version | tr -d "\042") \
+  -t acme-website:latest
+```
+
+### Run Docker image
+
+```sh
+docker run --rm -it --name acme-website -p 3000:3000 \
+  --env-file .env.local acme-website:latest
 ```
 
 For more detailed explanation, check out [Deploying with Docker](https://turbo.build/repo/docs/handbook/deploying-with-docker) documentation.

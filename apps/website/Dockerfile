@@ -4,6 +4,8 @@
 # This is base image with `pnpm` package manager
 # -----------------------------------------------------------------------------
 FROM node:18-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
 RUN apk update && apk add --no-cache jq
 RUN corepack enable && corepack prepare pnpm@latest-8 --activate
@@ -27,9 +29,9 @@ ARG TURBO_TEAM
 ARG TURBO_TOKEN
 ENV TURBO_TEAM=$TURBO_TEAM
 ENV TURBO_TOKEN=$TURBO_TOKEN
+ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN apk add --no-cache libc6-compat
-RUN apk update
+RUN apk update && apk add --no-cache libc6-compat
 WORKDIR /app
 
 # First install the dependencies (as they change less often)
@@ -37,30 +39,39 @@ COPY .gitignore .gitignore
 COPY .npmrc /app/.npmrc
 COPY --from=builder /app/out/json/ .
 COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
-RUN pnpm install --frozen-lockfile
 
-# Build the project
-COPY --from=builder /app/out/full/ .
+# pnpm symlink issue: https://github.com/pnpm/pnpm/issues/6754
+COPY --from=builder /app/out/full/ ./
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
 RUN pnpm exec turbo run build --filter=website...
+
+# Install dependencies for production
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
 
 # -----------------------------------------------------------------------------
 # Production image, copy all the files and run the application
 # -----------------------------------------------------------------------------
 FROM base AS runner
+LABEL org.opencontainers.image.source="https://github.com/riipandi/fuelstack"
 WORKDIR /app
 
+ENV NODE_ENV=development
+ENV PORT=3000
+
 # Don't run production as root
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-USER nextjs
+RUN addgroup --system --gid 1001 nonroot && adduser --system --uid 1001 nonroot
+USER nonroot:nonroot
 
 COPY --from=installer /app/apps/website/next.config.mjs .
 COPY --from=installer /app/apps/website/package.json .
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=installer --chown=nextjs:nodejs /app/apps/website/.next/standalone ./
-COPY --from=installer --chown=nextjs:nodejs /app/apps/website/.next/static ./apps/website/.next/static
-COPY --from=installer --chown=nextjs:nodejs /app/apps/website/public ./apps/website/public
+COPY --from=installer --chown=nonroot:nonroot /app/apps/website/.next/standalone ./
+COPY --from=installer --chown=nonroot:nonroot /app/apps/website/.next/static ./apps/website/.next/static
+COPY --from=installer --chown=nonroot:nonroot /app/apps/website/public ./apps/website/public
 
-CMD node apps/website/server.js
+EXPOSE 3000
+
+CMD ["node", "apps/website/server.js"]
+# ENTRYPOINT ["/usr/local/bin/carats"]

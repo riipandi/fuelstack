@@ -24,6 +24,7 @@
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",
         "@acme/jest-presets": "workspace:*",
+        "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
         "@types/node": "^20.4.9",
         "eslint": "^8.46.0",
