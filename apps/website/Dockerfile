@@ -3,7 +3,7 @@
 # -----------------------------------------------------------------------------
 # This is base image with `pnpm` package manager
 # -----------------------------------------------------------------------------
-FROM node:18-alpine AS base
+FROM node:20-alpine AS base
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 WORKDIR /app
@@ -27,9 +27,9 @@ FROM base AS installer
 
 ARG TURBO_TEAM
 ARG TURBO_TOKEN
-ENV TURBO_TEAM=$TURBO_TEAM
-ENV TURBO_TOKEN=$TURBO_TOKEN
-ENV NEXT_TELEMETRY_DISABLED=1
+ENV TURBO_TEAM $TURBO_TEAM
+ENV TURBO_TOKEN $TURBO_TOKEN
+ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN apk update && apk add --no-cache libc6-compat
 WORKDIR /app
@@ -51,15 +51,17 @@ RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-l
 # -----------------------------------------------------------------------------
 # Production image, copy all the files and run the application
 # -----------------------------------------------------------------------------
-FROM base AS runner
+FROM node:20-alpine AS runner
 LABEL org.opencontainers.image.source="https://github.com/riipandi/fuelstack"
 WORKDIR /app
 
-ENV NODE_ENV=development
-ENV PORT=3000
+ENV NODE_ENV production
+ENV HOSTNAME localhost
+ENV PORT 3000
 
-# Don't run production as root
+# Don't run production as root, spawns command as a child process.
 RUN addgroup --system --gid 1001 nonroot && adduser --system --uid 1001 nonroot
+RUN apk update && apk add --no-cache tini
 USER nonroot:nonroot
 
 COPY --from=installer /app/apps/website/next.config.mjs .
@@ -73,5 +75,5 @@ COPY --from=installer --chown=nonroot:nonroot /app/apps/website/public ./apps/we
 
 EXPOSE 3000
 
+ENTRYPOINT ["/sbin/tini", "--"]
 CMD ["node", "apps/website/server.js"]
-# ENTRYPOINT ["/usr/local/bin/carats"]
