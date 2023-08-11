@@ -2,7 +2,7 @@ import supertest from 'supertest'
 
 import { start } from '../src/app'
 
-describe('server', () => {
+describe('health check', () => {
   it('health check returns 200', async () => {
     await supertest(start())
       .get('/health')

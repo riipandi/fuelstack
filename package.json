@@ -16,6 +16,7 @@
         "db:seed": "turbo run db:seed --filter=api",
         "format": "prettier --write \"**/*.{json,css,cjs,mjs,js,jsx,ts,tsx,md,mdx,yml}\"",
         "cleanup": "turbo clean && docker-compose -f docker-compose.yml down --remove-orphans",
+        "watch-del": "watchman watch-del `pwd` && watchman watch-project `pwd`",
         "pre-dev": "docker-compose -f docker-compose.yml up -d",
         "lint:fix": "turbo run lint -- --fix",
         "lint": "turbo run lint",

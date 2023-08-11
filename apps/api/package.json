@@ -8,7 +8,7 @@
         "dev": "tsnd --respawn --transpile-only src/app.ts --swc",
         "lint": "tsc --noEmit && eslint \"**/*.{ts,tsx}\"",
         "start": "NODE_ENV=production node dist/app.js",
-        "test": "NODE_ENV=development jest --detectOpenHandles",
+        "test": "jest --detectOpenHandles",
         "db:migrate": "ts-node src/scripts/migrate.ts",
         "db:seed": "ts-node src/scripts/seeder.ts"
     },

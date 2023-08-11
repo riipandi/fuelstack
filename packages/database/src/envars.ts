@@ -5,6 +5,7 @@ const environments = [
   { value: 'development', label: 'Development' },
   { value: 'staging', label: 'Staging' },
   { value: 'production', label: 'Production' },
+  { value: 'test', label: 'Test' },
 ] as const
 
 type EnvProperty = (typeof environments)[number]['value']

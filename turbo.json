@@ -15,14 +15,18 @@
         },
         "test": {
             "dotEnv": [".env.test.local", ".env.test", ".env"],
+            "dependsOn": ["^build", "//#watch-del"],
             "outputs": ["coverage/**"],
-            "dependsOn": ["^build"],
             "outputMode": "full"
         },
         "lint": {
             "dependsOn": ["^build"]
         },
         "//#format": {
+            "dependsOn": []
+        },
+        "//#watch-del": {
+            "outputMode": "none",
             "dependsOn": []
         },
         "clean": { "cache": false },
