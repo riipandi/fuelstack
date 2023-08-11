@@ -58,7 +58,7 @@ module.exports = {
       },
     ],
     // Automatically flag env vars missing from turbo.json
-    "turbo/no-undeclared-env-vars": "error",
+    'turbo/no-undeclared-env-vars': 'error',
   },
   overrides: [
     {

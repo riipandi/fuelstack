@@ -1,5 +1,5 @@
 import fp from 'fastify-plugin'
-import { db, dbClient, dbClientType } from '@acme/database'
+import { db, dbClientType } from '@acme/database'
 
 /**
  * Using declaration merging, add plugin props to the appropriate
@@ -18,6 +18,7 @@ declare module 'fastify' {
 export default fp(async (fastify) => {
   fastify.decorate<dbClientType>('db', db)
   fastify.addHook('onClose', async (_fastify) => {
-    dbClient.CLOSE
+    // TODO close connection after transaction finish
+    // dbClient.CLOSE
   })
 })

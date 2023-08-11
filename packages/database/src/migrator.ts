@@ -1,5 +1,4 @@
 import { join } from 'node:path'
-
 import { neon } from '@neondatabase/serverless'
 import { MigrationConfig } from 'drizzle-orm/migrator'
 import { drizzle as drizzleNeon } from 'drizzle-orm/neon-http'

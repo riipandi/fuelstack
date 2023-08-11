@@ -12,7 +12,7 @@ export type AppOptions = {
 } & Partial<AutoloadPluginOptions>
 
 // Pass --options via CLI arguments in command to enable these options.
-const options: AppOptions = {
+const _options: AppOptions = {
   autoMigrate: false,
 }
 

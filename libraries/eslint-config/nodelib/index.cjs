@@ -1,31 +1,24 @@
 module.exports = {
-  extends: ['next/core-web-vitals', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier', 'turbo'],
   plugins: ['@typescript-eslint', 'simple-import-sort', 'turbo'],
-  ignorePatterns: ['node_modules', '.next', '.cache', '.turbo', 'dist', 'out', 'specs'],
+  ignorePatterns: ['node_modules', '.cache', '.turbo', 'dist', 'specs'],
   env: {
-    browser: true,
     node: true,
+    es6: true,
   },
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    babelOptions: {
-      presets: [require.resolve('next/babel')],
-    },
+    ecmaVersion: 2022,
+    sourceType: 'module',
   },
   settings: {
-    react: {
-      version: 'detect',
-    },
     jest: {
       version: 29,
     },
   },
   rules: {
     'no-console': ['warn', { allow: ['error', 'info'] }],
-    'react/jsx-key': 'off',
     'import/no-anonymous-default-export': 'off',
-    '@next/next/no-html-link-for-pages': 'off',
-    '@next/next/no-img-element': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-var-requires': 'off',
@@ -43,11 +36,7 @@ module.exports = {
       {
         groups: [
           // Packages `node` related come first.
-          ['^node(?!:?$)', '^dotenv'],
-          // Packages `react` and `nextjs` related come after.
-          ['^react', '^next(?!/?$)', '^@?\\w', '^next(?!-?$)'],
-          // Internal packages.
-          ['^(@|components)(/.*|$)', '^(@|context)(/.*|$)'],
+          ['^node(?!:?$)', '^dotenv', '^@?\\w'],
           // Side effect imports.
           ['^\\u0000'],
           // Other relative imports. Put same-folder imports and `..` last.
@@ -63,11 +52,9 @@ module.exports = {
   overrides: [
     {
       files: ['**/specs/**/*'],
-      env: { jest: true },
+      env: {
+        jest: true,
+      },
     },
   ],
-  globals: {
-    React: true,
-    JSX: true,
-  },
 }
