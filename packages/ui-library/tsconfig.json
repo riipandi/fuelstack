@@ -2,7 +2,7 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "../../libraries/tsconfig/react-library.json",
     "compilerOptions": {
-        "lib": ["DOM", "ES2020"]
+        "lib": ["DOM", "ES2022"]
     },
     "include": ["."],
     "exclude": ["dist", "build", "node_modules"]

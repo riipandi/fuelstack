@@ -3,7 +3,7 @@
     "extends": "../../libraries/tsconfig/base.json",
     "compilerOptions": {
         "allowSyntheticDefaultImports": true,
-        "lib": ["ES2020"],
+        "lib": ["ES2022"],
         "module": "CommonJS",
         "outDir": "./dist",
         "rootDir": "./src",

@@ -12,7 +12,7 @@ export default defineConfig((options: Options) => ({
   minify: !options.watch,
   clean: true,
   dts: true,
-  target: 'es2020',
+  target: 'es2022',
   injectStyle: false,
   ...options,
 }))
