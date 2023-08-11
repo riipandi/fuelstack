@@ -128,6 +128,16 @@ pnpm lint         # Lint all packages
 pnpm cleanup      # Clean up all node_modules and dist folders
 ```
 
+## Deploying with Docker
+
+```
+docker build -f apps/website/Dockerfile . --no-cache \
+  --build-arg TURBO_TEAM="your-team-name" \
+  --build-arg TURBO_TOKEN="your-token"
+```
+
+For more detailed explanation, check out [Deploying with Docker](https://turbo.build/repo/docs/handbook/deploying-with-docker) documentation.
+
 ## Deploy your own
 
 You'll want to fork this repository and deploy your own Next.js website. Once you have an

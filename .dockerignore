@@ -2,9 +2,13 @@
 /public/build
 /build
 /tmp
-.next
-.fleet
+out/
+dist/
+.git
 .github
+.next
+.turbo
+.fleet
 .vscode
 .DS_Store
 .DS_Store?
@@ -12,7 +16,6 @@
 Dockerfile
 node_modules
 npm-debug.log
-pnpm-lock.yaml
 README.md
 *.log
 .env*
