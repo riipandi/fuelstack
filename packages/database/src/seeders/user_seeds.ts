@@ -1,7 +1,7 @@
-import { generateTypeId, hashPassword, typeIdFromString } from '@acme/utils'
-
 import { dbClientType } from '../client'
 import { NewUser, userTable } from '../schema/user'
+
+import { generateTypeId, hashPassword, typeIdFromString } from '@acme/utils'
 
 export async function userSeeder(db: dbClientType) {
   const passwordHash = await hashPassword('secret')

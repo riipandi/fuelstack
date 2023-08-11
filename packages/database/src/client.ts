@@ -1,10 +1,10 @@
+import { env } from './envars'
+
 import { neon, neonConfig } from '@neondatabase/serverless'
 import { DrizzleConfig } from 'drizzle-orm'
 import { drizzle as drizzleNeon, type NeonHttpDatabase } from 'drizzle-orm/neon-http'
 import { drizzle as drizzlePg, type PostgresJsDatabase } from 'drizzle-orm/postgres-js'
 import postgres from 'postgres'
-
-import { env } from './envars'
 
 // Configure Neon client
 neonConfig.fetchConnectionCache = true

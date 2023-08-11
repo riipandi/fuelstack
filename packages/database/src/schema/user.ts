@@ -1,7 +1,7 @@
+import { defaultId, defaultJsonbValue, timeStamps } from '../extend'
+
 import { InferModel } from 'drizzle-orm'
 import { jsonb, pgEnum, pgTable, timestamp, uuid, varchar } from 'drizzle-orm/pg-core'
-
-import { defaultId, defaultJsonbValue, timeStamps } from '../extend'
 
 export const roleEnum = pgEnum('role', ['admin', 'user'])
 
