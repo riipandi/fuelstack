@@ -1,4 +1,4 @@
-# syntax=docker/dockerfile:1
+# syntax=docker/dockerfile:1.4
 
 # -----------------------------------------------------------------------------
 # This is base image with `pnpm` package manager

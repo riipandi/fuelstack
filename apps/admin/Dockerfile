@@ -17,7 +17,7 @@ RUN pnpm add -g turbo
 FROM base AS pruner
 WORKDIR /app
 COPY --chown=node:node . .
-RUN turbo prune --scope=api --docker
+RUN turbo prune --scope=admin --docker
 
 # -----------------------------------------------------------------------------
 # Add lockfile and package.json's of isolated subworkspace
@@ -34,35 +34,22 @@ ENV TURBO_TOKEN $TURBO_TOKEN
 COPY --from=pruner /app/out/json/ .
 COPY --from=pruner /app/out/full/ ./
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install
-RUN turbo run build --filter=api...
-
-# Prune pnpm package, then install dependencies for production
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm --filter=api --prod deploy pruned
+RUN turbo run build --filter=admin...
 
 # -----------------------------------------------------------------------------
 # Production image, copy all the files and run the application
 # -----------------------------------------------------------------------------
-FROM node:20-alpine AS runner
+FROM nginx:mainline-alpine AS runner
 LABEL org.opencontainers.image.source="https://github.com/riipandi/fuelstack"
 WORKDIR /app
 
-ARG DATABASE_URL
-ENV DATABASE_URL $DATABASE_URL
-
-ENV NODE_ENV production
-ENV HOST 0.0.0.0
-ENV PORT 3000
-
-# Don't run production as root, spawns command as a child process.
-RUN addgroup --system --gid 1001 nonroot && adduser --system --uid 1001 nonroot
+# Spawns command as a child process.
 RUN apk update && apk add --no-cache tini
 
-COPY --from=builder --chown=nonroot:nonroot /app/pruned/package.json ./package.json
-COPY --from=builder --chown=nonroot:nonroot /app/pruned/node_modules ./node_modules
-COPY --from=builder --chown=nonroot:nonroot /app/pruned/dist ./dist
+COPY --from=pruner /app/support/nginx-spa.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/apps/admin/dist ./
 
-USER nonroot:nonroot
-EXPOSE 3000
+EXPOSE 80 443
 
 ENTRYPOINT ["/sbin/tini", "--"]
-CMD ["node", "dist/app.js"]
+CMD ["nginx", "-g", "daemon off;"]
