@@ -34,9 +34,9 @@
     "devDependencies": {
         "@acme/eslint-config": "workspace:*",
         "@acme/tsconfig": "workspace:*",
-        "@types/node": "^20.4.9",
+        "@types/node": "^20.4.10",
         "drizzle-kit": "^0.19.12",
-        "eslint": "^8.46.0",
+        "eslint": "^8.47.0",
         "ts-node": "^10.9.1",
         "tsup": "^7.2.0",
         "typescript": "5.1.6"

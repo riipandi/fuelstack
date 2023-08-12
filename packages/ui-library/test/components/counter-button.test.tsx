@@ -1,7 +1,6 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
 
-import { CounterButton } from '../src/components/counter-button'
+import { CounterButton } from '../../src/components/counter-button'
 
 describe('CounterButton', () => {
   it('renders without crashing', () => {

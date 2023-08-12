@@ -26,8 +26,8 @@
         "@acme/jest-presets": "workspace:*",
         "@acme/tsconfig": "workspace:*",
         "@types/jest": "^29.5.3",
-        "@types/node": "^20.4.9",
-        "eslint": "^8.46.0",
+        "@types/node": "^20.4.10",
+        "eslint": "^8.47.0",
         "jest": "^29.6.2",
         "typescript": "5.1.6"
     },

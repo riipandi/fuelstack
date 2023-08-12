@@ -27,9 +27,9 @@
         "@testing-library/jest-dom": "^5.17.0",
         "@testing-library/react": "^14.0.0",
         "@testing-library/user-event": "^14.4.3",
-        "@types/node": "^20.4.9",
-        "babel-jest": "^29.6.1",
-        "eslint": "^8.46.0",
+        "@types/node": "^20.4.10",
+        "babel-jest": "^29.6.2",
+        "eslint": "^8.47.0",
         "tsup": "^7.2.0",
         "typescript": "5.1.6"
     },
