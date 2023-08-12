@@ -46,7 +46,7 @@ Each package and app is 100% [TypeScript](https://www.typescriptlang.org/).
 npx create-turbo@latest -e https://github.com/riipandi/fuelstack
 
 # Using yarn
-yarn dlx create-turbo@latest -e https://github.com/riipandi/fuelstack
+yarn create-turbo@latest -e https://github.com/riipandi/fuelstack
 
 # Using pnpm
 pnpm dlx create-turbo@latest -e https://github.com/riipandi/fuelstack
