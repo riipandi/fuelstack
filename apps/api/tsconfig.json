@@ -2,13 +2,14 @@
     "$schema": "https://json.schemastore.org/tsconfig",
     "extends": "@acme/tsconfig/base.json",
     "compilerOptions": {
-        "allowJs": true,
         "baseUrl": ".",
+        "outDir": "dist",
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "lib": ["es2022"],
         "module": "es2022",
-        "outDir": "dist",
         "removeComments": true,
         "resolveJsonModule": true,
         "sourceMap": true,
@@ -19,11 +20,10 @@
         }
     },
     "ts-node": {
-        "swc": true,
         "compilerOptions": {
             "module": "CommonJS"
         }
     },
-    "include": ["src"],
+    "include": ["src/**/*.ts", "tests/**/*.ts"],
     "exclude": ["node_modules"]
 }

@@ -7,10 +7,11 @@ module.exports = {
     '.turbo',
     '*.cjs',
     '*.mjs',
+    'build',
     'dist',
     'node_modules',
     'out',
-    'specs',
+    'test',
   ],
   parser: '@typescript-eslint/parser',
   rules: {

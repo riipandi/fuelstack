@@ -4,4 +4,4 @@ packages:
   - 'apps/*'
   - 'libraries/*'
   - 'packages/*'
-  - '!**/specs/**'
+  - '!**/test/**'
