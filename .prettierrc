@@ -13,7 +13,7 @@
     "plugins": ["prettier-plugin-tailwindcss"],
     "overrides": [
         {
-            "files": ["*.html", "*.edge", "*.css", ".sass"],
+            "files": ["*.html", "*.hbs", "*.css", ".sass"],
             "options": {
                 "singleQuote": false
             }

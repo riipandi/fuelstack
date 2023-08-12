@@ -5,7 +5,7 @@ import { CounterButton, ExternalLink } from '@acme/ui'
 import NextLogo from '~/next.svg'
 
 export const metadata: Metadata = {
-  title: 'Website | FuelStack',
+  title: 'Website - FuelStack',
 }
 
 export default function Page() {
