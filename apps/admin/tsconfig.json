@@ -10,6 +10,6 @@
         }
     },
     "references": [{ "path": "./tsconfig.node.json" }],
-    "include": ["src"],
+    "include": ["src", "test", "@testing-library/jest-dom"],
     "exclude": ["node_modules"]
 }

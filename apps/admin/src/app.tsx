@@ -21,7 +21,7 @@ export default function App() {
           </p>
         </div>
       </main>
-      <footer className='mx-auto w-full max-w-7xl shrink-0 px-4 sm:px-6 lg:px-8'>
+      <footer role='footer' className='mx-auto w-full max-w-7xl shrink-0 px-4 sm:px-6 lg:px-8'>
         <p className='flex justify-center'>
           <span className='mr-1 text-gray-600 dark:text-gray-200'>Brought to you by</span>
           <ExternalLink
