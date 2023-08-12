@@ -1,4 +1,5 @@
 {
+    "$schema": "https://json.schemastore.org/swcrc",
     "minify": false,
     "jsc": {
         "minify": {
@@ -13,6 +14,7 @@
             "decorators": true,
             "dynamicImport": true
         },
+        "externalHelpers": false,
         "target": "es2022",
         "paths": {
             "@/*": ["./src/*"]

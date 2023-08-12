@@ -47,6 +47,12 @@
         "typescript": "5.1.6"
     },
     "jest": {
-        "preset": "@acme/jest-presets/node"
+        "preset": "@acme/jest-presets/node",
+        "testPathIgnorePatterns": [
+            "scripts"
+        ],
+        "transform": {
+            "^.+\\.test.(t|j)s?$": "@swc/jest"
+        }
     }
 }

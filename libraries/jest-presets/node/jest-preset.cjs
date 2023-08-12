@@ -4,9 +4,6 @@ module.exports = {
   roots: ['<rootDir>'],
   passWithNoTests: true,
   testEnvironment: 'node',
-  transform: {
-    '^.+\\.tsx?$': 'ts-jest',
-  },
   testPathIgnorePatterns: ['node_modules'],
   testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
   moduleDirectories: ['node_modules', 'src'],

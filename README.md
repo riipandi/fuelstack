@@ -152,7 +152,7 @@ docker build -f apps/website/Dockerfile . --no-cache \
 
 ```sh
 docker run --rm -it --name acme-website -p 3000:3000 \
-  --env-file .env.local acme-website:latest
+  --env-file .env.docker acme-website:latest
 ```
 
 For more detailed explanation, check out [Deploying with Docker](https://turbo.build/repo/docs/handbook/deploying-with-docker) documentation.

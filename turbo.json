@@ -4,7 +4,7 @@
     "pipeline": {
         "build": {
             "dotEnv": [".env.production.local", ".env.local", ".env.production", ".env"],
-            "outputs": ["dist/**", ".next/**", "!.next/cache/**", "api/**"],
+            "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
             "dependsOn": ["^build"]
         },
         "dev": {
@@ -13,9 +13,15 @@
             "persistent": true,
             "cache": false
         },
+        "start": {
+            "dotEnv": [".env.production.local", ".env.local", ".env.production", ".env"],
+            "dependsOn": ["^build"],
+            "persistent": false,
+            "cache": false
+        },
         "test": {
             "dotEnv": [".env.test.local", ".env.test", ".env"],
-            "dependsOn": ["^build", "//#watch-del"],
+            "dependsOn": ["lint", "build", "//#watch-del"],
             "outputs": ["coverage/**"],
             "outputMode": "full"
         },
