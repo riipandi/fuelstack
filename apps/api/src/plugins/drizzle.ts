@@ -1,5 +1,5 @@
 import fp from 'fastify-plugin'
-import { db, dbClient, dbClientType } from '@acme/database'
+import { db, dbClientType } from '@acme/database'
 
 export interface DrizzlePluginOptions {
   // Specify Support plugin options here
@@ -12,7 +12,7 @@ export interface DrizzlePluginOptions {
  */
 export default fp<DrizzlePluginOptions>(async (fastify) => {
   fastify.decorate<dbClientType>('db', db)
-  fastify.addHook('onClose', async (fastify) => {
+  fastify.addHook('onClose', async (_fastify) => {
     // TODO close connection after transaction finish
     // dbClient.CLOSE
   })

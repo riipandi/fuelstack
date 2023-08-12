@@ -21,7 +21,7 @@
         },
         "test": {
             "dotEnv": [".env.test.local", ".env.test", ".env"],
-            "dependsOn": ["lint", "build", "//#watch-del"],
+            "dependsOn": ["lint", "^build", "//#watch-del"],
             "outputs": ["coverage/**"],
             "outputMode": "full"
         },
