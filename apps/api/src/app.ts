@@ -43,7 +43,7 @@ server.register(AutoLoad, {
 
 export const start = async () => {
   try {
-    await server.listen({ port: env.PORT })
+    await server.listen({ port: env.PORT, host: env.HOST })
     const address = server.server.address()
     const _port = typeof address === 'string' ? address : address?.port
   } catch (err) {

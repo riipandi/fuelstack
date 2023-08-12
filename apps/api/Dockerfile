@@ -50,6 +50,7 @@ ARG DATABASE_URL
 ENV DATABASE_URL $DATABASE_URL
 
 ENV NODE_ENV production
+ENV HOST 0.0.0.0
 ENV PORT 3000
 
 # Don't run production as root, spawns command as a child process.
@@ -64,5 +65,5 @@ COPY --from=builder --chown=nonroot:nonroot /app/pruned/dist ./dist
 USER nonroot:nonroot
 EXPOSE 3000
 
-ENTRYPOINT ["/sbin/tini", "--", "sh"]
-# CMD ["node", "dist/app.js"]
+ENTRYPOINT ["/sbin/tini", "--"]
+CMD ["node", "dist/app.js"]
